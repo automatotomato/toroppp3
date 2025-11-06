@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles } from 'lucide-react';
+import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles, X } from 'lucide-react';
 
 const courses = [
   { number: 1, title: 'Mastering Cashflow & Profitability' },
@@ -17,8 +18,106 @@ const courses = [
 ];
 
 export default function LandingPage() {
+  const [showPromoModal, setShowPromoModal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPromoModal(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
+      <button
+        onClick={() => setShowPromoModal(true)}
+        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-4 rounded-full font-bold shadow-2xl transition-all transform hover:scale-110 flex items-center gap-2 animate-bounce"
+      >
+        <Zap size={24} />
+        <span className="hidden sm:inline">Special Offer!</span>
+        <Sparkles size={20} />
+      </button>
+      {showPromoModal && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300">
+            <div className="bg-slate-900 rounded-3xl p-8 md:p-12 relative">
+              <button
+                onClick={() => setShowPromoModal(false)}
+                className="absolute top-4 right-4 text-white hover:text-amber-400 transition-colors"
+              >
+                <X size={32} />
+              </button>
+
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-3 rounded-full mb-6 animate-pulse shadow-xl">
+                  <Sparkles size={24} className="text-white" />
+                  <span className="font-bold text-xl text-white">🔥 LIMITED TIME OFFER 🔥</span>
+                  <Sparkles size={24} className="text-white" />
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  Get Elite Access for Only $129/month
+                </h2>
+                <p className="text-xl text-slate-300 mb-8">
+                  Pay $299 registration + $129/month and get the full $499/month Elite Package
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="space-y-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div className="text-slate-400 mb-2">Regular Elite Price</div>
+                    <div className="text-4xl font-bold text-red-300 line-through">$499/month</div>
+                  </div>
+                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-6 text-center">
+                    <div className="text-green-300 mb-2 font-semibold">Promotional Price</div>
+                    <div className="text-5xl font-bold text-green-400">$129/mo</div>
+                    <div className="text-xl mt-2 text-white">+ $299 registration</div>
+                  </div>
+                  <div className="bg-amber-500/20 border-2 border-amber-500 rounded-xl p-4 text-center">
+                    <p className="text-2xl text-amber-300 font-bold">SAVE $370 EVERY MONTH!</p>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
+                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 mb-4 text-center">
+                    <p className="text-green-300 font-bold">All Elite Features Included!</p>
+                  </div>
+                  <ul className="space-y-2 text-white">
+                    {[
+                      '12 workshop courses (24 hours)',
+                      '12 Town Hall sessions',
+                      'Complete video library',
+                      'Podcast library (EN & ES)',
+                      'Weekly tips & best practices',
+                      'Business Analysis ($9,995 value)',
+                      'Priority support & coaching',
+                      'Private community access',
+                    ].map((feature, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm">
+                        <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Link
+                  to="/register?plan=promo"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition-all transform hover:scale-105"
+                >
+                  <Zap size={32} />
+                  Claim This Offer Now
+                  <ArrowRight size={32} />
+                </Link>
+                <p className="text-slate-400 mt-4">No credit card required • 7-day money-back guarantee</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <header className="bg-slate-900 py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -41,6 +140,18 @@ export default function LandingPage() {
           </div>
         </div>
       </header>
+
+      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-700 transition-all shadow-lg sticky top-16 z-40" onClick={() => setShowPromoModal(true)}>
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
+          <Sparkles size={24} className="animate-pulse" />
+          <span className="text-lg md:text-xl">
+            🔥 LIMITED TIME: Get Elite Package for $129/month (Save $370/month!) 🔥
+          </span>
+          <button className="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg">
+            View Offer
+          </button>
+        </div>
+      </div>
 
       <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -66,13 +177,14 @@ export default function LandingPage() {
                 Master cash flow, sales systems, marketing, and leadership through 12 power-packed workshops designed specifically for Toro Tax franchise owners.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link
-                  to="/register"
-                  className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
+                <button
+                  onClick={() => setShowPromoModal(true)}
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse"
                 >
-                  Start Free Trial
+                  <Zap size={24} />
+                  View Special Offer
                   <ArrowRight size={24} />
-                </Link>
+                </button>
                 <Link
                   to="/courses"
                   className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white/30 transition-all"
@@ -141,6 +253,95 @@ export default function LandingPage() {
             <div className="text-center">
               <div className="text-4xl font-bold text-red-600 mb-2">24/7</div>
               <div className="text-slate-600 font-semibold">Platform Access</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 shadow-2xl">
+            <div className="bg-white rounded-3xl p-8 md:p-12">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full mb-4 animate-pulse shadow-lg">
+                  <Sparkles size={24} />
+                  <span className="font-bold text-lg">🔥 LIMITED TIME PROMOTIONAL OFFER 🔥</span>
+                  <Sparkles size={24} />
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                  Get Elite Access for Only $129/month
+                </h2>
+                <p className="text-xl text-slate-700 mb-6">
+                  Pay $299 registration + $129/month and get the full <span className="text-red-600 font-bold">$499/month Elite Package</span>
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-slate-100 rounded-xl p-6 text-center border-2 border-slate-300">
+                  <div className="text-slate-600 mb-2 font-semibold">Regular Price</div>
+                  <div className="text-4xl font-bold text-slate-400 line-through">$499</div>
+                  <div className="text-sm text-slate-600">per month</div>
+                </div>
+                <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-center text-white shadow-xl transform scale-110">
+                  <div className="text-green-100 mb-2 font-semibold">Promo Price</div>
+                  <div className="text-5xl font-bold">$129</div>
+                  <div className="text-lg">per month</div>
+                </div>
+                <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-center text-white shadow-xl">
+                  <div className="text-amber-100 mb-2 font-semibold">You Save</div>
+                  <div className="text-5xl font-bold">$370</div>
+                  <div className="text-lg">every month!</div>
+                </div>
+              </div>
+
+              <div className="bg-green-50 border-2 border-green-500 rounded-xl p-6 mb-8">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-xl font-bold text-green-900 mb-4">What's Included:</h3>
+                    <ul className="space-y-2">
+                      {[
+                        'All 12 workshop courses (24 hours)',
+                        '12 Town Hall sessions',
+                        'Complete video library',
+                        'Full podcast library',
+                      ].map((feature, index) => (
+                        <li key={index} className="flex items-start gap-2 text-green-900">
+                          <CheckCircle2 className="text-green-600 flex-shrink-0 mt-0.5" size={18} />
+                          <span className="font-medium">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-green-900 mb-4">&nbsp;</h3>
+                    <ul className="space-y-2">
+                      {[
+                        'Weekly tips & resources',
+                        'Business Analysis ($9,995 value)',
+                        'Priority support & coaching',
+                        'Private community access',
+                      ].map((feature, index) => (
+                        <li key={index} className="flex items-start gap-2 text-green-900">
+                          <CheckCircle2 className="text-green-600 flex-shrink-0 mt-0.5" size={18} />
+                          <span className="font-medium">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <button
+                  onClick={() => setShowPromoModal(true)}
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-12 py-5 rounded-full text-2xl font-bold shadow-2xl transition-all transform hover:scale-105"
+                >
+                  <Zap size={32} />
+                  View Full Details & Sign Up
+                  <ArrowRight size={32} />
+                </button>
+                <p className="text-slate-600 mt-4">No credit card required • 7-day money-back guarantee</p>
+              </div>
             </div>
           </div>
         </div>
