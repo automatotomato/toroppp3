@@ -1,13 +1,23 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Award, CreditCard, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Award, CreditCard, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
+
+const plans = {
+  lifetime: { name: 'Toro Con Special - Lifetime Access', price: 299, billing: 'One-time payment' },
+  essentials: { name: 'Essentials', price: 129, billing: 'Monthly subscription' },
+  elite: { name: 'Elite - Everything Included', price: 499, billing: 'Monthly subscription' },
+};
 
 export default function PaymentPage() {
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [searchParams] = useSearchParams();
   const { profile } = useAuth();
   const navigate = useNavigate();
+
+  const planType = (searchParams.get('plan') || 'lifetime') as keyof typeof plans;
+  const selectedPlan = plans[planType];
 
   const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,16 +106,24 @@ export default function PaymentPage() {
               <p className="text-slate-600">Office: {profile?.office_name}</p>
             </div>
 
+            {planType === 'lifetime' && (
+              <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl p-6 mb-6 text-white text-center">
+                <Sparkles className="mx-auto mb-2" size={32} />
+                <div className="font-bold text-lg mb-1">Toro Con Exclusive Offer</div>
+                <div className="text-sm opacity-90">Includes $9,995 Business Analysis</div>
+              </div>
+            )}
+
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-slate-700 font-semibold">Advancement Academy - Annual Membership</span>
+              <div className="mb-4">
+                <span className="text-slate-700 font-semibold">{selectedPlan.name}</span>
               </div>
               <div className="border-t border-slate-200 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold text-slate-900">Total</span>
-                  <span className="text-3xl font-bold text-red-600">$997</span>
+                  <span className="text-3xl font-bold text-red-600">${selectedPlan.price}</span>
                 </div>
-                <p className="text-sm text-slate-600 mt-2">Billed annually</p>
+                <p className="text-sm text-slate-600 mt-2">{selectedPlan.billing}</p>
               </div>
             </div>
 
@@ -152,7 +170,7 @@ export default function PaymentPage() {
                 disabled={loading}
                 className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                {loading ? 'Processing Payment...' : 'Complete Payment - $997'}
+                {loading ? 'Processing Payment...' : `Complete Payment - $${selectedPlan.price}`}
               </button>
 
               <p className="text-xs text-slate-500 text-center">

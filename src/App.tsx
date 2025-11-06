@@ -11,6 +11,7 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import CoursesListPage from './pages/CoursesListPage';
 import FAQPage from './pages/FAQPage';
 import ComingSoonPage from './pages/ComingSoonPage';
+import PricingPage from './pages/PricingPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/courses" element={<CoursesListPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
           <Route
             path="/payment"
             element={

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield } from 'lucide-react';
+import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles } from 'lucide-react';
 
 const courses = [
   { number: 1, title: 'Mastering Cashflow & Profitability' },
@@ -611,75 +611,80 @@ export default function LandingPage() {
       </section>
 
       <section className="py-24 bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Transform Your Business?
+              Choose Your Path to Success
             </h2>
-            <p className="text-xl mb-8 text-red-100 max-w-3xl mx-auto">
-              Join the Advancement Academy today and gain access to everything you need to succeed
+            <p className="text-xl mb-4 text-red-100 max-w-3xl mx-auto">
+              Flexible membership options to fit your growth goals
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border-2 border-white/30">
-              <div className="text-center">
-                <div className="inline-block bg-white/20 rounded-full px-4 py-2 text-sm font-bold mb-4">
-                  ✨ EVERYTHING INCLUDED
-                </div>
-                <div className="mb-8">
-                  <div className="text-6xl font-bold mb-2">$997</div>
-                  <div className="text-red-100 text-lg">Annual Membership</div>
-                  <div className="text-red-200 text-sm">Per Office • Unlimited Team Access</div>
-                </div>
-
-                <div className="space-y-3 text-left mb-8">
-                  {[
-                    '12 comprehensive workshop courses',
-                    '90+ hours of expert training',
-                    '50+ downloadable resources & tools',
-                    'Town hall recordings & live Q&A',
-                    'Bilingual podcast library',
-                    'Weekly tips & best practices',
-                    'Private community access',
-                    'Lifetime course updates',
-                    '24/7 platform access',
-                    'Certificate of completion',
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircle2 className="text-green-400 flex-shrink-0" size={20} />
-                      <span className="text-white">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-6 mb-12 text-center max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Sparkles size={24} />
+              <h3 className="text-2xl font-bold">Toro Con Exclusive Offer</h3>
             </div>
+            <p className="text-lg">
+              Limited Time: <span className="line-through opacity-75">$3,000</span>{' '}
+              <span className="text-3xl font-bold">$299</span> Lifetime Access
+            </p>
+            <p className="text-sm mt-2 opacity-90">Includes $9,995 Complete Business Analysis</p>
+          </div>
 
-            <div className="flex flex-col justify-center">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-white/30 mb-6">
-                <BarChart3 className="text-green-400 mb-4" size={48} />
-                <h3 className="text-2xl font-bold mb-2">Average ROI</h3>
-                <div className="text-5xl font-bold text-green-400 mb-2">450%</div>
-                <p className="text-red-100">Members see average returns of $4,485 for every $997 invested</p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-white/30 mb-6">
-                <MessageSquare className="text-blue-400 mb-4" size={48} />
-                <h3 className="text-2xl font-bold mb-2">98% Recommend</h3>
-                <p className="text-red-100">Our members consistently recommend the program to other franchise owners</p>
-              </div>
-
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
+              <div className="text-4xl font-bold mb-2">$299</div>
+              <div className="text-red-100 font-semibold mb-2">Toro Con Special</div>
+              <div className="text-sm text-red-200 mb-4">Lifetime Access</div>
               <Link
-                to="/register"
-                className="w-full bg-white text-red-600 hover:bg-slate-100 px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105 text-center inline-flex items-center justify-center gap-2"
+                to="/pricing"
+                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
-                Enroll Now
-                <ArrowRight size={28} />
+                Claim Offer
               </Link>
-              <p className="text-red-100 text-center mt-4 text-sm">
-                ⚡ Limited Time: 7-Day Money-Back Guarantee
-              </p>
             </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
+              <div className="text-4xl font-bold mb-2">$129</div>
+              <div className="text-red-100 font-semibold mb-2">Essentials</div>
+              <div className="text-sm text-red-200 mb-4">Monthly • Classes Only</div>
+              <Link
+                to="/pricing"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
+              >
+                Get Started
+              </Link>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-4 border-amber-400 text-center relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-xs font-bold">
+                MOST POPULAR
+              </div>
+              <div className="text-4xl font-bold mb-2">$499</div>
+              <div className="text-red-100 font-semibold mb-2">Elite</div>
+              <div className="text-sm text-red-200 mb-4">Monthly • Everything</div>
+              <Link
+                to="/pricing"
+                className="w-full bg-white text-red-600 hover:bg-slate-100 px-6 py-3 rounded-full font-bold transition-all inline-block"
+              >
+                Get Elite
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/pricing"
+              className="inline-flex items-center gap-2 text-white hover:text-amber-300 font-bold text-lg transition-colors mb-4"
+            >
+              View Full Pricing Details & Comparison
+              <ArrowRight size={20} />
+            </Link>
+            <p className="text-red-100 text-sm">
+              All plans include per-office access • 7-Day Money-Back Guarantee
+            </p>
           </div>
         </div>
       </section>
@@ -694,7 +699,9 @@ export default function LandingPage() {
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />
               <a href="https://www.3-peak.com" className="hover:text-red-400 transition-colors">www.3-peak.com</a> |
-              <a href="mailto:info@3-peak.com" className="hover:text-red-400 transition-colors ml-2">info@3-peak.com</a>
+              <a href="https://www.torotaxes.com" className="hover:text-red-400 transition-colors">www.torotaxes.com</a><br />
+              <a href="mailto:ricky@3-peak.com" className="hover:text-red-400 transition-colors">ricky@3-peak.com</a> |
+              <a href="tel:9154901889" className="hover:text-red-400 transition-colors">(915) 490-1889</a>
             </p>
             <div className="text-center text-slate-400 text-sm border-t border-slate-800 pt-8 w-full">
               <p>&copy; 2025 Peak Performance Partners | All Rights Reserved</p>
