@@ -124,7 +124,7 @@ export default function LandingPage() {
             <Award className="text-red-600" size={32} />
             <span className="text-white font-bold text-xl">Advancement Academy</span>
           </div>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <Link
               to="/login"
               className="text-white hover:text-red-400 font-semibold transition-colors"
