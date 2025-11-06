@@ -4,9 +4,9 @@ import { useAuth } from '../contexts/AuthContext';
 import { Award, CreditCard, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
 
 const plans = {
-  lifetime: { name: 'Toro Con Special - Lifetime Access', price: 299, billing: 'One-time payment' },
-  essentials: { name: 'Essentials', price: 129, billing: 'Monthly subscription' },
-  elite: { name: 'Elite - Everything Included', price: 499, billing: 'Monthly subscription' },
+  promo: { name: 'Elite Package - Promotional Pricing', price: 299, recurring: 129, billing: '$299 today + $129/month' },
+  essentials: { name: 'Essentials', price: 129, recurring: 129, billing: '$129/month' },
+  elite: { name: 'Elite - Standard Pricing', price: 499, recurring: 499, billing: '$499/month' },
 };
 
 export default function PaymentPage() {
@@ -106,24 +106,30 @@ export default function PaymentPage() {
               <p className="text-slate-600">Office: {profile?.office_name}</p>
             </div>
 
-            {planType === 'lifetime' && (
+            {planType === 'promo' && (
               <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl p-6 mb-6 text-white text-center">
                 <Sparkles className="mx-auto mb-2" size={32} />
-                <div className="font-bold text-lg mb-1">Toro Con Exclusive Offer</div>
-                <div className="text-sm opacity-90">Includes $9,995 Business Analysis</div>
+                <div className="font-bold text-xl mb-2">🔥 Promotional Offer</div>
+                <div className="text-sm opacity-90">Save $370/month • Includes $9,995 Business Analysis</div>
               </div>
             )}
 
             <div className="bg-slate-50 rounded-xl p-6 mb-8">
               <div className="mb-4">
-                <span className="text-slate-700 font-semibold">{selectedPlan.name}</span>
+                <span className="text-slate-700 font-semibold text-lg">{selectedPlan.name}</span>
               </div>
               <div className="border-t border-slate-200 pt-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-slate-900">Total</span>
-                  <span className="text-3xl font-bold text-red-600">${selectedPlan.price}</span>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-lg text-slate-700">Registration Fee (Today)</span>
+                  <span className="text-2xl font-bold text-slate-900">${selectedPlan.price}</span>
                 </div>
-                <p className="text-sm text-slate-600 mt-2">{selectedPlan.billing}</p>
+                {selectedPlan.recurring && selectedPlan.recurring !== selectedPlan.price && (
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg text-slate-700">Then Monthly</span>
+                    <span className="text-2xl font-bold text-red-600">${selectedPlan.recurring}</span>
+                  </div>
+                )}
+                <p className="text-sm text-slate-600 mt-4">{selectedPlan.billing}</p>
               </div>
             </div>
 

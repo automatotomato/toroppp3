@@ -621,55 +621,58 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-6 mb-12 text-center max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Sparkles size={24} />
-              <h3 className="text-2xl font-bold">Toro Con Exclusive Offer</h3>
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 mb-12 max-w-5xl mx-auto shadow-2xl">
+            <div className="bg-slate-900 rounded-3xl p-8 text-center">
+              <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-2 rounded-full mb-4 animate-pulse">
+                <Sparkles size={24} />
+                <span className="font-bold text-lg">🔥 LIMITED TIME OFFER 🔥</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-bold mb-6">Get Elite for Only $129/month</h3>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                  <div className="text-slate-400 mb-2">Regular Elite Price</div>
+                  <div className="text-4xl font-bold text-red-300 line-through">$499/month</div>
+                </div>
+                <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-6">
+                  <div className="text-green-300 mb-2 font-semibold">Promotional Price</div>
+                  <div className="text-5xl font-bold text-green-400">$129/mo</div>
+                  <div className="text-lg mt-2">+ $299 registration</div>
+                </div>
+              </div>
+              <p className="text-2xl text-green-400 font-bold mb-6">SAVE $370 EVERY MONTH!</p>
+              <Link
+                to="/register?plan=promo"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+              >
+                🚀 Claim This Offer Now
+                <ArrowRight size={28} />
+              </Link>
+              <p className="text-slate-400 mt-4 text-sm">Includes $9,995 Business Analysis • All Elite Features</p>
             </div>
-            <p className="text-lg">
-              Limited Time: <span className="line-through opacity-75">$3,000</span>{' '}
-              <span className="text-3xl font-bold">$299</span> Lifetime Access
-            </p>
-            <p className="text-sm mt-2 opacity-90">Includes $9,995 Complete Business Analysis</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
-              <div className="text-4xl font-bold mb-2">$299</div>
-              <div className="text-red-100 font-semibold mb-2">Toro Con Special</div>
-              <div className="text-sm text-red-200 mb-4">Lifetime Access</div>
-              <Link
-                to="/pricing"
-                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
-              >
-                Claim Offer
-              </Link>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
               <div className="text-4xl font-bold mb-2">$129</div>
               <div className="text-red-100 font-semibold mb-2">Essentials</div>
               <div className="text-sm text-red-200 mb-4">Monthly • Classes Only</div>
               <Link
-                to="/pricing"
+                to="/register?plan=essentials"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
-                Get Started
+                Select Plan
               </Link>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-4 border-amber-400 text-center relative">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-400 text-slate-900 px-4 py-1 rounded-full text-xs font-bold">
-                MOST POPULAR
-              </div>
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
               <div className="text-4xl font-bold mb-2">$499</div>
-              <div className="text-red-100 font-semibold mb-2">Elite</div>
-              <div className="text-sm text-red-200 mb-4">Monthly • Everything</div>
+              <div className="text-red-100 font-semibold mb-2">Elite - Standard</div>
+              <div className="text-sm text-red-200 mb-4">Monthly • No Registration</div>
               <Link
-                to="/pricing"
-                className="w-full bg-white text-red-600 hover:bg-slate-100 px-6 py-3 rounded-full font-bold transition-all inline-block"
+                to="/register?plan=elite"
+                className="w-full bg-white/20 hover:bg-white/30 border-2 border-white text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
-                Get Elite
+                Select Plan
               </Link>
             </div>
           </div>
