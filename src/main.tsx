@@ -23,7 +23,7 @@ if (!hasRequiredEnvVars) {
   document.body.innerHTML = `
     <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #1e293b; color: white; padding: 20px; font-family: system-ui, -apple-system, sans-serif;">
       <div style="max-width: 600px; text-align: center;">
-        <h1 style="color: #ef4444; font-size: 2rem; margin-bottom: 1rem;">⚠️ Configuration Required</h1>
+        <h1 style="color: #ef4444; font-size: 2rem; margin-bottom: 1rem;">Configuration Required</h1>
         <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">Environment variables are missing!</p>
         <div style="background: #334155; padding: 1.5rem; border-radius: 8px; text-align: left; margin-bottom: 1.5rem;">
           <p style="margin-bottom: 1rem; font-weight: bold;">Add these in Netlify Dashboard:</p>
@@ -52,7 +52,7 @@ if (!hasRequiredEnvVars) {
     document.body.innerHTML = `
       <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #1e293b; color: white; padding: 20px; font-family: system-ui, -apple-system, sans-serif;">
         <div style="max-width: 600px; text-align: center;">
-          <h1 style="color: #ef4444; font-size: 2rem; margin-bottom: 1rem;">⚠️ Application Error</h1>
+          <h1 style="color: #ef4444; font-size: 2rem; margin-bottom: 1rem;">Application Error</h1>
           <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">An error occurred while loading the application</p>
           <p style="color: #94a3b8;">Check browser console (F12) for details</p>
           <pre style="background: #334155; padding: 1rem; border-radius: 8px; text-align: left; overflow: auto; margin-top: 1rem;">${error}</pre>

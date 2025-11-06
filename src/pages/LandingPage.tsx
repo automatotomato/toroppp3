@@ -32,11 +32,11 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white">
       <button
         onClick={() => setShowPromoModal(true)}
-        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-4 rounded-full font-bold shadow-2xl transition-all transform hover:scale-110 flex items-center gap-2 animate-bounce"
+        className="fixed bottom-4 right-4 z-50 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-4 py-3 rounded-full font-bold shadow-2xl transition-all transform hover:scale-110 flex items-center gap-2"
       >
-        <Zap size={24} />
+        <Zap size={18} />
         <span className="hidden sm:inline">Special Offer!</span>
-        <Sparkles size={20} />
+        <Sparkles size={16} />
       </button>
       {showPromoModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300 overflow-y-auto">
@@ -52,7 +52,7 @@ export default function LandingPage() {
               <div className="text-center mb-6 clear-both">
                 <div className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl">
                   <Sparkles size={20} className="text-white" />
-                  <span className="font-bold text-base md:text-lg text-white">🔥 LIMITED TIME OFFER 🔥</span>
+                  <span className="font-bold text-base md:text-lg text-white">LIMITED TIME OFFER</span>
                   <Sparkles size={20} className="text-white" />
                 </div>
                 <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
@@ -120,9 +120,9 @@ export default function LandingPage() {
       )}
       <header className="bg-slate-900 py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Award className="text-red-600" size={32} />
-            <span className="text-white font-bold text-xl">Advancement Academy</span>
+          <div className="flex items-center gap-2">
+            <Award className="text-red-600" size={24} />
+            <span className="text-white font-bold text-lg sm:text-xl">Advancement Academy</span>
           </div>
           <div className="flex items-center gap-4">
             <Link
@@ -143,9 +143,9 @@ export default function LandingPage() {
 
       <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-700 transition-all shadow-lg sticky top-16 z-40" onClick={() => setShowPromoModal(true)}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
-          <Sparkles size={24} className="animate-pulse" />
+          <Sparkles size={18} className="animate-pulse" />
           <span className="text-lg md:text-xl">
-            🔥 LIMITED TIME: Get Elite Package for $129/month (Save $370/month!) 🔥
+            LIMITED TIME: Get Elite Package for $129/month (Save $370/month!)
           </span>
           <button className="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg">
             View Offer
@@ -153,7 +153,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
@@ -165,21 +165,21 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
-                ✨ Delivered by Peak Performance Partners
+                Delivered by Peak Performance Partners
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
                 Advancement Academy
               </h1>
-              <p className="text-2xl md:text-3xl mb-6 text-slate-300 font-semibold">
+              <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
                 Transform Your Tax Business Into a Year-Round Success
               </p>
-              <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-slate-400 mb-6 md:mb-8 leading-relaxed">
                 Master cash flow, sales systems, marketing, and leadership through 12 power-packed workshops designed specifically for Toro Tax franchise owners.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8">
                 <button
                   onClick={() => setShowPromoModal(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Zap size={24} />
                   View Special Offer
@@ -187,13 +187,13 @@ export default function LandingPage() {
                 </button>
                 <Link
                   to="/courses"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white/30 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold border-2 border-white/30 transition-all"
                 >
                   View Courses
                   <Play size={20} />
                 </Link>
               </div>
-              <div className="flex items-center gap-6 text-sm">
+              <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm flex-wrap">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="text-green-400" size={20} />
                   <span>12 Courses</span>
@@ -209,24 +209,24 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <DollarSign className="text-green-400 mb-3" size={40} />
+                <DollarSign className="text-green-400 mb-2" size={28} />
                 <div className="text-4xl font-bold mb-2">250%</div>
                 <div className="text-slate-300 text-sm">Average Revenue Increase</div>
               </div>
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <TrendingUp className="text-blue-400 mb-3" size={40} />
+                <TrendingUp className="text-blue-400 mb-2" size={28} />
                 <div className="text-4xl font-bold mb-2">85%</div>
                 <div className="text-slate-300 text-sm">Client Retention Rate</div>
               </div>
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <Users className="text-purple-400 mb-3" size={40} />
+                <Users className="text-purple-400 mb-2" size={28} />
                 <div className="text-4xl font-bold mb-2">500+</div>
                 <div className="text-slate-300 text-sm">Franchise Owners Trained</div>
               </div>
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <Award className="text-amber-400 mb-3" size={40} />
+                <Award className="text-amber-400 mb-2" size={28} />
                 <div className="text-4xl font-bold mb-2">4.9/5</div>
                 <div className="text-slate-300 text-sm">Satisfaction Rating</div>
               </div>
@@ -235,7 +235,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-y border-slate-200">
+      <section className="py-8 md:py-16 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
@@ -258,7 +258,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+      <section className="py-8 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 shadow-2xl">
             <div className="bg-white rounded-3xl p-8 md:p-12">
@@ -268,7 +268,7 @@ export default function LandingPage() {
                   <span className="font-bold text-lg">🔥 LIMITED TIME PROMOTIONAL OFFER 🔥</span>
                   <Sparkles size={24} />
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
                   Get Elite Access for Only $129/month
                 </h2>
                 <p className="text-xl text-slate-700 mb-6">
@@ -347,14 +347,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
               Transform Your Business Results
             </h2>
             <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
               See the dramatic impact our program has on franchise performance
             </p>
           </div>
@@ -365,7 +365,7 @@ export default function LandingPage() {
                 <div className="inline-block bg-red-100 rounded-full p-4 mb-4">
                   <DollarSign className="text-red-600" size={48} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Revenue Growth</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">Revenue Growth</h3>
               </div>
               <div className="space-y-4">
                 <div>
@@ -400,7 +400,7 @@ export default function LandingPage() {
                 <div className="inline-block bg-blue-100 rounded-full p-4 mb-4">
                   <Users className="text-blue-600" size={48} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Client Base</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">Client Base</h3>
               </div>
               <div className="space-y-4">
                 <div>
@@ -435,7 +435,7 @@ export default function LandingPage() {
                 <div className="inline-block bg-purple-100 rounded-full p-4 mb-4">
                   <TrendingUp className="text-purple-600" size={48} />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Profit Margin</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">Profit Margin</h3>
               </div>
               <div className="space-y-4">
                 <div>
@@ -467,8 +467,8 @@ export default function LandingPage() {
           </div>
 
           <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-12 text-white text-center">
-            <h3 className="text-3xl font-bold mb-4">Join 500+ Successful Franchise Owners</h3>
-            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Join 500+ Successful Franchise Owners</h3>
+            <p className="text-base md:text-xl text-red-100 mb-6 md:mb-8 max-w-2xl mx-auto">
               Whether you're a new franchisee or seasoned operator, transform your tax office into a year-round success story
             </p>
             <Link
@@ -482,14 +482,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-slate-50">
+      <section className="py-12 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
               Your Learning Journey
             </h2>
             <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
               Follow our proven path to business transformation
             </p>
           </div>
@@ -516,8 +516,8 @@ export default function LandingPage() {
                 return (
                   <div key={index} className="relative">
                     <div className="bg-white rounded-2xl shadow-xl p-6 text-center border-4 border-white hover:border-slate-200 transition-all">
-                      <div className={`${colorClasses[step.color]} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg`}>
-                        <Icon size={32} />
+                      <div className={`${colorClasses[step.color]} w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg`}>
+                        <Icon size={24} />
                       </div>
                       <div className="bg-slate-900 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
                         Step {index + 1}
@@ -561,7 +561,7 @@ export default function LandingPage() {
                   key={index}
                   className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-slate-100"
                 >
-                  <Icon className="text-red-600 mb-4" size={48} />
+                  <Icon className="text-red-600 mb-4" size={36} />
                   <h3 className="text-2xl font-bold text-slate-900 mb-4">{highlight.title}</h3>
                   <div className="mb-4">
                     <div className="text-4xl font-bold text-red-600 mb-1">{highlight.stat}</div>
@@ -575,10 +575,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
               12 Power-Packed Workshops
             </h2>
             <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
@@ -618,11 +618,11 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-slate-600">
                   <div className="flex items-center gap-1">
-                    <Clock size={14} />
+                    <Clock size={12} />
                     <span>90 min</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <Play size={14} />
+                    <Play size={12} />
                     <span>Video + Resources</span>
                   </div>
                 </div>
@@ -644,22 +644,22 @@ export default function LandingPage() {
               to="/courses"
               className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all transform hover:scale-105"
             >
-              <BookOpen size={24} />
+              <BookOpen size={20} />
               View Full Course Curriculum
-              <ArrowRight size={20} />
+              <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
               Success Stories
             </h2>
             <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
               Real results from franchise owners like you
             </p>
           </div>
@@ -710,7 +710,7 @@ export default function LandingPage() {
 
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="text-amber-400 fill-amber-400" size={20} />
+                    <Star key={i} className="text-amber-400 fill-amber-400" size={16} />
                   ))}
                 </div>
 
@@ -728,14 +728,14 @@ export default function LandingPage() {
 
           <div className="mt-16 text-center">
             <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-200 rounded-full px-6 py-3 text-green-800 font-semibold">
-              <Shield size={24} className="text-green-600" />
+              <Shield size={20} className="text-green-600" />
               <span>Trusted by 500+ franchise owners • 4.9/5 rating • 98% would recommend</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -778,8 +778,8 @@ export default function LandingPage() {
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-xl">
                       {step.step}
                     </div>
-                    <div className="bg-white/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 mt-4">
-                      <Icon className="text-red-400" size={40} />
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 mt-4">
+                      <Icon className="text-red-400" size={32} />
                     </div>
                     <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
                     <p className="text-slate-300 mb-4 leading-relaxed">{step.description}</p>
@@ -811,7 +811,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -826,7 +826,7 @@ export default function LandingPage() {
             <div className="bg-slate-900 rounded-3xl p-8 text-center">
               <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-2 rounded-full mb-4 animate-pulse">
                 <Sparkles size={24} />
-                <span className="font-bold text-lg">🔥 LIMITED TIME OFFER 🔥</span>
+                <span className="font-bold text-lg">LIMITED TIME OFFER</span>
               </div>
               <h3 className="text-4xl md:text-5xl font-bold mb-6">Get Elite for Only $129/month</h3>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -845,7 +845,7 @@ export default function LandingPage() {
                 to="/register?plan=promo"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
               >
-                🚀 Claim This Offer Now
+                Claim This Offer Now
                 <ArrowRight size={28} />
               </Link>
               <p className="text-slate-400 mt-4 text-sm">Includes $9,995 Business Analysis • All Elite Features</p>
