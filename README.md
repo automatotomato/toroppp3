@@ -27,7 +27,9 @@ You need to set the following environment variables in your Netlify dashboard:
 The netlify.toml file automatically configures:
 - Build command: `npm run build`
 - Publish directory: `dist`
-- Node version: 18
+- Node version: 20
+
+**IMPORTANT:** See `NETLIFY_SETUP.md` for detailed deployment instructions.
 
 ### Manual Deploy
 

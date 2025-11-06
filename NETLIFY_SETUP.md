@@ -1,5 +1,9 @@
 # Netlify Setup Instructions
 
+## IMPORTANT: Never Commit Secrets
+
+The `.env` file has been removed from the repository to comply with Netlify's security policies. **Never commit the `.env` file** - it's already in `.gitignore`.
+
 ## Step 1: Set Environment Variables
 
 **CRITICAL:** Your site will be blank without these variables!
