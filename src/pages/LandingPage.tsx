@@ -39,51 +39,51 @@ export default function LandingPage() {
         <Sparkles size={20} />
       </button>
       {showPromoModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300">
-          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300">
-            <div className="bg-slate-900 rounded-3xl p-8 md:p-12 relative">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300 overflow-y-auto">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300 my-8">
+            <div className="bg-slate-900 rounded-3xl p-6 md:p-8 relative max-h-[85vh] overflow-y-auto">
               <button
                 onClick={() => setShowPromoModal(false)}
-                className="absolute top-4 right-4 text-white hover:text-amber-400 transition-colors"
+                className="sticky top-0 right-0 float-right bg-slate-800 hover:bg-red-600 text-white p-2 rounded-full transition-colors shadow-lg z-10"
               >
-                <X size={32} />
+                <X size={24} />
               </button>
 
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-3 rounded-full mb-6 animate-pulse shadow-xl">
-                  <Sparkles size={24} className="text-white" />
-                  <span className="font-bold text-xl text-white">🔥 LIMITED TIME OFFER 🔥</span>
-                  <Sparkles size={24} className="text-white" />
+              <div className="text-center mb-6 clear-both">
+                <div className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl">
+                  <Sparkles size={20} className="text-white" />
+                  <span className="font-bold text-base md:text-lg text-white">🔥 LIMITED TIME OFFER 🔥</span>
+                  <Sparkles size={20} className="text-white" />
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
                   Get Elite Access for Only $129/month
                 </h2>
-                <p className="text-xl text-slate-300 mb-8">
+                <p className="text-base md:text-lg text-slate-300 mb-4">
                   Pay $299 registration + $129/month and get the full $499/month Elite Package
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                <div className="space-y-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                    <div className="text-slate-400 mb-2">Regular Elite Price</div>
-                    <div className="text-4xl font-bold text-red-300 line-through">$499/month</div>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="space-y-3">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div className="text-slate-400 mb-1 text-sm">Regular Elite Price</div>
+                    <div className="text-3xl font-bold text-red-300 line-through">$499/month</div>
                   </div>
-                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-6 text-center">
-                    <div className="text-green-300 mb-2 font-semibold">Promotional Price</div>
-                    <div className="text-5xl font-bold text-green-400">$129/mo</div>
-                    <div className="text-xl mt-2 text-white">+ $299 registration</div>
+                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 text-center">
+                    <div className="text-green-300 mb-1 font-semibold text-sm">Promotional Price</div>
+                    <div className="text-4xl font-bold text-green-400">$129/mo</div>
+                    <div className="text-base mt-1 text-white">+ $299 registration</div>
                   </div>
-                  <div className="bg-amber-500/20 border-2 border-amber-500 rounded-xl p-4 text-center">
-                    <p className="text-2xl text-amber-300 font-bold">SAVE $370 EVERY MONTH!</p>
+                  <div className="bg-amber-500/20 border-2 border-amber-500 rounded-xl p-3 text-center">
+                    <p className="text-xl text-amber-300 font-bold">SAVE $370 EVERY MONTH!</p>
                   </div>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
-                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 mb-4 text-center">
-                    <p className="text-green-300 font-bold">All Elite Features Included!</p>
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4">
+                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-3 mb-3 text-center">
+                    <p className="text-green-300 font-bold text-sm">All Elite Features Included!</p>
                   </div>
-                  <ul className="space-y-2 text-white">
+                  <ul className="space-y-1.5 text-white">
                     {[
                       '12 workshop courses (24 hours)',
                       '12 Town Hall sessions',
@@ -106,13 +106,13 @@ export default function LandingPage() {
               <div className="text-center">
                 <Link
                   to="/register?plan=promo"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition-all transform hover:scale-105"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
-                  <Zap size={32} />
+                  <Zap size={24} />
                   Claim This Offer Now
-                  <ArrowRight size={32} />
+                  <ArrowRight size={24} />
                 </Link>
-                <p className="text-slate-400 mt-4">No credit card required • 7-day money-back guarantee</p>
+                <p className="text-slate-400 mt-3 text-sm">No credit card required • 7-day money-back guarantee</p>
               </div>
             </div>
           </div>
