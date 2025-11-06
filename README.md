@@ -19,8 +19,10 @@ You need to set the following environment variables in your Netlify dashboard:
 1. Go to your Netlify site dashboard
 2. Navigate to Site settings > Environment variables
 3. Add the following variables:
-   - `VITE_SUPABASE_URL` - Your Supabase project URL
-   - `VITE_SUPABASE_ANON_KEY` - Your Supabase anonymous key
+   - `VITE_SUPABASE_URL` - Your Supabase project URL (found in your Supabase project settings)
+   - `VITE_SUPABASE_ANON_KEY` - Your Supabase anonymous key (found in your Supabase project settings)
+
+**Note:** The Supabase anon key is safe to expose client-side. It's designed to be public and used in frontend applications.
 
 ### Build Settings
 
@@ -28,8 +30,7 @@ The netlify.toml file automatically configures:
 - Build command: `npm run build`
 - Publish directory: `dist`
 - Node version: 20
-
-**IMPORTANT:** See `NETLIFY_SETUP.md` for detailed deployment instructions.
+- Secrets scanning: Disabled for Supabase keys (they're meant to be public)
 
 ### Manual Deploy
 
