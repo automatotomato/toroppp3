@@ -82,9 +82,6 @@ export default function PricingPage() {
                       Claim This Offer Now
                       <ArrowRight size={28} />
                     </Link>
-                    <p className="text-center text-slate-400 mt-4 text-sm">
-                      No credit card required to start • 7-day money-back guarantee
-                    </p>
                   </div>
 
                   <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8">
@@ -102,8 +99,6 @@ export default function PricingPage() {
                         'Complete Business Analysis ($9,995 value)',
                         'Priority support & coaching',
                         'Private community access',
-                        'Advanced analytics & reports',
-                        'Quarterly strategy sessions',
                         '24/7 platform access',
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start gap-3">
@@ -127,7 +122,7 @@ export default function PricingPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                 <div className="bg-gradient-to-br from-slate-700 to-slate-800 p-8 text-white text-center">
-                  <h3 className="text-2xl font-bold mb-2">Elite - Standard</h3>
+                  <h3 className="text-2xl font-bold mb-2">Elite</h3>
                   <div className="text-5xl font-bold mb-2">$499</div>
                   <div className="text-slate-300">per month</div>
                   <div className="mt-4 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block text-sm font-semibold">
@@ -191,7 +186,7 @@ export default function PricingPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-slate-300">
               <Star className="text-amber-400 fill-amber-400" size={24} />
-              <span className="font-semibold">4.9/5 rating from 500+ franchise owners</span>
+              <span className="font-semibold">4.9/5 rating from hundreds of franchise owners</span>
             </div>
           </div>
         </div>

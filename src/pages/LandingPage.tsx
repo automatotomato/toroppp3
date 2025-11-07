@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles, X } from 'lucide-react';
+import LanguageToggle from '../components/LanguageToggle';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const courses = [
   { number: 1, title: 'Mastering Cashflow & Profitability' },
@@ -18,6 +20,7 @@ const courses = [
 ];
 
 export default function LandingPage() {
+  const { t } = useLanguage();
   const [showPromoModal, setShowPromoModal] = useState(false);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function LandingPage() {
               <div className="text-center mb-6 clear-both">
                 <div className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl">
                   <Sparkles size={20} className="text-white" />
-                  <span className="font-bold text-base md:text-lg text-white">LIMITED TIME OFFER</span>
+                  <span className="font-bold text-base md:text-lg text-white">TOROCON EXCLUSIVE OFFER</span>
                   <Sparkles size={20} className="text-white" />
                 </div>
                 <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
@@ -104,6 +107,13 @@ export default function LandingPage() {
               </div>
 
               <div className="text-center">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-4 mb-6">
+                  <div className="text-center">
+                    <div className="text-white text-sm font-semibold mb-1">TOTAL VALUE</div>
+                    <div className="text-4xl font-bold text-white mb-1">$16,000+</div>
+                    <div className="text-green-100 text-sm">Includes $9,995 Business Analysis + LIFETIME ACCESS</div>
+                  </div>
+                </div>
                 <Link
                   to="/register?plan=promo"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
@@ -112,7 +122,6 @@ export default function LandingPage() {
                   Claim This Offer Now
                   <ArrowRight size={24} />
                 </Link>
-                <p className="text-slate-400 mt-3 text-sm">No credit card required • 7-day money-back guarantee</p>
               </div>
             </div>
           </div>
@@ -125,17 +134,18 @@ export default function LandingPage() {
             <span className="text-white font-bold text-lg sm:text-xl">Advancement Academy</span>
           </div>
           <div className="flex items-center gap-4">
+            <LanguageToggle />
             <Link
               to="/login"
               className="text-white hover:text-red-400 font-semibold transition-colors"
             >
-              Login
+              {t('nav.login')}
             </Link>
             <Link
               to="/register"
               className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
             >
-              Get Started
+              {t('nav.getStarted')}
             </Link>
           </div>
         </div>
@@ -145,7 +155,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
           <Sparkles size={18} className="animate-pulse" />
           <span className="text-lg md:text-xl">
-            LIMITED TIME: Get Elite Package for $129/month (Save $370/month!)
+            TOROCON EXCLUSIVE: Get Elite Package for $129/month (Save $370/month!)
           </span>
           <button className="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg">
             View Offer
@@ -222,8 +232,8 @@ export default function LandingPage() {
               </div>
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
                 <Users className="text-purple-400 mb-2" size={28} />
-                <div className="text-4xl font-bold mb-2">500+</div>
-                <div className="text-slate-300 text-sm">Franchise Owners Trained</div>
+                <div className="text-4xl font-bold mb-2">100s</div>
+                <div className="text-slate-300 text-sm">of Successful Owners</div>
               </div>
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
                 <Award className="text-amber-400 mb-2" size={28} />
@@ -340,7 +350,9 @@ export default function LandingPage() {
                   View Full Details & Sign Up
                   <ArrowRight size={32} />
                 </button>
-                <p className="text-slate-600 mt-4">No credit card required • 7-day money-back guarantee</p>
+                <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 mt-4 inline-block">
+                  <p className="text-green-900 font-bold">$16,000+ Total Value | Includes LIFETIME ACCESS</p>
+                </div>
               </div>
             </div>
           </div>
@@ -467,7 +479,7 @@ export default function LandingPage() {
           </div>
 
           <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-12 text-white text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Join 500+ Successful Franchise Owners</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Join Hundreds of Successful Franchise Owners</h3>
             <p className="text-base md:text-xl text-red-100 mb-6 md:mb-8 max-w-2xl mx-auto">
               Whether you're a new franchisee or seasoned operator, transform your tax office into a year-round success story
             </p>
@@ -499,11 +511,11 @@ export default function LandingPage() {
 
             <div className="grid md:grid-cols-5 gap-8 relative">
               {[
-                { icon: Target, title: 'Foundation', desc: 'Weeks 1-2', color: 'red' },
-                { icon: TrendingUp, title: 'Growth', desc: 'Weeks 3-5', color: 'orange' },
-                { icon: Zap, title: 'Optimization', desc: 'Weeks 6-8', color: 'amber' },
-                { icon: Users, title: 'Leadership', desc: 'Weeks 9-10', color: 'purple' },
-                { icon: Award, title: 'Mastery', desc: 'Weeks 11-12', color: 'blue' },
+                { icon: Target, title: 'Foundation', desc: 'Months 1-2', color: 'red' },
+                { icon: TrendingUp, title: 'Growth', desc: 'Months 3-5', color: 'orange' },
+                { icon: Zap, title: 'Optimization', desc: 'Months 6-8', color: 'amber' },
+                { icon: Users, title: 'Leadership', desc: 'Months 9-10', color: 'purple' },
+                { icon: Award, title: 'Mastery', desc: 'Months 11-12', color: 'blue' },
               ].map((step, index) => {
                 const Icon = step.icon;
                 const colorClasses: Record<string, string> = {
@@ -619,7 +631,7 @@ export default function LandingPage() {
                 <div className="flex items-center gap-3 text-sm text-slate-600">
                   <div className="flex items-center gap-1">
                     <Clock size={12} />
-                    <span>90 min</span>
+                    <span>120 min</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Play size={12} />
@@ -729,7 +741,7 @@ export default function LandingPage() {
           <div className="mt-16 text-center">
             <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-200 rounded-full px-6 py-3 text-green-800 font-semibold">
               <Shield size={20} className="text-green-600" />
-              <span>Trusted by 500+ franchise owners • 4.9/5 rating • 98% would recommend</span>
+              <span>Trusted by hundreds of franchise owners • 4.9/5 rating • 98% would recommend</span>
             </div>
           </div>
         </div>
@@ -803,10 +815,9 @@ export default function LandingPage() {
               to="/register"
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
             >
-              Start Your Free Trial Now
+              Get Started Today
               <ArrowRight size={28} />
             </Link>
-            <p className="text-slate-400 mt-4 text-sm">No credit card required • 7-day money-back guarantee</p>
           </div>
         </div>
       </section>
@@ -826,7 +837,7 @@ export default function LandingPage() {
             <div className="bg-slate-900 rounded-3xl p-8 text-center">
               <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-2 rounded-full mb-4 animate-pulse">
                 <Sparkles size={24} />
-                <span className="font-bold text-lg">LIMITED TIME OFFER</span>
+                <span className="font-bold text-lg">TOROCON EXCLUSIVE OFFER</span>
               </div>
               <h3 className="text-4xl md:text-5xl font-bold mb-6">Get Elite for Only $129/month</h3>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -867,7 +878,7 @@ export default function LandingPage() {
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
               <div className="text-4xl font-bold mb-2">$499</div>
-              <div className="text-red-100 font-semibold mb-2">Elite - Standard</div>
+              <div className="text-red-100 font-semibold mb-2">Elite</div>
               <div className="text-sm text-red-200 mb-4">Monthly • No Registration</div>
               <Link
                 to="/register?plan=elite"
