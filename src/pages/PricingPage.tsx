@@ -32,7 +32,7 @@ export default function PricingPage() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 bg-amber-500 text-white px-6 py-3 rounded-full font-bold text-lg mb-6 animate-pulse shadow-xl">
               <Zap size={24} />
-              LIMITED TIME PROMOTIONAL OFFER
+              TOROCON EXCLUSIVE OFFER
               <Zap size={24} />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -90,7 +90,7 @@ export default function PricingPage() {
                     </div>
                     <ul className="space-y-3">
                       {[
-                        'All 12 workshop courses (24 hours)',
+                        'All 12 workshop courses (24 hours) - LIFETIME ACCESS',
                         '12 Town Hall sessions (24 hours)',
                         'Complete video recordings library',
                         'Full podcast library (English & Spanish)',

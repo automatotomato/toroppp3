@@ -88,7 +88,7 @@ export default function LandingPage() {
                   </div>
                   <ul className="space-y-1.5 text-white">
                     {[
-                      '12 workshop courses (24 hours)',
+                      '12 workshop courses (24 hours) - LIFETIME ACCESS',
                       '12 Town Hall sessions',
                       'Complete video library',
                       'Podcast library (EN & ES)',
@@ -275,7 +275,7 @@ export default function LandingPage() {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full mb-4 animate-pulse shadow-lg">
                   <Sparkles size={24} />
-                  <span className="font-bold text-lg">🔥 LIMITED TIME PROMOTIONAL OFFER 🔥</span>
+                  <span className="font-bold text-lg">TOROCON EXCLUSIVE OFFER</span>
                   <Sparkles size={24} />
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -310,7 +310,7 @@ export default function LandingPage() {
                     <h3 className="text-xl font-bold text-green-900 mb-4">What's Included:</h3>
                     <ul className="space-y-2">
                       {[
-                        'All 12 workshop courses (24 hours)',
+                        'All 12 workshop courses (24 hours) - LIFETIME ACCESS',
                         '12 Town Hall sessions',
                         'Complete video library',
                         'Full podcast library',
@@ -898,7 +898,7 @@ export default function LandingPage() {
               <ArrowRight size={20} />
             </Link>
             <p className="text-red-100 text-sm">
-              All plans include per-office access • 7-Day Money-Back Guarantee
+              All plans include per-office access
             </p>
           </div>
         </div>
