@@ -4,24 +4,24 @@ import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, Do
 import LanguageToggle from '../components/LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const courses = [
-  { number: 1, title: 'Mastering Cashflow & Profitability' },
-  { number: 2, title: 'Financial Literacy for Franchise Owners' },
-  { number: 3, title: 'Local Marketing That Works' },
-  { number: 4, title: 'Sales Systems for Consistent Growth' },
-  { number: 5, title: 'Operational Excellence' },
-  { number: 6, title: 'Technology & Automation' },
-  { number: 7, title: 'Strategic Planning for Franchise Owners' },
-  { number: 8, title: 'Data-Driven Decision Making' },
-  { number: 9, title: 'Client Retention & Lifetime Value' },
-  { number: 10, title: 'Innovation & Growth Beyond Tax Season' },
-  { number: 11, title: 'Leadership Skills for Franchise Owners' },
-  { number: 12, title: 'Employee Engagement & Retention' },
-];
-
 export default function LandingPage() {
   const { t } = useLanguage();
   const [showPromoModal, setShowPromoModal] = useState(false);
+
+  const courses = [
+    { number: 1, title: t('courses.course1') },
+    { number: 2, title: t('courses.course2') },
+    { number: 3, title: t('courses.course3') },
+    { number: 4, title: t('courses.course4') },
+    { number: 5, title: t('courses.course5') },
+    { number: 6, title: t('courses.course6') },
+    { number: 7, title: t('courses.course7') },
+    { number: 8, title: t('courses.course8') },
+    { number: 9, title: t('courses.course9') },
+    { number: 10, title: t('courses.course10') },
+    { number: 11, title: t('courses.course11') },
+    { number: 12, title: t('courses.course12') },
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,14 +55,14 @@ export default function LandingPage() {
               <div className="text-center mb-6 clear-both">
                 <div className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl">
                   <Sparkles size={20} className="text-white" />
-                  <span className="font-bold text-base md:text-lg text-white">TOROCON EXCLUSIVE OFFER</span>
+                  <span className="font-bold text-base md:text-lg text-white">{t('modal.exclusive')}</span>
                   <Sparkles size={20} className="text-white" />
                 </div>
                 <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
-                  Get Elite Access for Only $129/month
+                  {t('modal.title')}
                 </h2>
                 <p className="text-base md:text-lg text-slate-300 mb-4">
-                  Pay $299 registration + $129/month and get the full $499/month Elite Package
+                  {t('modal.subtitle')}
                 </p>
               </div>
 
@@ -84,18 +84,18 @@ export default function LandingPage() {
 
                 <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4">
                   <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-3 mb-3 text-center">
-                    <p className="text-green-300 font-bold text-sm">All Elite Features Included!</p>
+                    <p className="text-green-300 font-bold text-sm">{t('modal.features')}</p>
                   </div>
                   <ul className="space-y-1.5 text-white">
                     {[
-                      '12 workshop courses (24 hours) - LIFETIME ACCESS',
-                      '12 Town Hall sessions',
-                      'Complete video library',
-                      'Podcast library (EN & ES)',
-                      'Weekly tips & best practices',
-                      'Business Analysis ($9,995 value)',
-                      'Priority support & coaching',
-                      'Private community access',
+                      t('modal.feature1'),
+                      t('modal.feature2'),
+                      t('modal.feature3'),
+                      t('modal.feature4'),
+                      t('modal.feature5'),
+                      t('modal.feature6'),
+                      t('modal.feature7'),
+                      t('modal.feature8'),
                     ].map((feature, index) => (
                       <li key={index} className="flex items-start gap-2 text-sm">
                         <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
@@ -109,9 +109,9 @@ export default function LandingPage() {
               <div className="text-center">
                 <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-4 mb-6">
                   <div className="text-center">
-                    <div className="text-white text-sm font-semibold mb-1">TOTAL VALUE</div>
-                    <div className="text-4xl font-bold text-white mb-1">$16,000+</div>
-                    <div className="text-green-100 text-sm">Includes $9,995 Business Analysis + LIFETIME ACCESS</div>
+                    <div className="text-white text-sm font-semibold mb-1">{t('modal.totalValue')}</div>
+                    <div className="text-4xl font-bold text-white mb-1">{t('modal.valueAmount')}</div>
+                    <div className="text-green-100 text-sm">{t('modal.valueDesc')}</div>
                   </div>
                 </div>
                 <Link
@@ -119,7 +119,7 @@ export default function LandingPage() {
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
                   <Zap size={24} />
-                  Claim This Offer Now
+                  {t('modal.cta')}
                   <ArrowRight size={24} />
                 </Link>
               </div>
@@ -155,7 +155,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
           <Sparkles size={18} className="animate-pulse" />
           <span className="text-lg md:text-xl">
-            TOROCON EXCLUSIVE: Get Elite Package for $129/month (Save $370/month!)
+            {t('banner.exclusive')}
           </span>
           <button className="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg">
             View Offer
@@ -175,16 +175,16 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
-                Delivered by Peak Performance Partners
+                {t('footer.delivered')}
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
                 Advancement Academy
               </h1>
               <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
-                Transform Your Tax Business Into a Year-Round Success
+                {t('hero.title')}
               </p>
               <p className="text-base md:text-lg text-slate-400 mb-6 md:mb-8 leading-relaxed">
-                Master cash flow, sales systems, marketing, and leadership through 12 power-packed workshops designed specifically for Toro Tax franchise owners.
+                {t('hero.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8">
                 <button
@@ -192,14 +192,14 @@ export default function LandingPage() {
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Zap size={24} />
-                  View Special Offer
+                  {t('hero.cta1')}
                   <ArrowRight size={24} />
                 </button>
                 <Link
                   to="/courses"
                   className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold border-2 border-white/30 transition-all"
                 >
-                  View Courses
+                  {t('hero.cta2')}
                   <Play size={20} />
                 </Link>
               </div>
@@ -275,11 +275,11 @@ export default function LandingPage() {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full mb-4 animate-pulse shadow-lg">
                   <Sparkles size={24} />
-                  <span className="font-bold text-lg">TOROCON EXCLUSIVE OFFER</span>
+                  <span className="font-bold text-lg">{t('promo.exclusive')}</span>
                   <Sparkles size={24} />
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-                  Get Elite Access for Only $129/month
+                  {t('promo.title')}
                 </h2>
                 <p className="text-xl text-slate-700 mb-6">
                   Pay $299 registration + $129/month and get the full <span className="text-red-600 font-bold">$499/month Elite Package</span>
@@ -310,10 +310,10 @@ export default function LandingPage() {
                     <h3 className="text-xl font-bold text-green-900 mb-4">What's Included:</h3>
                     <ul className="space-y-2">
                       {[
-                        'All 12 workshop courses (24 hours) - LIFETIME ACCESS',
-                        '12 Town Hall sessions',
-                        'Complete video library',
-                        'Full podcast library',
+                        t('promo.included1'),
+                        t('promo.included2'),
+                        t('promo.included3'),
+                        t('promo.included4'),
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start gap-2 text-green-900">
                           <CheckCircle2 className="text-green-600 flex-shrink-0 mt-0.5" size={18} />
@@ -326,10 +326,10 @@ export default function LandingPage() {
                     <h3 className="text-xl font-bold text-green-900 mb-4">&nbsp;</h3>
                     <ul className="space-y-2">
                       {[
-                        'Weekly tips & resources',
-                        'Business Analysis ($9,995 value)',
-                        'Priority support & coaching',
-                        'Private community access',
+                        t('promo.included5'),
+                        t('promo.included6'),
+                        t('promo.included7'),
+                        t('promo.included8'),
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start gap-2 text-green-900">
                           <CheckCircle2 className="text-green-600 flex-shrink-0 mt-0.5" size={18} />
@@ -479,7 +479,7 @@ export default function LandingPage() {
           </div>
 
           <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-12 text-white text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Join Hundreds of Successful Franchise Owners</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('testimonials.title')}</h3>
             <p className="text-base md:text-xl text-red-100 mb-6 md:mb-8 max-w-2xl mx-auto">
               Whether you're a new franchisee or seasoned operator, transform your tax office into a year-round success story
             </p>
@@ -498,11 +498,11 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-              Your Learning Journey
+              {t('journey.title')}
             </h2>
             <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
             <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
-              Follow our proven path to business transformation
+              {t('journey.subtitle')}
             </p>
           </div>
 
@@ -511,11 +511,11 @@ export default function LandingPage() {
 
             <div className="grid md:grid-cols-5 gap-8 relative">
               {[
-                { icon: Target, title: 'Foundation', desc: 'Weeks 1-2', color: 'red' },
-                { icon: TrendingUp, title: 'Growth', desc: 'Weeks 3-5', color: 'orange' },
-                { icon: Zap, title: 'Optimization', desc: 'Weeks 6-8', color: 'amber' },
-                { icon: Users, title: 'Leadership', desc: 'Weeks 9-10', color: 'purple' },
-                { icon: Award, title: 'Mastery', desc: 'Weeks 11-12', color: 'blue' },
+                { icon: Target, title: t('journey.step1'), desc: t('journey.step1desc'), color: 'red' },
+                { icon: TrendingUp, title: t('journey.step2'), desc: t('journey.step2desc'), color: 'orange' },
+                { icon: Zap, title: t('journey.step3'), desc: t('journey.step3desc'), color: 'amber' },
+                { icon: Users, title: t('journey.step4'), desc: t('journey.step4desc'), color: 'purple' },
+                { icon: Award, title: t('journey.step5'), desc: t('journey.step5desc'), color: 'blue' },
               ].map((step, index) => {
                 const Icon = step.icon;
                 const colorClasses: Record<string, string> = {
@@ -631,7 +631,7 @@ export default function LandingPage() {
                 <div className="flex items-center gap-3 text-sm text-slate-600">
                   <div className="flex items-center gap-1">
                     <Clock size={12} />
-                    <span>120 min</span>
+                    <span>{t('courses.duration')}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Play size={12} />
@@ -741,7 +741,7 @@ export default function LandingPage() {
           <div className="mt-16 text-center">
             <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-200 rounded-full px-6 py-3 text-green-800 font-semibold">
               <Shield size={20} className="text-green-600" />
-              <span>Trusted by hundreds of franchise owners • 4.9/5 rating • 98% would recommend</span>
+              <span>{t('testimonials.rating')}</span>
             </div>
           </div>
         </div>
@@ -815,7 +815,7 @@ export default function LandingPage() {
               to="/register"
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
             >
-              Get Started Today
+              {t('cta.final')}
               <ArrowRight size={28} />
             </Link>
           </div>
@@ -898,7 +898,7 @@ export default function LandingPage() {
               <ArrowRight size={20} />
             </Link>
             <p className="text-red-100 text-sm">
-              All plans include per-office access
+              {t('pricing.allPlans')}
             </p>
           </div>
         </div>
@@ -919,7 +919,7 @@ export default function LandingPage() {
               <a href="tel:9154901889" className="hover:text-red-400 transition-colors">(915) 490-1889</a>
             </p>
             <div className="text-center text-slate-400 text-sm border-t border-slate-800 pt-8 w-full">
-              <p>&copy; 2025 Peak Performance Partners | All Rights Reserved</p>
+              <p>&copy; 2025 Peak Performance Partners | {t('footer.rights')}</p>
             </div>
           </div>
         </div>
