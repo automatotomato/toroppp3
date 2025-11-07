@@ -511,11 +511,11 @@ export default function LandingPage() {
 
             <div className="grid md:grid-cols-5 gap-8 relative">
               {[
-                { icon: Target, title: 'Foundation', desc: 'Months 1-2', color: 'red' },
-                { icon: TrendingUp, title: 'Growth', desc: 'Months 3-5', color: 'orange' },
-                { icon: Zap, title: 'Optimization', desc: 'Months 6-8', color: 'amber' },
-                { icon: Users, title: 'Leadership', desc: 'Months 9-10', color: 'purple' },
-                { icon: Award, title: 'Mastery', desc: 'Months 11-12', color: 'blue' },
+                { icon: Target, title: 'Foundation', desc: 'Weeks 1-2', color: 'red' },
+                { icon: TrendingUp, title: 'Growth', desc: 'Weeks 3-5', color: 'orange' },
+                { icon: Zap, title: 'Optimization', desc: 'Weeks 6-8', color: 'amber' },
+                { icon: Users, title: 'Leadership', desc: 'Weeks 9-10', color: 'purple' },
+                { icon: Award, title: 'Mastery', desc: 'Weeks 11-12', color: 'blue' },
               ].map((step, index) => {
                 const Icon = step.icon;
                 const colorClasses: Record<string, string> = {
