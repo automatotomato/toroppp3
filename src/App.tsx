@@ -1,11 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './hooks/useAuth'
-import { Login } from './pages/Login'
-import { Signup } from './pages/Signup'
-import { Dashboard } from './pages/Dashboard'
-import { Pricing } from './pages/Pricing'
-import { Success } from './pages/Success'
+import Success from './pages/Success'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -14,6 +10,7 @@ import CoursesPage from './pages/CoursesPage'
 import PricingPage from './pages/PricingPage'
 import PaymentPage from './pages/PaymentPage'
 import PodcastsPage from './pages/PodcastsPage'
+import SubscriptionBanner from './components/SubscriptionBanner'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -27,21 +24,16 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   return user ? <>{children}</> : <Navigate to="/login" />
-import Success from './pages/Success';
 }
-import SubscriptionBanner from './components/SubscriptionBanner';
-import { useAuth } from './hooks/useAuth';
 
 function AppContent() {
-  const { user } = useAuth();
+  const { user } = useAuth()
 
   return (
     <>
       {user && <SubscriptionBanner />}
-        <AppContent />
-      </Routes>
     </>
-  );
+  )
 }
 
 function App() {
