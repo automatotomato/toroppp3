@@ -13,6 +13,7 @@ import DashboardPage from './pages/DashboardPage'
 import CoursesPage from './pages/CoursesPage'
 import PricingPage from './pages/PricingPage'
 import PaymentPage from './pages/PaymentPage'
+import PodcastsPage from './pages/PodcastsPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -44,6 +45,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/podcasts"
+          element={
+            <ProtectedRoute>
+              <PodcastsPage />
             </ProtectedRoute>
           }
         />
