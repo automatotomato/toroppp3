@@ -173,9 +173,6 @@ export default function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-brand-accent text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
-                {t('footer.delivered')}
-              </div>
               <div className="mb-4 md:mb-6">
                 <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24 mx-auto" />
               </div>
