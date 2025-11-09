@@ -18,7 +18,7 @@ export default function PricingPage() {
               Login
             </Link>
             <Link
-              to="/register?plan=promo"
+              to="/payment?plan=promo"
               className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors shadow-lg"
             >
               Claim Offer
@@ -75,7 +75,7 @@ export default function PricingPage() {
                       </div>
                     </div>
                     <Link
-                      to="/register?plan=promo"
+                      to="/payment?plan=promo"
                       className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3"
                     >
                       <Zap size={28} />
@@ -134,7 +134,7 @@ export default function PricingPage() {
                     All Elite features with no upfront registration cost
                   </p>
                   <Link
-                    to="/register?plan=elite"
+                    to="/payment?plan=elite"
                     className="w-full bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl transition-all flex items-center justify-center gap-2"
                   >
                     Select This Plan
@@ -169,7 +169,7 @@ export default function PricingPage() {
                     ))}
                   </ul>
                   <Link
-                    to="/register?plan=essentials"
+                    to="/payment?plan=essentials"
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl transition-all flex items-center justify-center gap-2"
                   >
                     Select This Plan

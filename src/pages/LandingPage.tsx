@@ -113,7 +113,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <Link
-                  to="/register?plan=promo"
+                  to="/payment?plan=promo"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
                   <Zap size={24} />
@@ -141,7 +141,7 @@ export default function LandingPage() {
               {t('nav.login')}
             </Link>
             <Link
-              to="/register"
+              to="/payment"
               className="bg-brand-accent hover:bg-red-900 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
             >
               {t('nav.getStarted')}
@@ -415,7 +415,7 @@ export default function LandingPage() {
               Whether you're a new franchisee or seasoned operator, transform your tax office into a year-round success story
             </p>
             <Link
-              to="/register"
+              to="/payment"
               className="inline-flex items-center gap-2 bg-white text-brand-accent hover:bg-slate-100 px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               Start Your Transformation
@@ -769,7 +769,7 @@ export default function LandingPage() {
 
           <div className="text-center mt-12">
             <Link
-              to="/register"
+              to="/payment"
               className="inline-flex items-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               {t('cta.final')}
@@ -810,7 +810,7 @@ export default function LandingPage() {
               </div>
               <p className="text-2xl text-green-400 font-bold mb-6">SAVE $370 EVERY MONTH!</p>
               <Link
-                to="/register?plan=promo"
+                to="/payment?plan=promo"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
               >
                 Claim This Offer Now
@@ -826,7 +826,7 @@ export default function LandingPage() {
               <div className="text-red-100 font-semibold mb-2">Essentials</div>
               <div className="text-sm text-red-200 mb-4">Monthly • Classes Only</div>
               <Link
-                to="/register?plan=essentials"
+                to="/payment?plan=essentials"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
                 Select Plan
@@ -838,7 +838,7 @@ export default function LandingPage() {
               <div className="text-red-100 font-semibold mb-2">Elite</div>
               <div className="text-sm text-red-200 mb-4">Monthly • No Registration</div>
               <Link
-                to="/register?plan=elite"
+                to="/payment?plan=elite"
                 className="w-full bg-white/20 hover:bg-white/30 border-2 border-white text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
                 Select Plan
@@ -919,7 +919,7 @@ export default function LandingPage() {
 
           <div className="text-center">
             <Link
-              to="/register"
+              to="/payment"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-accent to-red-900 hover:from-red-900 hover:to-brand-accent text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               Start Your Transformation Today

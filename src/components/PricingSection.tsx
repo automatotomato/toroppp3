@@ -1,38 +1,10 @@
-import React, { useState } from 'react';
-import { Check, Loader2 } from 'lucide-react';
+import React from 'react';
+import { Check } from 'lucide-react';
 import { STRIPE_PRODUCTS } from '../stripe-config';
-import { useAuth } from '../hooks/useAuth';
-import { supabase } from '../lib/supabase';
+import { useNavigate } from 'react-router-dom';
 
 export default function PricingSection() {
-  const { user } = useAuth();
-  const [loading, setLoading] = useState<string | null>(null);
-
-  const handleCheckout = async (priceId: string) => {
-    if (!user) {
-      alert('Please sign in to purchase');
-      return;
-    }
-
-    setLoading(priceId);
-
-    try {
-      const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: { priceId, userId: user.id }
-      });
-
-      if (error) throw error;
-
-      if (data?.url) {
-        window.location.href = data.url;
-      }
-    } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Failed to start checkout. Please try again.');
-    } finally {
-      setLoading(null);
-    }
-  };
+  const navigate = useNavigate();
 
   const formatPrice = (price: number, mode: string) => {
     return mode === 'subscription' ? `$${price}/month` : `$${price}`;
@@ -111,22 +83,14 @@ export default function PricingSection() {
               </ul>
 
               <button
-                onClick={() => handleCheckout(product.priceId)}
-                disabled={loading === product.priceId}
+                onClick={() => navigate(`/payment?plan=${product.mode === 'subscription' ? 'elite' : 'essentials'}`)}
                 className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
                   product.mode === 'subscription'
                     ? 'bg-blue-500 hover:bg-blue-600 text-white'
                     : 'bg-gray-800 hover:bg-gray-700 text-white'
-                } disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center`}
+                }`}
               >
-                {loading === product.priceId ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Processing...
-                  </>
-                ) : (
-                  `Get Started ${product.mode === 'subscription' ? '- Monthly' : '- One Time'}`
-                )}
+                Get Started {product.mode === 'subscription' ? '- Monthly' : '- One Time'}
               </button>
             </div>
           ))}
