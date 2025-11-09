@@ -63,3 +63,21 @@ To deploy manually:
 - Responsive design
 - Interactive learning platform
 - Special promotional offers
+- AI Voice Assistant powered by ElevenLabs (English & Spanish support)
+
+### Voice Assistant
+
+The hero section includes an interactive voice assistant that allows users to speak with an AI agent to learn more about the program. The assistant:
+
+- Supports both English and Spanish conversations
+- Automatically detects the user's language preference
+- Uses ElevenLabs Conversational AI (Agent ID: VWL9te4MU8Ib03Ls74bX)
+- Requires microphone permissions to function
+- Provides real-time audio feedback with visual connection status
+
+To use the voice assistant:
+1. Click the microphone button in the hero section
+2. Allow microphone permissions when prompted
+3. Start speaking to ask questions about the program
+4. Click the button again to end the conversation
+5. Use the volume button to mute/unmute audio while connected

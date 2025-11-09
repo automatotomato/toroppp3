@@ -1,0 +1,131 @@
+import { useCallback, useState } from 'react';
+import { Mic, MicOff, Volume2, VolumeX } from 'lucide-react';
+import { useConversation } from '@elevenlabs/react';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const AGENT_ID = 'VWL9te4MU8Ib03Ls74bX';
+
+export default function VoiceAssistant() {
+  const [isMuted, setIsMuted] = useState(false);
+  const { language } = useLanguage();
+
+  const conversation = useConversation({
+    onConnect: () => {
+      console.log('Connected to ElevenLabs agent');
+    },
+    onDisconnect: () => {
+      console.log('Disconnected from ElevenLabs agent');
+    },
+    onError: (error) => {
+      console.error('Conversation error:', error);
+    },
+    onModeChange: ({ mode }) => {
+      console.log('Mode changed:', mode);
+    },
+  });
+
+  const startConversation = useCallback(async () => {
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      await conversation.startSession({
+        agentId: AGENT_ID,
+        clientTools: {
+          get_language: {
+            description: 'Gets the current user language preference',
+            parameters: {
+              type: 'object',
+              properties: {},
+            },
+            handler: async () => {
+              return { language: language === 'es' ? 'Spanish' : 'English' };
+            },
+          },
+        },
+      });
+    } catch (error) {
+      console.error('Failed to start conversation:', error);
+      alert('Unable to start voice conversation. Please check your microphone permissions.');
+    }
+  }, [conversation, language]);
+
+  const endConversation = useCallback(async () => {
+    await conversation.endSession();
+  }, [conversation]);
+
+  const toggleMute = useCallback(async () => {
+    const newMutedState = !isMuted;
+    await conversation.setVolume(newMutedState ? 0 : 1);
+    setIsMuted(newMutedState);
+  }, [conversation, isMuted]);
+
+  const isConnected = conversation.status === 'connected';
+  const isLoading = conversation.status === 'connecting';
+
+  return (
+    <div className="flex items-center gap-3">
+      <button
+        onClick={isConnected ? endConversation : startConversation}
+        disabled={isLoading}
+        className={`group relative flex items-center justify-center w-16 h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${
+          isConnected
+            ? 'bg-red-600 hover:bg-red-700 animate-pulse'
+            : 'bg-white hover:bg-slate-100'
+        } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        title={
+          isConnected
+            ? language === 'es'
+              ? 'Terminar conversación'
+              : 'End conversation'
+            : language === 'es'
+            ? 'Hablar con nuestro asistente de IA'
+            : 'Talk to our AI assistant'
+        }
+      >
+        {isLoading ? (
+          <div className="w-6 h-6 border-3 border-slate-400 border-t-transparent rounded-full animate-spin" />
+        ) : isConnected ? (
+          <MicOff className="text-white" size={28} />
+        ) : (
+          <Mic className="text-red-600 group-hover:text-red-700" size={28} />
+        )}
+
+        {isConnected && (
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          </span>
+        )}
+      </button>
+
+      {isConnected && (
+        <button
+          onClick={toggleMute}
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 transform hover:scale-110"
+          title={isMuted ? 'Unmute' : 'Mute'}
+        >
+          {isMuted ? (
+            <VolumeX className="text-slate-600" size={20} />
+          ) : (
+            <Volume2 className="text-slate-600" size={20} />
+          )}
+        </button>
+      )}
+
+      <div className="ml-2 text-left">
+        <div className="text-white font-semibold text-sm">
+          {language === 'es' ? 'Asistente de Voz' : 'Voice Assistant'}
+        </div>
+        <div className="text-slate-300 text-xs">
+          {isConnected
+            ? language === 'es'
+              ? 'Conectado'
+              : 'Connected'
+            : language === 'es'
+            ? 'Haz clic para hablar'
+            : 'Click to talk'}
+        </div>
+      </div>
+    </div>
+  );
+}

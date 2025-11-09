@@ -1,4 +1,5 @@
 import { ArrowDown } from 'lucide-react';
+import VoiceAssistant from './VoiceAssistant';
 
 export default function Hero() {
   const scrollToForm = () => {
@@ -32,9 +33,13 @@ export default function Hero() {
           <span className="text-red-500">Toro Tax & Peak 3</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto leading-relaxed">
           Join our exclusive training program to become a certified Toro Tax Franchise Partner
         </p>
+
+        <div className="flex justify-center mb-8">
+          <VoiceAssistant />
+        </div>
 
         <button
           onClick={scrollToForm}
