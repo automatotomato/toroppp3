@@ -129,8 +129,10 @@ export default function LandingPage() {
       )}
       <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
+            <span className="text-white text-xl font-bold">×</span>
+            <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-8 sm:h-10" />
           </div>
           <div className="flex items-center gap-4">
             <LanguageToggle />
@@ -173,8 +175,10 @@ export default function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="mb-4 md:mb-6">
-                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24 mx-auto" />
+              <div className="mb-4 md:mb-6 flex justify-center items-center gap-4 flex-wrap">
+                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24" />
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">×</span>
+                <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-16 sm:h-20 md:h-24" />
               </div>
               <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
                 {t('hero.title')}
