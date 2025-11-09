@@ -5,7 +5,7 @@ export default function Partnership() {
     { name: 'Peak 3', icon: Building2 },
     { name: 'Toro Tax', icon: TrendingUp },
     { name: 'EmployNV', icon: Users },
-    { name: 'Advancement Academy', icon: Award }
+    { name: 'Peak Performance Partners', icon: Award }
   ];
 
   return (

@@ -129,9 +129,8 @@ export default function LandingPage() {
       )}
       <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <Award className="text-brand-accent" size={24} />
-            <span className="text-white font-bold text-lg sm:text-xl">Advancement Academy</span>
+          <div className="flex items-center">
+            <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
           </div>
           <div className="flex items-center gap-4">
             <LanguageToggle />
@@ -177,9 +176,9 @@ export default function LandingPage() {
               <div className="inline-block bg-brand-accent text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
                 {t('footer.delivered')}
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                Advancement Academy
-              </h1>
+              <div className="mb-4 md:mb-6">
+                <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24 mx-auto" />
+              </div>
               <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
                 {t('hero.title')}
               </p>
@@ -683,7 +682,7 @@ export default function LandingPage() {
                 role: 'Franchise Owner, Las Vegas',
                 rating: 5,
                 revenue: '+$285K',
-                quote: 'The Advancement Academy gave me the confidence and tools to scale beyond tax season. My business has never been stronger.',
+                quote: 'Peak Performance Partners Academy gave me the confidence and tools to scale beyond tax season. My business has never been stronger.',
                 image: 'M',
                 metric: 'Revenue Growth',
               },
@@ -907,9 +906,8 @@ export default function LandingPage() {
       <footer className="bg-brand-main py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
-            <div className="flex items-center gap-3">
-              <Award className="text-brand-accent" size={36} />
-              <span className="text-white font-bold text-xl">Advancement Academy</span>
+            <div className="flex items-center">
+              <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-12" />
             </div>
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />

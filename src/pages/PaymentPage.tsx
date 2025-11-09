@@ -43,7 +43,7 @@ export default function PaymentPage() {
             Payment Successful!
           </h2>
           <p className="text-lg text-slate-700 mb-6">
-            Welcome to the Advancement Academy. You now have full access to all courses, resources, and community features.
+            Welcome to Peak Performance Partners Academy. You now have full access to all courses, resources, and community features.
           </p>
           <p className="text-slate-600">
             Redirecting to your dashboard...
@@ -57,9 +57,8 @@ export default function PaymentPage() {
     <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <Award className="text-brand-accent" size={48} />
-            <span className="text-white font-bold text-2xl">Advancement Academy</span>
+          <div className="inline-flex items-center mb-6">
+            <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-16" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
           <p className="text-slate-400">One step away from transforming your business</p>

@@ -1,127 +1,46 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import { LanguageProvider } from './contexts/LanguageContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import PaymentPage from './pages/PaymentPage';
-import DashboardPage from './pages/DashboardPage';
-import CoursesPage from './pages/CoursesPage';
-import CourseDetailPage from './pages/CourseDetailPage';
-import CoursesListPage from './pages/CoursesListPage';
-import FAQPage from './pages/FAQPage';
-import ComingSoonPage from './pages/ComingSoonPage';
-import PricingPage from './pages/PricingPage';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useAuth } from './hooks/useAuth'
+import { Login } from './pages/Login'
+import { Signup } from './pages/Signup'
+import { Dashboard } from './pages/Dashboard'
+import { Pricing } from './pages/Pricing'
+import { Success } from './pages/Success'
+
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { user, loading } = useAuth()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    )
+  }
+
+  return user ? <>{children}</> : <Navigate to="/login" />
+}
 
 function App() {
   return (
-    <BrowserRouter>
-      <LanguageProvider>
-        <AuthProvider>
-          <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/courses" element={<CoursesListPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route
-            path="/payment"
-            element={
-              <ProtectedRoute>
-                <PaymentPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/courses"
-            element={
-              <ProtectedRoute>
-                <CoursesPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/courses/:courseId"
-            element={
-              <ProtectedRoute>
-                <CourseDetailPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/faq"
-            element={
-              <ProtectedRoute>
-                <FAQPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/town-halls"
-            element={
-              <ProtectedRoute>
-                <ComingSoonPage
-                  title="Town Hall Recordings"
-                  description="Access to past town hall sessions coming soon"
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/podcasts"
-            element={
-              <ProtectedRoute>
-                <ComingSoonPage
-                  title="Podcasts"
-                  description="Bilingual podcast content coming soon"
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/tips"
-            element={
-              <ProtectedRoute>
-                <ComingSoonPage
-                  title="Tips of the Week"
-                  description="Weekly insights and best practices coming soon"
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/resources"
-            element={
-              <ProtectedRoute>
-                <ComingSoonPage
-                  title="Resources & Tools"
-                  description="Download center for templates and materials coming soon"
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/dashboard/*"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
-          </Routes>
-        </AuthProvider>
-      </LanguageProvider>
-    </BrowserRouter>
-  );
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/success" element={<Success />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App

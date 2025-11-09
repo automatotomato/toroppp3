@@ -52,7 +52,7 @@ export default function FAQPage() {
     <DashboardLayout>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Frequently Asked Questions</h1>
-        <p className="text-slate-600">Find answers to common questions about the Advancement Academy</p>
+        <p className="text-slate-600">Find answers to common questions about Peak Performance Partners Academy</p>
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-8 mb-8">

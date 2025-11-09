@@ -7,8 +7,8 @@ export default function PricingPage() {
       <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
-            <Award className="text-brand-accent" size={32} />
-            <span className="text-white font-bold text-xl">Advancement Academy</span>
+            <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-10" />
+            
           </Link>
           <div className="flex gap-4">
             <Link
@@ -235,9 +235,8 @@ export default function PricingPage() {
       <footer className="bg-brand-main py-12 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
-            <div className="flex items-center gap-3">
-              <Award className="text-brand-accent" size={36} />
-              <span className="text-white font-bold text-xl">Advancement Academy</span>
+            <div className="flex items-center">
+              <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-12" />
             </div>
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />
