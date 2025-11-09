@@ -39,14 +39,6 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <button
-        onClick={() => setShowPromoModal(true)}
-        className="fixed bottom-4 right-4 z-50 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-4 py-3 rounded-full font-bold shadow-2xl transition-all transform hover:scale-110 flex items-center gap-2"
-      >
-        <Zap size={18} />
-        <span className="hidden sm:inline">Special Offer!</span>
-        <Sparkles size={16} />
-      </button>
       {showPromoModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300 overflow-y-auto">
           <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300 my-8">
