@@ -126,29 +126,14 @@ export default function LandingPage() {
         </div>
       )}
       <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
           <div className="flex items-center gap-4">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
             <span className="text-white text-xl font-bold">×</span>
             <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-8 sm:h-10" />
           </div>
-          <div className="flex items-center gap-4">
-            <LanguageToggle />
-          </div>
         </div>
       </header>
-
-      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-900 transition-all shadow-lg sticky top-16 z-40" onClick={() => setShowPromoModal(true)}>
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
-          <Sparkles size={18} className="animate-pulse" />
-          <span className="text-lg md:text-xl">
-            {t('banner.exclusive')}
-          </span>
-          <button className="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg">
-            View Offer
-          </button>
-        </div>
-      </div>
 
       <section className="relative py-12 md:py-24 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
