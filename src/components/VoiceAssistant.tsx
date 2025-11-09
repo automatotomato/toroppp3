@@ -125,6 +125,11 @@ export default function VoiceAssistant() {
             ? 'Haz clic para hablar'
             : 'Click to talk'}
         </div>
+        {!isConnected && (
+          <div className="text-green-400 text-xs font-medium mt-1">
+            {language === 'es' ? '🇺🇸 English | 🇪🇸 Español' : '🇺🇸 English | 🇪🇸 Spanish'}
+          </div>
+        )}
       </div>
     </div>
   );
