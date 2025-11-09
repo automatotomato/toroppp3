@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles, X } from 'lucide-react';
 import LanguageToggle from '../components/LanguageToggle';
+import VoiceAssistant from '../components/VoiceAssistant';
 import { useLanguage } from '../contexts/LanguageContext';
 import RevenueGrowthChart from '../components/charts/RevenueGrowthChart';
 import ClientRetentionChart from '../components/charts/ClientRetentionChart';
@@ -173,6 +174,9 @@ export default function LandingPage() {
               <p className="text-base md:text-lg text-slate-400 mb-6 md:mb-8 leading-relaxed">
                 {t('hero.description')}
               </p>
+              <div className="mb-6 md:mb-8 flex justify-center lg:justify-start">
+                <VoiceAssistant />
+              </div>
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8">
                 <button
                   onClick={() => setShowPromoModal(true)}
