@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import DashboardLayout from '../components/DashboardLayout';
 import { Play, Clock, CheckCircle2 } from 'lucide-react';
+import VoiceAssistant from '../components/VoiceAssistant';
 
 const courses = [
   {
@@ -94,7 +95,10 @@ export default function CoursesPage() {
     <DashboardLayout>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Workshop Courses</h1>
-        <p className="text-slate-600">12 comprehensive workshops to transform your business</p>
+        <p className="text-slate-600 mb-6">12 comprehensive workshops to transform your business</p>
+        <div className="flex justify-center md:justify-start">
+          <VoiceAssistant />
+        </div>
       </div>
 
       <div className="grid gap-6">

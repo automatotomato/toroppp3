@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import { ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
+import VoiceAssistant from '../components/VoiceAssistant';
 
 const faqs = [
   {
@@ -61,21 +62,14 @@ export default function FAQPage() {
           <div>
             <h2 className="text-xl font-bold text-brand-main mb-2">Need More Help?</h2>
             <p className="text-slate-600">
-              Can't find the answer you're looking for? Our AI assistant is here to help 24/7.
-              Just type your question below and get instant answers in English or Spanish.
+              Can't find the answer you're looking for? Our AI voice assistant is here to help 24/7.
+              Click the microphone to speak with our assistant in English or Spanish.
             </p>
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-lg p-4">
-          <input
-            type="text"
-            placeholder="Ask a question... (e.g., How do I reset my password?)"
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-          />
-          <p className="text-sm text-slate-500 mt-2">
-            AI Assistant powered by Peak Performance Partners
-          </p>
+        <div className="flex justify-center py-4">
+          <VoiceAssistant />
         </div>
       </div>
 

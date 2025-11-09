@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Award, CheckCircle2, Star, ArrowRight, Phone, Mail, Globe, Sparkles, Zap } from 'lucide-react';
+import VoiceAssistant from '../components/VoiceAssistant';
 
 export default function PricingPage() {
   return (
@@ -38,9 +39,12 @@ export default function PricingPage() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Get Elite Access at Essentials Pricing
             </h1>
-            <p className="text-2xl text-slate-300 max-w-4xl mx-auto">
+            <p className="text-2xl text-slate-300 max-w-4xl mx-auto mb-8">
               Pay only $129/month + $299 registration and get the full $499/month Elite Package
             </p>
+            <div className="flex justify-center">
+              <VoiceAssistant />
+            </div>
           </div>
 
           <div className="max-w-5xl mx-auto mb-16">

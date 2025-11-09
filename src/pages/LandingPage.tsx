@@ -333,6 +333,9 @@ export default function LandingPage() {
               </div>
 
               <div className="text-center">
+                <div className="mb-6 flex justify-center">
+                  <VoiceAssistant />
+                </div>
                 <button
                   onClick={() => setShowPromoModal(true)}
                   className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-12 py-5 rounded-full text-2xl font-bold shadow-2xl transition-all transform hover:scale-105"
@@ -407,6 +410,9 @@ export default function LandingPage() {
             <p className="text-base md:text-xl text-red-100 mb-6 md:mb-8 max-w-2xl mx-auto">
               Whether you're a new franchisee or seasoned operator, transform your tax office into a year-round success story
             </p>
+            <div className="mb-8 flex justify-center">
+              <VoiceAssistant />
+            </div>
             <Link
               to="/payment"
               className="inline-flex items-center gap-2 bg-white text-brand-accent hover:bg-slate-100 px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
@@ -689,6 +695,9 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-16 text-center">
+            <div className="mb-8 flex justify-center">
+              <VoiceAssistant />
+            </div>
             <div className="inline-flex items-center gap-2 bg-green-50 border-2 border-green-200 rounded-full px-6 py-3 text-green-800 font-semibold">
               <Shield size={20} className="text-green-600" />
               <span>{t('testimonials.rating')}</span>
@@ -761,6 +770,9 @@ export default function LandingPage() {
           </div>
 
           <div className="text-center mt-12">
+            <div className="mb-8 flex justify-center">
+              <VoiceAssistant />
+            </div>
             <Link
               to="/payment"
               className="inline-flex items-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
