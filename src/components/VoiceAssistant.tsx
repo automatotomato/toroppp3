@@ -63,7 +63,7 @@ export default function VoiceAssistant() {
   const isLoading = conversation.status === 'connecting';
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="inline-flex flex-col items-center gap-3 bg-gradient-to-br from-slate-900 via-slate-800 to-brand-main p-6 rounded-2xl shadow-2xl border-2 border-slate-700">
       <div className="flex items-center gap-3">
         <button
           onClick={isConnected ? endConversation : startConversation}
@@ -71,7 +71,7 @@ export default function VoiceAssistant() {
           className={`group relative flex items-center justify-center w-16 h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${
             isConnected
               ? 'bg-red-600 hover:bg-red-700 animate-pulse'
-              : 'bg-white hover:bg-slate-100'
+              : 'bg-gradient-to-br from-red-600 to-brand-accent hover:from-red-700 hover:to-red-900 ring-4 ring-red-600/30'
           } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           title={
             isConnected
@@ -84,11 +84,11 @@ export default function VoiceAssistant() {
           }
         >
           {isLoading ? (
-            <div className="w-6 h-6 border-3 border-slate-400 border-t-transparent rounded-full animate-spin" />
+            <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin" />
           ) : isConnected ? (
             <MicOff className="text-white" size={28} />
           ) : (
-            <Mic className="text-red-600 group-hover:text-red-700" size={28} />
+            <Mic className="text-white" size={28} />
           )}
 
           {isConnected && (
@@ -102,13 +102,13 @@ export default function VoiceAssistant() {
         {isConnected && (
           <button
             onClick={toggleMute}
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 transform hover:scale-110"
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-700 hover:bg-slate-600 shadow-xl transition-all duration-300 transform hover:scale-110"
             title={isMuted ? 'Unmute' : 'Mute'}
           >
             {isMuted ? (
-              <VolumeX className="text-slate-600" size={20} />
+              <VolumeX className="text-white" size={20} />
             ) : (
-              <Volume2 className="text-slate-600" size={20} />
+              <Volume2 className="text-white" size={20} />
             )}
           </button>
         )}
@@ -138,7 +138,7 @@ export default function VoiceAssistant() {
         href="https://automateplanet.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105"
+        className="flex items-center gap-2 bg-slate-700/50 hover:bg-slate-600/50 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 border border-slate-600"
       >
         <span className="text-slate-300 text-xs">
           {language === 'es' ? 'Desarrollado por' : 'Powered by'}
