@@ -43,11 +43,11 @@ export default function LandingPage() {
       </button>
       {showPromoModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300 overflow-y-auto">
-          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300 my-8">
-            <div className="bg-slate-900 rounded-3xl p-6 md:p-8 relative max-h-[85vh] overflow-y-auto">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300 my-8">
+            <div className="bg-brand-main rounded-3xl p-6 md:p-8 relative max-h-[85vh] overflow-y-auto">
               <button
                 onClick={() => setShowPromoModal(false)}
-                className="sticky top-0 right-0 float-right bg-slate-800 hover:bg-red-600 text-white p-2 rounded-full transition-colors shadow-lg z-10"
+                className="sticky top-0 right-0 float-right bg-slate-800 hover:bg-brand-accent text-white p-2 rounded-full transition-colors shadow-lg z-10"
               >
                 <X size={24} />
               </button>
@@ -127,23 +127,23 @@ export default function LandingPage() {
           </div>
         </div>
       )}
-      <header className="bg-slate-900 py-4 sticky top-0 z-50 shadow-lg">
+      <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Award className="text-red-600" size={24} />
+            <Award className="text-brand-accent" size={24} />
             <span className="text-white font-bold text-lg sm:text-xl">Advancement Academy</span>
           </div>
           <div className="flex items-center gap-4">
             <LanguageToggle />
             <Link
               to="/login"
-              className="text-white hover:text-red-400 font-semibold transition-colors"
+              className="text-white hover:text-brand-accent font-semibold transition-colors"
             >
               {t('nav.login')}
             </Link>
             <Link
               to="/register"
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              className="bg-brand-accent hover:bg-red-900 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
             >
               {t('nav.getStarted')}
             </Link>
@@ -151,7 +151,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-700 transition-all shadow-lg sticky top-16 z-40" onClick={() => setShowPromoModal(true)}>
+      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-900 transition-all shadow-lg sticky top-16 z-40" onClick={() => setShowPromoModal(true)}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
           <Sparkles size={18} className="animate-pulse" />
           <span className="text-lg md:text-xl">
@@ -163,7 +163,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <section className="relative py-12 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
@@ -174,7 +174,7 @@ export default function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
+              <div className="inline-block bg-brand-accent text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
                 {t('footer.delivered')}
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
@@ -249,19 +249,19 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">12</div>
+              <div className="text-4xl font-bold text-brand-accent mb-2">12</div>
               <div className="text-slate-600 font-semibold">Expert Workshops</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">90+</div>
+              <div className="text-4xl font-bold text-brand-accent mb-2">90+</div>
               <div className="text-slate-600 font-semibold">Training Hours</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">50+</div>
+              <div className="text-4xl font-bold text-brand-accent mb-2">50+</div>
               <div className="text-slate-600 font-semibold">Resources & Tools</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">24/7</div>
+              <div className="text-4xl font-bold text-brand-accent mb-2">24/7</div>
               <div className="text-slate-600 font-semibold">Platform Access</div>
             </div>
           </div>
@@ -270,7 +270,7 @@ export default function LandingPage() {
 
       <section className="py-8 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 shadow-2xl">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 shadow-2xl">
             <div className="bg-white rounded-3xl p-8 md:p-12">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-3 rounded-full mb-4 animate-pulse shadow-lg">
@@ -278,11 +278,11 @@ export default function LandingPage() {
                   <span className="font-bold text-lg">{t('promo.exclusive')}</span>
                   <Sparkles size={24} />
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
                   {t('promo.title')}
                 </h2>
                 <p className="text-xl text-slate-700 mb-6">
-                  Pay $299 registration + $129/month and get the full <span className="text-red-600 font-bold">$499/month Elite Package</span>
+                  Pay $299 registration + $129/month and get the full <span className="text-brand-accent font-bold">$499/month Elite Package</span>
                 </p>
               </div>
 
@@ -362,10 +362,10 @@ export default function LandingPage() {
       <section className="py-12 md:py-24 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
               Transform Your Business Results
             </h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mb-8"></div>
             <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
               See the dramatic impact our program has on franchise performance
             </p>
@@ -375,15 +375,15 @@ export default function LandingPage() {
             <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-slate-100">
               <div className="text-center mb-6">
                 <div className="inline-block bg-red-100 rounded-full p-4 mb-4">
-                  <DollarSign className="text-red-600" size={48} />
+                  <DollarSign className="text-brand-accent" size={48} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">Revenue Growth</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Revenue Growth</h3>
               </div>
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between mb-2 text-sm">
                     <span className="text-slate-600">Before Academy</span>
-                    <span className="font-bold text-slate-900">$180K</span>
+                    <span className="font-bold text-brand-main">$180K</span>
                   </div>
                   <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
                     <div className="h-full bg-slate-400 rounded-full" style={{ width: '30%' }}></div>
@@ -392,10 +392,10 @@ export default function LandingPage() {
                 <div>
                   <div className="flex justify-between mb-2 text-sm">
                     <span className="text-slate-600">After Academy</span>
-                    <span className="font-bold text-red-600">$450K</span>
+                    <span className="font-bold text-brand-accent">$450K</span>
                   </div>
                   <div className="h-3 bg-red-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-red-600 rounded-full" style={{ width: '75%' }}></div>
+                    <div className="h-full bg-brand-accent rounded-full" style={{ width: '75%' }}></div>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-slate-200">
@@ -412,13 +412,13 @@ export default function LandingPage() {
                 <div className="inline-block bg-blue-100 rounded-full p-4 mb-4">
                   <Users className="text-blue-600" size={48} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">Client Base</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Client Base</h3>
               </div>
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between mb-2 text-sm">
                     <span className="text-slate-600">Before Academy</span>
-                    <span className="font-bold text-slate-900">850</span>
+                    <span className="font-bold text-brand-main">850</span>
                   </div>
                   <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
                     <div className="h-full bg-slate-400 rounded-full" style={{ width: '40%' }}></div>
@@ -447,13 +447,13 @@ export default function LandingPage() {
                 <div className="inline-block bg-purple-100 rounded-full p-4 mb-4">
                   <TrendingUp className="text-purple-600" size={48} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">Profit Margin</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Profit Margin</h3>
               </div>
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between mb-2 text-sm">
                     <span className="text-slate-600">Before Academy</span>
-                    <span className="font-bold text-slate-900">18%</span>
+                    <span className="font-bold text-brand-main">18%</span>
                   </div>
                   <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
                     <div className="h-full bg-slate-400 rounded-full" style={{ width: '18%' }}></div>
@@ -478,14 +478,14 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-12 text-white text-center">
+          <div className="bg-gradient-to-r from-brand-accent to-red-900 rounded-3xl p-12 text-white text-center">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('testimonials.title')}</h3>
             <p className="text-base md:text-xl text-red-100 mb-6 md:mb-8 max-w-2xl mx-auto">
               Whether you're a new franchisee or seasoned operator, transform your tax office into a year-round success story
             </p>
             <Link
               to="/register"
-              className="inline-flex items-center gap-2 bg-white text-red-600 hover:bg-slate-100 px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-white text-brand-accent hover:bg-slate-100 px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               Start Your Transformation
               <ArrowRight size={24} />
@@ -497,17 +497,17 @@ export default function LandingPage() {
       <section className="py-12 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
               {t('journey.title')}
             </h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
             <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
               {t('journey.subtitle')}
             </p>
           </div>
 
           <div className="relative">
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-purple-600 to-blue-600 transform -translate-y-1/2"></div>
+            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent via-purple-600 to-blue-600 transform -translate-y-1/2"></div>
 
             <div className="grid md:grid-cols-5 gap-8 relative">
               {[
@@ -519,7 +519,7 @@ export default function LandingPage() {
               ].map((step, index) => {
                 const Icon = step.icon;
                 const colorClasses: Record<string, string> = {
-                  red: 'bg-red-600',
+                  red: 'bg-brand-accent',
                   orange: 'bg-orange-600',
                   amber: 'bg-amber-600',
                   purple: 'bg-purple-600',
@@ -531,10 +531,10 @@ export default function LandingPage() {
                       <div className={`${colorClasses[step.color]} w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg`}>
                         <Icon size={24} />
                       </div>
-                      <div className="bg-slate-900 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
+                      <div className="bg-brand-main text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
                         Step {index + 1}
                       </div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
+                      <h3 className="text-xl font-bold text-brand-main mb-2">{step.title}</h3>
                       <p className="text-sm text-slate-600">{step.desc}</p>
                     </div>
                   </div>
@@ -573,10 +573,10 @@ export default function LandingPage() {
                   key={index}
                   className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-slate-100"
                 >
-                  <Icon className="text-red-600 mb-4" size={36} />
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{highlight.title}</h3>
+                  <Icon className="text-brand-accent mb-4" size={36} />
+                  <h3 className="text-2xl font-bold text-brand-main mb-4">{highlight.title}</h3>
                   <div className="mb-4">
-                    <div className="text-4xl font-bold text-red-600 mb-1">{highlight.stat}</div>
+                    <div className="text-4xl font-bold text-brand-accent mb-1">{highlight.stat}</div>
                     <div className="text-sm text-slate-600 font-semibold">{highlight.label}</div>
                   </div>
                   <p className="text-slate-700 leading-relaxed">{highlight.description}</p>
@@ -590,10 +590,10 @@ export default function LandingPage() {
       <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
               12 Power-Packed Workshops
             </h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mb-8"></div>
             <p className="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
               Master every aspect of franchise ownership through our comprehensive curriculum
             </p>
@@ -616,14 +616,14 @@ export default function LandingPage() {
             {courses.map((course) => (
               <div
                 key={course.number}
-                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl border-2 border-slate-200 hover:border-red-600 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+                className="bg-gradient-to-br from-slate-50 to-white p-6 rounded-2xl border-2 border-slate-200 hover:border-brand-accent hover:shadow-xl transition-all duration-300 group cursor-pointer"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="bg-gradient-to-br from-red-600 to-red-700 text-white rounded-xl w-14 h-14 flex items-center justify-center font-bold text-xl flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg">
+                  <div className="bg-gradient-to-br from-brand-accent to-red-900 text-white rounded-xl w-14 h-14 flex items-center justify-center font-bold text-xl flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg">
                     {course.number}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-tight">
+                    <h3 className="text-lg font-bold text-brand-main group-hover:text-brand-accent transition-colors leading-tight">
                       {course.title}
                     </h3>
                   </div>
@@ -644,7 +644,7 @@ export default function LandingPage() {
                     <span className="text-sm font-bold text-slate-400">0%</span>
                   </div>
                   <div className="h-2 bg-slate-200 rounded-full mt-2 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full" style={{ width: '0%' }}></div>
+                    <div className="h-full bg-gradient-to-r from-brand-accent to-red-400 rounded-full" style={{ width: '0%' }}></div>
                   </div>
                 </div>
               </div>
@@ -654,7 +654,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link
               to="/courses"
-              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-brand-main hover:bg-slate-800 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all transform hover:scale-105"
             >
               <BookOpen size={20} />
               View Full Course Curriculum
@@ -667,10 +667,10 @@ export default function LandingPage() {
       <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
               Success Stories
             </h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
             <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
               Real results from franchise owners like you
             </p>
@@ -711,11 +711,11 @@ export default function LandingPage() {
                 className="bg-slate-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-slate-200"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-brand-accent to-red-900 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
                     {testimonial.image}
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900">{testimonial.name}</div>
+                    <div className="font-bold text-brand-main">{testimonial.name}</div>
                     <div className="text-sm text-slate-600">{testimonial.role}</div>
                   </div>
                 </div>
@@ -727,7 +727,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="bg-white rounded-xl p-4 mb-4 border-2 border-red-100">
-                  <div className="text-3xl font-bold text-red-600 mb-1">{testimonial.revenue}</div>
+                  <div className="text-3xl font-bold text-brand-accent mb-1">{testimonial.revenue}</div>
                   <div className="text-sm text-slate-600 font-semibold">{testimonial.metric}</div>
                 </div>
 
@@ -747,13 +747,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Get Started in 3 Simple Steps
             </h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Begin your transformation today
             </p>
@@ -787,7 +787,7 @@ export default function LandingPage() {
               return (
                 <div key={index} className="relative">
                   <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-white/20 hover:border-red-400 transition-all text-center">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-xl">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-accent text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg shadow-xl">
                       {step.step}
                     </div>
                     <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 mt-4">
@@ -813,7 +813,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link
               to="/register"
-              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               {t('cta.final')}
               <ArrowRight size={28} />
@@ -822,7 +822,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-24 bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-brand-accent via-red-700 to-red-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -833,8 +833,8 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 mb-12 max-w-5xl mx-auto shadow-2xl">
-            <div className="bg-slate-900 rounded-3xl p-8 text-center">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 mb-12 max-w-5xl mx-auto shadow-2xl">
+            <div className="bg-brand-main rounded-3xl p-8 text-center">
               <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-2 rounded-full mb-4 animate-pulse">
                 <Sparkles size={24} />
                 <span className="font-bold text-lg">TOROCON EXCLUSIVE OFFER</span>
@@ -904,19 +904,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-slate-900 py-12">
+      <footer className="bg-brand-main py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-center gap-3">
-              <Award className="text-red-600" size={36} />
+              <Award className="text-brand-accent" size={36} />
               <span className="text-white font-bold text-xl">Advancement Academy</span>
             </div>
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />
-              <a href="https://www.3-peak.com" className="hover:text-red-400 transition-colors">www.3-peak.com</a> |
-              <a href="https://www.torotaxes.com" className="hover:text-red-400 transition-colors">www.torotaxes.com</a><br />
-              <a href="mailto:ricky@3-peak.com" className="hover:text-red-400 transition-colors">ricky@3-peak.com</a> |
-              <a href="tel:9154901889" className="hover:text-red-400 transition-colors">(915) 490-1889</a>
+              <a href="https://www.3-peak.com" className="hover:text-brand-accent transition-colors">www.3-peak.com</a> |
+              <a href="https://www.torotaxes.com" className="hover:text-brand-accent transition-colors">www.torotaxes.com</a><br />
+              <a href="mailto:ricky@3-peak.com" className="hover:text-brand-accent transition-colors">ricky@3-peak.com</a> |
+              <a href="tel:9154901889" className="hover:text-brand-accent transition-colors">(915) 490-1889</a>
             </p>
             <div className="text-center text-slate-400 text-sm border-t border-slate-800 pt-8 w-full">
               <p>&copy; 2025 Peak Performance Partners | {t('footer.rights')}</p>

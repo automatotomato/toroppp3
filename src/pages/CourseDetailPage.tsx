@@ -43,7 +43,7 @@ export default function CourseDetailPage() {
       <div className="mb-6">
         <Link
           to="/dashboard/courses"
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-red-600 font-semibold transition-colors"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-brand-accent font-semibold transition-colors"
         >
           <ArrowLeft size={20} />
           Back to Courses
@@ -51,9 +51,9 @@ export default function CourseDetailPage() {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="bg-gradient-to-r from-red-600 to-red-700 p-8 text-white">
+        <div className="bg-gradient-to-r from-brand-accent to-red-900 p-8 text-white">
           <div className="flex items-center gap-4 mb-4">
-            <div className="bg-white text-red-600 rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl">
+            <div className="bg-white text-brand-accent rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl">
               {courseId}
             </div>
             <div className="flex-1">
@@ -68,8 +68,8 @@ export default function CourseDetailPage() {
         </div>
 
         <div className="p-8">
-          <div className="aspect-video bg-slate-900 rounded-xl mb-8 flex items-center justify-center">
-            <button className="bg-red-600 hover:bg-red-700 text-white rounded-full w-20 h-20 flex items-center justify-center transition-all transform hover:scale-110">
+          <div className="aspect-video bg-brand-main rounded-xl mb-8 flex items-center justify-center">
+            <button className="bg-brand-accent hover:bg-red-900 text-white rounded-full w-20 h-20 flex items-center justify-center transition-all transform hover:scale-110">
               <Play size={32} fill="white" />
             </button>
           </div>
@@ -77,16 +77,16 @@ export default function CourseDetailPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Course Description</h2>
+                <h2 className="text-2xl font-bold text-brand-main mb-4">Course Description</h2>
                 <p className="text-slate-700 leading-relaxed">{course.description}</p>
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Learning Objectives</h2>
+                <h2 className="text-2xl font-bold text-brand-main mb-4">Learning Objectives</h2>
                 <ul className="space-y-3">
                   {course.objectives.map((objective: string, index: number) => (
                     <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="text-red-600 flex-shrink-0 mt-1" size={20} />
+                      <CheckCircle2 className="text-brand-accent flex-shrink-0 mt-1" size={20} />
                       <span className="text-slate-700">{objective}</span>
                     </li>
                   ))}
@@ -94,25 +94,25 @@ export default function CourseDetailPage() {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Expected Outcomes</h2>
+                <h2 className="text-2xl font-bold text-brand-main mb-4">Expected Outcomes</h2>
                 <p className="text-slate-700 leading-relaxed">{course.outcomes}</p>
               </div>
             </div>
 
             <div>
               <div className="bg-slate-50 rounded-xl p-6 sticky top-24">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Course Resources</h3>
+                <h3 className="text-xl font-bold text-brand-main mb-4">Course Resources</h3>
                 <div className="space-y-3">
                   {course.resources.map((resource: any, index: number) => (
                     <button
                       key={index}
-                      className="w-full flex items-center justify-between gap-3 bg-white p-4 rounded-lg hover:shadow-md transition-all border border-slate-200 hover:border-red-600"
+                      className="w-full flex items-center justify-between gap-3 bg-white p-4 rounded-lg hover:shadow-md transition-all border border-slate-200 hover:border-brand-accent"
                     >
                       <div className="text-left">
-                        <p className="font-semibold text-slate-900 text-sm">{resource.name}</p>
+                        <p className="font-semibold text-brand-main text-sm">{resource.name}</p>
                         <p className="text-xs text-slate-500">{resource.type}</p>
                       </div>
-                      <Download className="text-red-600 flex-shrink-0" size={20} />
+                      <Download className="text-brand-accent flex-shrink-0" size={20} />
                     </button>
                   ))}
                 </div>

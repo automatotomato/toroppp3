@@ -34,12 +34,12 @@ export default function PaymentPage() {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 flex items-center justify-center px-4">
         <div className="max-w-lg w-full bg-white rounded-2xl shadow-2xl p-12 text-center">
           <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="text-green-600" size={48} />
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-brand-main mb-4">
             Payment Successful!
           </h2>
           <p className="text-lg text-slate-700 mb-6">
@@ -54,11 +54,11 @@ export default function PaymentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 mb-6">
-            <Award className="text-red-600" size={48} />
+            <Award className="text-brand-accent" size={48} />
             <span className="text-white font-bold text-2xl">Advancement Academy</span>
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
@@ -82,13 +82,13 @@ export default function PaymentPage() {
                 'Lifetime updates and new content',
               ].map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-red-600 flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle2 className="text-brand-accent flex-shrink-0 mt-1" size={20} />
                   <span className="text-slate-200">{feature}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 p-6 bg-slate-900 rounded-xl">
+            <div className="mt-8 p-6 bg-brand-main rounded-xl">
               <div className="flex items-center gap-2 text-amber-400 mb-3">
                 <AlertCircle size={20} />
                 <span className="font-semibold">Important Note</span>
@@ -102,7 +102,7 @@ export default function PaymentPage() {
 
           <div className="bg-white rounded-2xl shadow-2xl p-8">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Payment Details</h2>
+              <h2 className="text-2xl font-bold text-brand-main mb-2">Payment Details</h2>
               <p className="text-slate-600">Office: {profile?.office_name}</p>
             </div>
 
@@ -121,12 +121,12 @@ export default function PaymentPage() {
               <div className="border-t border-slate-200 pt-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-lg text-slate-700">Registration Fee (Today)</span>
-                  <span className="text-2xl font-bold text-slate-900">${selectedPlan.price}</span>
+                  <span className="text-2xl font-bold text-brand-main">${selectedPlan.price}</span>
                 </div>
                 {selectedPlan.recurring && selectedPlan.recurring !== selectedPlan.price && (
                   <div className="flex justify-between items-center">
                     <span className="text-lg text-slate-700">Then Monthly</span>
-                    <span className="text-2xl font-bold text-red-600">${selectedPlan.recurring}</span>
+                    <span className="text-2xl font-bold text-brand-accent">${selectedPlan.recurring}</span>
                   </div>
                 )}
                 <p className="text-sm text-slate-600 mt-4">{selectedPlan.billing}</p>
@@ -143,7 +143,7 @@ export default function PaymentPage() {
                   <input
                     type="text"
                     placeholder="4242 4242 4242 4242"
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function PaymentPage() {
                   <input
                     type="text"
                     placeholder="MM / YY"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -166,7 +166,7 @@ export default function PaymentPage() {
                   <input
                     type="text"
                     placeholder="123"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function PaymentPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-brand-accent hover:bg-red-900 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {loading ? 'Processing Payment...' : `Complete Payment - $${selectedPlan.price}`}
               </button>

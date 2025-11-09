@@ -93,7 +93,7 @@ export default function CoursesPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Workshop Courses</h1>
+        <h1 className="text-3xl font-bold text-brand-main mb-2">Workshop Courses</h1>
         <p className="text-slate-600">12 comprehensive workshops to transform your business</p>
       </div>
 
@@ -102,16 +102,16 @@ export default function CoursesPage() {
           <Link
             key={course.id}
             to={`/dashboard/courses/${course.id}`}
-            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+            className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
           >
             <div className="flex items-start gap-6">
-              <div className="bg-red-600 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl flex-shrink-0">
+              <div className="bg-brand-accent text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl flex-shrink-0">
                 {course.id}
               </div>
 
               <div className="flex-1">
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-red-600">
+                  <h3 className="text-xl font-bold text-brand-main group-hover:text-brand-accent">
                     {course.title}
                   </h3>
                   {course.completed && (
@@ -128,7 +128,7 @@ export default function CoursesPage() {
                     <Clock size={16} />
                     <span>{course.duration} minutes</span>
                   </div>
-                  <div className="flex items-center gap-2 text-red-600 font-semibold">
+                  <div className="flex items-center gap-2 text-brand-accent font-semibold">
                     <Play size={16} />
                     <span>{course.completed ? 'Watch Again' : 'Start Course'}</span>
                   </div>

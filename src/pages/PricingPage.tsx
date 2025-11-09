@@ -3,17 +3,17 @@ import { Award, CheckCircle2, Star, ArrowRight, Phone, Mail, Globe, Sparkles, Za
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
-      <header className="bg-slate-900 py-4 sticky top-0 z-50 shadow-lg border-b border-slate-700">
+    <div className="min-h-screen bg-gradient-to-b from-brand-main to-slate-800">
+      <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
-            <Award className="text-red-600" size={32} />
+            <Award className="text-brand-accent" size={32} />
             <span className="text-white font-bold text-xl">Advancement Academy</span>
           </Link>
           <div className="flex gap-4">
             <Link
               to="/login"
-              className="text-white hover:text-red-400 font-semibold transition-colors"
+              className="text-white hover:text-brand-accent font-semibold transition-colors"
             >
               Login
             </Link>
@@ -44,8 +44,8 @@ export default function PricingPage() {
           </div>
 
           <div className="max-w-5xl mx-auto mb-16">
-            <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-3xl p-1 shadow-2xl">
-              <div className="bg-slate-900 rounded-3xl p-8 md:p-12">
+            <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 shadow-2xl">
+              <div className="bg-brand-main rounded-3xl p-8 md:p-12">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
                     <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
@@ -192,7 +192,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-slate-900 border-t border-slate-700">
+      <section className="py-16 bg-brand-main border-t border-slate-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">Questions? Get in Touch</h2>
@@ -202,18 +202,18 @@ export default function PricingPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <a
               href="tel:9154901889"
-              className="bg-slate-800 hover:bg-slate-700 rounded-xl p-6 text-center transition-all border border-slate-700 hover:border-red-600"
+              className="bg-slate-800 hover:bg-slate-700 rounded-xl p-6 text-center transition-all border border-slate-700 hover:border-brand-accent"
             >
-              <Phone className="text-red-600 mx-auto mb-3" size={32} />
+              <Phone className="text-brand-accent mx-auto mb-3" size={32} />
               <div className="text-white font-semibold mb-1">Call Us</div>
               <div className="text-slate-300">(915) 490-1889</div>
             </a>
 
             <a
               href="mailto:ricky@3-peak.com"
-              className="bg-slate-800 hover:bg-slate-700 rounded-xl p-6 text-center transition-all border border-slate-700 hover:border-red-600"
+              className="bg-slate-800 hover:bg-slate-700 rounded-xl p-6 text-center transition-all border border-slate-700 hover:border-brand-accent"
             >
-              <Mail className="text-red-600 mx-auto mb-3" size={32} />
+              <Mail className="text-brand-accent mx-auto mb-3" size={32} />
               <div className="text-white font-semibold mb-1">Email Us</div>
               <div className="text-slate-300">ricky@3-peak.com</div>
             </a>
@@ -222,9 +222,9 @@ export default function PricingPage() {
               href="https://www.3-peak.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-800 hover:bg-slate-700 rounded-xl p-6 text-center transition-all border border-slate-700 hover:border-red-600"
+              className="bg-slate-800 hover:bg-slate-700 rounded-xl p-6 text-center transition-all border border-slate-700 hover:border-brand-accent"
             >
-              <Globe className="text-red-600 mx-auto mb-3" size={32} />
+              <Globe className="text-brand-accent mx-auto mb-3" size={32} />
               <div className="text-white font-semibold mb-1">Visit Website</div>
               <div className="text-slate-300">www.3-peak.com</div>
             </a>
@@ -232,17 +232,17 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <footer className="bg-slate-900 py-12 border-t border-slate-800">
+      <footer className="bg-brand-main py-12 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-center gap-3">
-              <Award className="text-red-600" size={36} />
+              <Award className="text-brand-accent" size={36} />
               <span className="text-white font-bold text-xl">Advancement Academy</span>
             </div>
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />
-              <a href="https://www.3-peak.com" className="hover:text-red-400 transition-colors">www.3-peak.com</a> |
-              <a href="https://www.torotaxes.com" className="hover:text-red-400 transition-colors ml-2">www.torotaxes.com</a>
+              <a href="https://www.3-peak.com" className="hover:text-brand-accent transition-colors">www.3-peak.com</a> |
+              <a href="https://www.torotaxes.com" className="hover:text-brand-accent transition-colors ml-2">www.torotaxes.com</a>
             </p>
             <div className="text-center text-slate-400 text-sm border-t border-slate-800 pt-8 w-full">
               <p>&copy; 2025 Peak Performance Partners | All Rights Reserved</p>

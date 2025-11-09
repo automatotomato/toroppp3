@@ -106,23 +106,23 @@ export default function CoursesListPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <header className="bg-slate-900 py-4 sticky top-0 z-50 shadow-lg">
+      <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <Link to="/" className="text-white hover:text-red-400 font-semibold transition-colors">
+          <Link to="/" className="text-white hover:text-brand-accent font-semibold transition-colors">
             ← Back to Home
           </Link>
           <Link
             to="/register"
-            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+            className="bg-brand-accent hover:bg-red-900 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
           >
             Enroll Now
           </Link>
         </div>
       </header>
 
-      <section className="py-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+      <section className="py-16 bg-gradient-to-br from-brand-main to-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <BookOpen className="text-red-600 mx-auto mb-6" size={64} />
+          <BookOpen className="text-brand-accent mx-auto mb-6" size={64} />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Course Catalog</h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
             Explore all 12 workshops in detail. Click on any course to learn more about objectives and outcomes.
@@ -136,21 +136,21 @@ export default function CoursesListPage() {
             {coursesData.map((course) => (
               <div
                 key={course.number}
-                className="bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:border-red-600 transition-all"
+                className="bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:border-brand-accent transition-all"
               >
                 <button
                   onClick={() => setExpandedCourse(expandedCourse === course.number ? null : course.number)}
                   className="w-full p-6 flex items-start gap-4 text-left"
                 >
-                  <div className="bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                  <div className="bg-brand-accent text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg flex-shrink-0">
                     {course.number}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{course.title}</h3>
+                    <h3 className="text-xl font-bold text-brand-main mb-2">{course.title}</h3>
                     <p className="text-slate-600">{course.shortDesc}</p>
                   </div>
                   <ChevronDown
-                    className={`text-red-600 flex-shrink-0 transition-transform ${
+                    className={`text-brand-accent flex-shrink-0 transition-transform ${
                       expandedCourse === course.number ? 'rotate-180' : ''
                     }`}
                     size={24}
@@ -160,15 +160,15 @@ export default function CoursesListPage() {
                 {expandedCourse === course.number && (
                   <div className="px-6 pb-6 border-t border-slate-200 pt-6 space-y-4">
                     <div>
-                      <h4 className="font-bold text-slate-900 mb-2">Description</h4>
+                      <h4 className="font-bold text-brand-main mb-2">Description</h4>
                       <p className="text-slate-700">{course.fullDesc}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 mb-2">Objectives</h4>
+                      <h4 className="font-bold text-brand-main mb-2">Objectives</h4>
                       <p className="text-slate-700">{course.objectives}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 mb-2">Outcomes</h4>
+                      <h4 className="font-bold text-brand-main mb-2">Outcomes</h4>
                       <p className="text-slate-700">{course.outcomes}</p>
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function CoursesListPage() {
           <div className="text-center mt-12">
             <Link
               to="/register"
-              className="inline-block bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl transition-all transform hover:scale-105"
+              className="inline-block bg-brand-accent hover:bg-red-900 text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl transition-all transform hover:scale-105"
             >
               Enroll in All 12 Courses
             </Link>

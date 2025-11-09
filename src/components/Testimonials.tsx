@@ -23,10 +23,10 @@ export default function Testimonials() {
     <section className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-brand-main mb-4">
             Success Stories
           </h2>
-          <div className="w-24 h-1 bg-red-600 mx-auto"></div>
+          <div className="w-24 h-1 bg-brand-accent mx-auto"></div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -35,7 +35,7 @@ export default function Testimonials() {
               key={index}
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
-              <Quote className="text-red-600 mb-4" size={40} />
+              <Quote className="text-brand-accent mb-4" size={40} />
               <p className="text-slate-700 text-lg mb-6 leading-relaxed italic">
                 "{testimonial.quote}"
               </p>
@@ -44,7 +44,7 @@ export default function Testimonials() {
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-bold text-slate-900">{testimonial.name}</p>
+                  <p className="font-bold text-brand-main">{testimonial.name}</p>
                   <p className="text-sm text-slate-600">{testimonial.title}</p>
                 </div>
               </div>

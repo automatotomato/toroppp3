@@ -47,18 +47,18 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link to="/dashboard" className="flex items-center gap-3">
-              <Award className="text-red-600" size={32} />
-              <span className="font-bold text-xl text-slate-900">Advancement Academy</span>
+              <Award className="text-brand-accent" size={32} />
+              <span className="font-bold text-xl text-brand-main">Advancement Academy</span>
             </Link>
 
             <div className="hidden md:flex items-center gap-6">
               <div className="text-right">
-                <p className="text-sm font-semibold text-slate-900">{profile?.full_name}</p>
+                <p className="text-sm font-semibold text-brand-main">{profile?.full_name}</p>
                 <p className="text-xs text-slate-600">{profile?.office_name}</p>
               </div>
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 text-slate-600 hover:text-red-600 font-semibold transition-colors"
+                className="flex items-center gap-2 text-slate-600 hover:text-brand-accent font-semibold transition-colors"
               >
                 <LogOut size={20} />
                 Sign Out
@@ -88,7 +88,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-red-50 text-red-600 font-semibold'
+                      ? 'bg-red-50 text-brand-accent font-semibold'
                       : 'text-slate-700 hover:bg-slate-50'
                   }`}
                 >
@@ -122,7 +122,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                       to={item.href}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                         isActive
-                          ? 'bg-red-50 text-red-600 font-semibold'
+                          ? 'bg-red-50 text-brand-accent font-semibold'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >

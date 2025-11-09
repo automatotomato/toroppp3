@@ -11,8 +11,8 @@ export default function ComingSoonPage({ title, description }: ComingSoonPagePro
     <DashboardLayout>
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center max-w-2xl">
-          <Construction className="text-red-600 mx-auto mb-6" size={80} />
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">{title}</h1>
+          <Construction className="text-brand-accent mx-auto mb-6" size={80} />
+          <h1 className="text-4xl font-bold text-brand-main mb-4">{title}</h1>
           <p className="text-xl text-slate-600 mb-8">{description}</p>
           <div className="bg-slate-50 rounded-xl p-8">
             <p className="text-slate-700 leading-relaxed">

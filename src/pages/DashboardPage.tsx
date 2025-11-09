@@ -9,14 +9,14 @@ export default function DashboardPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+        <h1 className="text-3xl font-bold text-brand-main mb-2">
           Welcome back, {profile?.full_name}!
         </h1>
         <p className="text-slate-600">{profile?.office_name}</p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-xl p-6 text-white">
+        <div className="bg-gradient-to-br from-brand-accent to-red-900 rounded-xl p-6 text-white">
           <BookOpen size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">12</h3>
           <p className="text-red-100">Courses Available</p>
@@ -38,10 +38,10 @@ export default function DashboardPage() {
       <div className="grid md:grid-cols-2 gap-6">
         <Link
           to="/dashboard/courses"
-          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
-          <BookOpen className="text-red-600 mb-4" size={48} />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Workshop Courses</h2>
+          <BookOpen className="text-brand-accent mb-4" size={48} />
+          <h2 className="text-2xl font-bold text-brand-main mb-2">Workshop Courses</h2>
           <p className="text-slate-600">
             Access all 12 power-packed workshops to transform your business
           </p>
@@ -49,10 +49,10 @@ export default function DashboardPage() {
 
         <Link
           to="/dashboard/town-halls"
-          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
           <Video className="text-blue-600 mb-4" size={48} />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Town Hall Recordings</h2>
+          <h2 className="text-2xl font-bold text-brand-main mb-2">Town Hall Recordings</h2>
           <p className="text-slate-600">
             Watch past town hall sessions and Q&A recordings
           </p>
@@ -60,10 +60,10 @@ export default function DashboardPage() {
 
         <Link
           to="/dashboard/podcasts"
-          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
           <Radio className="text-purple-600 mb-4" size={48} />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Podcasts</h2>
+          <h2 className="text-2xl font-bold text-brand-main mb-2">Podcasts</h2>
           <p className="text-slate-600">
             Listen to podcasts in English or Spanish
           </p>
@@ -71,10 +71,10 @@ export default function DashboardPage() {
 
         <Link
           to="/dashboard/tips"
-          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
           <Lightbulb className="text-amber-600 mb-4" size={48} />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Tips of the Week</h2>
+          <h2 className="text-2xl font-bold text-brand-main mb-2">Tips of the Week</h2>
           <p className="text-slate-600">
             Get weekly insights and best practices
           </p>
@@ -82,10 +82,10 @@ export default function DashboardPage() {
 
         <Link
           to="/dashboard/resources"
-          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
           <FileText className="text-green-600 mb-4" size={48} />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Resources & Tools</h2>
+          <h2 className="text-2xl font-bold text-brand-main mb-2">Resources & Tools</h2>
           <p className="text-slate-600">
             Download handouts, charts, graphs, and templates
           </p>
@@ -93,10 +93,10 @@ export default function DashboardPage() {
 
         <Link
           to="/dashboard/faq"
-          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-red-600"
+          className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
           <FileText className="text-slate-600 mb-4" size={48} />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">FAQ & Support</h2>
+          <h2 className="text-2xl font-bold text-brand-main mb-2">FAQ & Support</h2>
           <p className="text-slate-600">
             Get answers to frequently asked questions
           </p>

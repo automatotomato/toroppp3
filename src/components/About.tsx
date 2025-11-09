@@ -12,10 +12,10 @@ export default function About() {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-brand-main mb-4">
             About the Toro Tax Training Program
           </h2>
-          <div className="w-24 h-1 bg-red-600 mx-auto"></div>
+          <div className="w-24 h-1 bg-brand-accent mx-auto"></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -33,7 +33,7 @@ export default function About() {
             <div className="space-y-4 pt-6">
               {highlights.map((highlight, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-red-600 flex-shrink-0 mt-1" size={24} />
+                  <CheckCircle2 className="text-brand-accent flex-shrink-0 mt-1" size={24} />
                   <span className="text-lg text-slate-700">{highlight}</span>
                 </div>
               ))}
@@ -48,7 +48,7 @@ export default function About() {
                 className="w-full h-full object-cover opacity-90"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-red-600 text-white p-8 rounded-xl shadow-xl">
+            <div className="absolute -bottom-6 -right-6 bg-brand-accent text-white p-8 rounded-xl shadow-xl">
               <p className="text-4xl font-bold">100+</p>
               <p className="text-sm font-semibold">Success Stories</p>
             </div>

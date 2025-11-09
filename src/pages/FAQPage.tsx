@@ -51,7 +51,7 @@ export default function FAQPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Frequently Asked Questions</h1>
+        <h1 className="text-3xl font-bold text-brand-main mb-2">Frequently Asked Questions</h1>
         <p className="text-slate-600">Find answers to common questions about the Advancement Academy</p>
       </div>
 
@@ -59,7 +59,7 @@ export default function FAQPage() {
         <div className="flex items-start gap-4 mb-6">
           <MessageCircle className="text-blue-600 flex-shrink-0 mt-1" size={32} />
           <div>
-            <h2 className="text-xl font-bold text-slate-900 mb-2">Need More Help?</h2>
+            <h2 className="text-xl font-bold text-brand-main mb-2">Need More Help?</h2>
             <p className="text-slate-600">
               Can't find the answer you're looking for? Our AI assistant is here to help 24/7.
               Just type your question below and get instant answers in English or Spanish.
@@ -71,7 +71,7 @@ export default function FAQPage() {
           <input
             type="text"
             placeholder="Ask a question... (e.g., How do I reset my password?)"
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+            className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
           />
           <p className="text-sm text-slate-500 mt-2">
             AI Assistant powered by Peak Performance Partners
@@ -86,13 +86,13 @@ export default function FAQPage() {
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className="w-full flex items-center justify-between text-left group"
             >
-              <h3 className="text-lg font-semibold text-slate-900 group-hover:text-red-600 transition-colors pr-4">
+              <h3 className="text-lg font-semibold text-brand-main group-hover:text-brand-accent transition-colors pr-4">
                 {faq.question}
               </h3>
               {openIndex === index ? (
-                <ChevronUp className="text-red-600 flex-shrink-0" size={24} />
+                <ChevronUp className="text-brand-accent flex-shrink-0" size={24} />
               ) : (
-                <ChevronDown className="text-slate-400 group-hover:text-red-600 flex-shrink-0 transition-colors" size={24} />
+                <ChevronDown className="text-slate-400 group-hover:text-brand-accent flex-shrink-0 transition-colors" size={24} />
               )}
             </button>
 
@@ -106,14 +106,14 @@ export default function FAQPage() {
       </div>
 
       <div className="mt-8 bg-slate-50 rounded-xl p-8 text-center">
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Still have questions?</h3>
+        <h3 className="text-xl font-bold text-brand-main mb-2">Still have questions?</h3>
         <p className="text-slate-600 mb-4">
           Contact our support team directly
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="mailto:info@3-peak.com"
-            className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
           >
             Email Support
           </a>
@@ -121,7 +121,7 @@ export default function FAQPage() {
             href="https://www.3-peak.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border-2 border-slate-300 hover:border-red-600 text-slate-700 hover:text-red-600 px-6 py-3 rounded-lg font-semibold transition-colors"
+            className="inline-flex items-center justify-center gap-2 border-2 border-slate-300 hover:border-brand-accent text-slate-700 hover:text-brand-accent px-6 py-3 rounded-lg font-semibold transition-colors"
           >
             Visit Our Website
           </a>

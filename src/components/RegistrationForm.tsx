@@ -46,7 +46,7 @@ export default function RegistrationForm() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-green-50 border-2 border-green-500 rounded-2xl p-12">
             <CheckCircle className="text-green-500 mx-auto mb-6" size={64} />
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-main mb-4">
               Registration Successful!
             </h2>
             <p className="text-lg text-slate-700 mb-6">
@@ -69,10 +69,10 @@ export default function RegistrationForm() {
     <section id="registration" className="py-24 bg-white">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-brand-main mb-4">
             Secure Your Spot
           </h2>
-          <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
           <p className="text-lg text-slate-700">
             Register now to reserve your place in the next training session
           </p>
@@ -89,7 +89,7 @@ export default function RegistrationForm() {
               required
               value={formData.full_name}
               onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
               placeholder="John Doe"
             />
           </div>
@@ -104,7 +104,7 @@ export default function RegistrationForm() {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
               placeholder="john@example.com"
             />
           </div>
@@ -119,7 +119,7 @@ export default function RegistrationForm() {
               required
               value={formData.phone_number}
               onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
               placeholder="(555) 123-4567"
             />
           </div>
@@ -133,7 +133,7 @@ export default function RegistrationForm() {
               id="organization"
               value={formData.organization}
               onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
               placeholder="Your Company"
             />
           </div>
@@ -147,7 +147,7 @@ export default function RegistrationForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full bg-brand-accent hover:bg-red-900 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
           >
             {isSubmitting ? (
               'Submitting...'

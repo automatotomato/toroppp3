@@ -26,7 +26,7 @@ export default function FloatingCTA() {
   return (
     <button
       onClick={scrollToForm}
-      className="fixed bottom-8 right-8 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 z-50 flex items-center gap-2"
+      className="fixed bottom-8 right-8 bg-brand-accent hover:bg-red-900 text-white font-bold px-6 py-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 z-50 flex items-center gap-2"
       aria-label="Register now"
     >
       Register Now

@@ -7,7 +7,7 @@ export default function LanguageToggle() {
   return (
     <button
       onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-      className="flex items-center gap-2 text-white hover:text-red-400 font-semibold transition-colors"
+      className="flex items-center gap-2 text-white hover:text-brand-accent font-semibold transition-colors"
       aria-label="Toggle language"
     >
       <Languages size={20} />

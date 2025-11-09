@@ -28,11 +28,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-3 mb-6">
-            <Award className="text-red-600" size={48} />
+            <Award className="text-brand-accent" size={48} />
             <span className="text-white font-bold text-2xl">Advancement Academy</span>
           </Link>
           <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
@@ -53,7 +53,7 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   placeholder="you@example.com"
                 />
               </div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   placeholder="••••••••"
                 />
               </div>
@@ -86,7 +86,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+              className="w-full bg-brand-accent hover:bg-red-900 text-white font-bold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
             >
               {loading ? 'Signing In...' : (
                 <>
@@ -100,7 +100,7 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <p className="text-slate-600">
               Don't have an account?{' '}
-              <Link to="/register" className="text-red-600 hover:text-red-700 font-semibold">
+              <Link to="/register" className="text-brand-accent hover:text-red-700 font-semibold">
                 Register here
               </Link>
             </p>

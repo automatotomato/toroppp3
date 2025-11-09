@@ -38,7 +38,7 @@ export default function Hero() {
 
         <button
           onClick={scrollToForm}
-          className="group bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-red-600/50"
+          className="group bg-brand-accent hover:bg-red-900 text-white font-bold text-lg px-10 py-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-red-600/50"
         >
           Register Now
           <ArrowDown className="inline-block ml-2 group-hover:translate-y-1 transition-transform" size={24} />
