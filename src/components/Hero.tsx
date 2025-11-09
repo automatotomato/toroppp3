@@ -18,12 +18,12 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex justify-center items-center gap-8 mb-12 flex-wrap">
-          <div className="bg-white/95 backdrop-blur-sm px-8 py-4 rounded-lg shadow-xl">
-            <h3 className="text-2xl font-bold text-slate-800">PEAK 3</h3>
+          <div className="bg-white/95 backdrop-blur-sm px-8 py-6 rounded-lg shadow-xl">
+            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-24 w-auto" />
           </div>
-          <div className="text-4xl font-bold text-red-500">×</div>
-          <div className="bg-white/95 backdrop-blur-sm px-8 py-4 rounded-lg shadow-xl">
-            <h3 className="text-2xl font-bold text-slate-800">TORO TAX</h3>
+          <div className="text-5xl font-bold text-white">×</div>
+          <div className="bg-white/95 backdrop-blur-sm px-8 py-6 rounded-lg shadow-xl">
+            <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-24 w-auto" />
           </div>
         </div>
 

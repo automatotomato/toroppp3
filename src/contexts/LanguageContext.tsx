@@ -104,7 +104,6 @@ const translations = {
     'pricing.viewFullPricing': 'View Full Pricing Details & Comparison',
     'pricing.allPlans': 'All plans include per-office access',
     'cta.final': 'Get Started Today',
-    'footer.delivered': 'Delivered by Peak Performance Partners',
     'footer.rights': 'All Rights Reserved',
   },
   es: {
@@ -200,7 +199,6 @@ const translations = {
     'pricing.viewFullPricing': 'Ver Detalles Completos de Precios y Comparación',
     'pricing.allPlans': 'Todos los planes incluyen acceso por oficina',
     'cta.final': 'Comenzar Hoy',
-    'footer.delivered': 'Entregado por Peak Performance Partners',
     'footer.rights': 'Todos los Derechos Reservados',
   },
 };
