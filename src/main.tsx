@@ -2,6 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 console.log('Environment check:', {
   hasUrl: !!import.meta.env.VITE_SUPABASE_URL,
@@ -44,7 +46,11 @@ if (!hasRequiredEnvVars) {
   try {
     createRoot(rootElement).render(
       <StrictMode>
-        <App />
+        <AuthProvider>
+          <LanguageProvider>
+            <App />
+          </LanguageProvider>
+        </AuthProvider>
       </StrictMode>
     );
   } catch (error) {
