@@ -143,11 +143,9 @@ export default function VoiceAssistant() {
         <span className="text-slate-300 text-xs">
           {language === 'es' ? 'Desarrollado por' : 'Powered by'}
         </span>
-        <img
-          src="/automate planet12345.png"
-          alt="AutomatePlanet"
-          className="h-5"
-        />
+        <span className="text-green-400 text-xs font-semibold">
+          AutomatePlanet.com
+        </span>
       </a>
     </div>
   );
