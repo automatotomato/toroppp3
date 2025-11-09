@@ -135,12 +135,6 @@ export default function LandingPage() {
           <div className="flex items-center gap-4">
             <LanguageToggle />
             <Link
-              to="/login"
-              className="text-white hover:text-brand-accent font-semibold transition-colors"
-            >
-              {t('nav.login')}
-            </Link>
-            <Link
               to="/payment"
               className="bg-brand-accent hover:bg-red-900 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
             >
