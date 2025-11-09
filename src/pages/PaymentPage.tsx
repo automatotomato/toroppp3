@@ -58,7 +58,7 @@ export default function PaymentPage() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-flex items-center mb-6">
-            <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-16" />
+            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
           <p className="text-slate-400">One step away from transforming your business</p>

@@ -24,7 +24,7 @@ export function Dashboard() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <img
-                src="/peak-performance_color.png"
+                src="/peak_performance (1).png"
                 alt="Peak Performance"
                 className="h-8 w-auto mr-4"
               />

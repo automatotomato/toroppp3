@@ -130,7 +130,7 @@ export default function LandingPage() {
       <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center">
-            <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
+            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
           </div>
           <div className="flex items-center gap-4">
             <LanguageToggle />
@@ -177,7 +177,7 @@ export default function LandingPage() {
                 {t('footer.delivered')}
               </div>
               <div className="mb-4 md:mb-6">
-                <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24 mx-auto" />
+                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24 mx-auto" />
               </div>
               <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
                 {t('hero.title')}
@@ -907,7 +907,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-center">
-              <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-12" />
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-12" />
             </div>
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />

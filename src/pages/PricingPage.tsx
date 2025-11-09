@@ -7,7 +7,7 @@ export default function PricingPage() {
       <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-10" />
+            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
             
           </Link>
           <div className="flex gap-4">
@@ -236,7 +236,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-center">
-              <img src="/peak-performance_color.png" alt="Peak Performance Partners" className="h-12" />
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-12" />
             </div>
             <p className="text-slate-400 text-center">
               Delivered by Peak Performance Partners<br />

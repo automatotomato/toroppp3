@@ -18,7 +18,7 @@ export function Signup() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <img
-            src="/peak-performance_color.png"
+            src="/peak_performance (1).png"
             alt="Peak Performance"
             className="h-16 w-auto"
           />
