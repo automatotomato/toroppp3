@@ -4,10 +4,10 @@ export interface StripeProduct {
   description: string;
   price: number;
   currency: string;
-  mode: 'payment' | 'subscription';
+  mode: 'subscription' | 'payment';
 }
 
-export const stripeProducts: StripeProduct[] = [
+export const STRIPE_PRODUCTS: StripeProduct[] = [
   {
     priceId: 'price_1SRP2lP4Be5cIimOVVohq8hw',
     name: 'Advancement Academy',
@@ -26,6 +26,6 @@ export const stripeProducts: StripeProduct[] = [
   }
 ];
 
-export function getProductByPriceId(priceId: string): StripeProduct | undefined {
-  return stripeProducts.find(product => product.priceId === priceId);
-}
+export const getProductByPriceId = (priceId: string): StripeProduct | undefined => {
+  return STRIPE_PRODUCTS.find(product => product.priceId === priceId);
+};

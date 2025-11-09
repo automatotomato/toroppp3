@@ -27,6 +27,21 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   return user ? <>{children}</> : <Navigate to="/login" />
+import Success from './pages/Success';
+}
+import SubscriptionBanner from './components/SubscriptionBanner';
+import { useAuth } from './hooks/useAuth';
+
+function AppContent() {
+  const { user } = useAuth();
+
+  return (
+    <>
+      {user && <SubscriptionBanner />}
+        <AppContent />
+      </Routes>
+    </>
+  );
 }
 
 function App() {

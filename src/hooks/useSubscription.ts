@@ -1,70 +1,68 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
-import { getProductByPriceId } from '../stripe-config'
-import { useAuth } from './useAuth'
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+import { useAuth } from './useAuth';
 
 interface SubscriptionData {
-  customer_id: string
-  subscription_id: string | null
-  subscription_status: string
-  price_id: string | null
-  current_period_start: number | null
-  current_period_end: number | null
-  cancel_at_period_end: boolean | null
-  payment_method_brand: string | null
-  payment_method_last4: string | null
+  customer_id: string;
+  subscription_id: string;
+  subscription_status: string;
+  price_id: string;
+  current_period_start: number;
+  current_period_end: number;
+  cancel_at_period_end: boolean;
+  payment_method_brand: string;
+  payment_method_last4: string;
 }
 
 export function useSubscription() {
-  const { user } = useAuth()
-  const [subscription, setSubscription] = useState<SubscriptionData | null>(null)
-  const [loading, setLoading] = useState(true)
+  const { user } = useAuth();
+  const [subscription, setSubscription] = useState<SubscriptionData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!user) {
-      setSubscription(null)
-      setLoading(false)
-      return
-    }
-
     const fetchSubscription = async () => {
+      if (!user) {
+        setSubscription(null);
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data, error } = await supabase
           .from('stripe_user_subscriptions')
           .select('*')
-          .maybeSingle()
+          .single();
 
-        if (error) {
-          console.error('Error fetching subscription:', error)
-          return
+        if (error && error.code !== 'PGRST116') {
+          throw error;
         }
 
-        setSubscription(data)
-      } catch (error) {
-        console.error('Error fetching subscription:', error)
+        setSubscription(data || null);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching subscription:', err);
+        setError('Failed to load subscription data');
+        setSubscription(null);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchSubscription()
-  }, [user])
+    fetchSubscription();
+  }, [user]);
 
-  const getActivePlan = () => {
-    if (!subscription || !subscription.price_id) return null
-    
-    const product = getProductByPriceId(subscription.price_id)
-    return product ? {
-      name: product.name,
-      price: product.price,
-      mode: product.mode,
-      status: subscription.subscription_status
-    } : null
-  }
+  const hasActiveSubscription = subscription?.subscription_status === 'active';
+  
+  const isSubscriptionActive = () => {
+    return hasActiveSubscription;
+  };
 
   return {
     subscription,
     loading,
-    activePlan: getActivePlan()
-  }
+    error,
+    hasActiveSubscription,
+    isSubscriptionActive
+  };
 }
