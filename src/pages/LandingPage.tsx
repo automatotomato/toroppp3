@@ -445,6 +445,7 @@ export default function LandingPage() {
                 stat: '95%',
                 label: 'Improved Cash Flow',
                 description: 'Master cash flow, forecasting, and financial literacy to make data-driven decisions.',
+                image: 'https://images.pexels.com/photos/6772076/pexels-photo-6772076.jpeg?auto=compress&cs=tinysrgb&w=600',
               },
               {
                 icon: Users,
@@ -452,6 +453,7 @@ export default function LandingPage() {
                 stat: '3.2x',
                 label: 'Client Growth',
                 description: 'Implement proven marketing, sales, and retention strategies that drive results.',
+                image: 'https://images.pexels.com/photos/3184611/pexels-photo-3184611.jpeg?auto=compress&cs=tinysrgb&w=600',
               },
               {
                 icon: Zap,
@@ -459,21 +461,32 @@ export default function LandingPage() {
                 stat: '60%',
                 label: 'Time Saved',
                 description: 'Leverage technology, automation, and strategic planning to scale efficiently.',
+                image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=600',
               },
             ].map((highlight, index) => {
               const Icon = highlight.icon;
               return (
                 <div
                   key={index}
-                  className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-slate-100"
+                  className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-slate-100 overflow-hidden"
                 >
-                  <Icon className="text-brand-accent mb-4" size={36} />
-                  <h3 className="text-2xl font-bold text-brand-main mb-4">{highlight.title}</h3>
-                  <div className="mb-4">
-                    <div className="text-4xl font-bold text-brand-accent mb-1">{highlight.stat}</div>
-                    <div className="text-sm text-slate-600 font-semibold">{highlight.label}</div>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={highlight.image}
+                      alt={highlight.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <Icon className="absolute bottom-4 left-4 text-white" size={36} />
                   </div>
-                  <p className="text-slate-700 leading-relaxed">{highlight.description}</p>
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-brand-main mb-4">{highlight.title}</h3>
+                    <div className="mb-4">
+                      <div className="text-4xl font-bold text-brand-accent mb-1">{highlight.stat}</div>
+                      <div className="text-sm text-slate-600 font-semibold">{highlight.label}</div>
+                    </div>
+                    <p className="text-slate-700 leading-relaxed">{highlight.description}</p>
+                  </div>
                 </div>
               );
             })}
@@ -483,6 +496,62 @@ export default function LandingPage() {
 
       <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-main mb-6">
+                Learn From Industry Experts
+              </h2>
+              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                Our curriculum is designed by successful franchise owners who understand the challenges you face. Every course is packed with real-world strategies you can implement immediately.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                  <div>
+                    <div className="font-bold text-brand-main">Practical, Not Theoretical</div>
+                    <div className="text-sm text-slate-600">Real strategies from successful operators</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                  <div>
+                    <div className="font-bold text-brand-main">Self-Paced Learning</div>
+                    <div className="text-sm text-slate-600">Access anytime, anywhere on any device</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                  <div>
+                    <div className="font-bold text-brand-main">Community Support</div>
+                    <div className="text-sm text-slate-600">Connect with fellow franchise owners</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Professional training session"
+                className="rounded-2xl shadow-xl object-cover h-64 w-full"
+              />
+              <img
+                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Business collaboration"
+                className="rounded-2xl shadow-xl object-cover h-64 w-full mt-8"
+              />
+              <img
+                src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Tax office setup"
+                className="rounded-2xl shadow-xl object-cover h-64 w-full -mt-8"
+              />
+              <img
+                src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Modern workspace"
+                className="rounded-2xl shadow-xl object-cover h-64 w-full"
+              />
+            </div>
+          </div>
+
           <div className="text-center mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
               12 Power-Packed Workshops
@@ -578,7 +647,7 @@ export default function LandingPage() {
                 rating: 5,
                 revenue: '+$285K',
                 quote: 'Peak Performance Partners Academy gave me the confidence and tools to scale beyond tax season. My business has never been stronger.',
-                image: 'M',
+                image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=300',
                 metric: 'Revenue Growth',
               },
               {
@@ -587,7 +656,7 @@ export default function LandingPage() {
                 rating: 5,
                 revenue: '+420 Clients',
                 quote: 'The sales and marketing systems completely transformed how we attract and retain clients. Game changer!',
-                image: 'J',
+                image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300',
                 metric: 'Client Growth',
               },
               {
@@ -596,7 +665,7 @@ export default function LandingPage() {
                 rating: 5,
                 revenue: '38% Margin',
                 quote: 'As a new owner, this program gave me the foundation I needed. I\'m profitable in my first year thanks to the Academy.',
-                image: 'S',
+                image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300',
                 metric: 'Profit Margin',
               },
             ].map((testimonial, index) => (
@@ -605,9 +674,11 @@ export default function LandingPage() {
                 className="bg-slate-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-slate-200"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-brand-accent to-red-900 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg">
-                    {testimonial.image}
-                  </div>
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full object-cover shadow-lg ring-4 ring-white"
+                  />
                   <div>
                     <div className="font-bold text-brand-main">{testimonial.name}</div>
                     <div className="text-sm text-slate-600">{testimonial.role}</div>
@@ -794,6 +865,74 @@ export default function LandingPage() {
             <p className="text-red-100 text-sm">
               {t('pricing.allPlans')}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-brand-main mb-4">
+              Transform Your Office Into a Success Story
+            </h2>
+            <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Join hundreds of franchise owners who have revolutionized their businesses
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+              <img
+                src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Professional tax office"
+                className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-6">
+                <div className="text-white">
+                  <div className="text-2xl font-bold mb-2">Professional Environment</div>
+                  <div className="text-sm">Create a workspace that inspires confidence</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+              <img
+                src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Team collaboration"
+                className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-6">
+                <div className="text-white">
+                  <div className="text-2xl font-bold mb-2">Build Strong Teams</div>
+                  <div className="text-sm">Develop leaders who drive results</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+              <img
+                src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="Business growth"
+                className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-6">
+                <div className="text-white">
+                  <div className="text-2xl font-bold mb-2">Achieve Your Goals</div>
+                  <div className="text-sm">Turn your vision into reality</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/register"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-accent to-red-900 hover:from-red-900 hover:to-brand-accent text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+            >
+              Start Your Transformation Today
+              <ArrowRight size={24} />
+            </Link>
           </div>
         </div>
       </section>
