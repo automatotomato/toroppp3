@@ -63,74 +63,92 @@ export default function VoiceAssistant() {
   const isLoading = conversation.status === 'connecting';
 
   return (
-    <div className="flex items-center gap-3">
-      <button
-        onClick={isConnected ? endConversation : startConversation}
-        disabled={isLoading}
-        className={`group relative flex items-center justify-center w-16 h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${
-          isConnected
-            ? 'bg-red-600 hover:bg-red-700 animate-pulse'
-            : 'bg-white hover:bg-slate-100'
-        } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-        title={
-          isConnected
-            ? language === 'es'
-              ? 'Terminar conversación'
-              : 'End conversation'
-            : language === 'es'
-            ? 'Hablar con nuestro asistente de IA'
-            : 'Talk to our AI assistant'
-        }
-      >
-        {isLoading ? (
-          <div className="w-6 h-6 border-3 border-slate-400 border-t-transparent rounded-full animate-spin" />
-        ) : isConnected ? (
-          <MicOff className="text-white" size={28} />
-        ) : (
-          <Mic className="text-red-600 group-hover:text-red-700" size={28} />
-        )}
-
-        {isConnected && (
-          <span className="absolute -top-1 -right-1 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-          </span>
-        )}
-      </button>
-
-      {isConnected && (
+    <div className="flex flex-col items-center gap-3">
+      <div className="flex items-center gap-3">
         <button
-          onClick={toggleMute}
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 transform hover:scale-110"
-          title={isMuted ? 'Unmute' : 'Mute'}
+          onClick={isConnected ? endConversation : startConversation}
+          disabled={isLoading}
+          className={`group relative flex items-center justify-center w-16 h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 ${
+            isConnected
+              ? 'bg-red-600 hover:bg-red-700 animate-pulse'
+              : 'bg-white hover:bg-slate-100'
+          } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          title={
+            isConnected
+              ? language === 'es'
+                ? 'Terminar conversación'
+                : 'End conversation'
+              : language === 'es'
+              ? 'Hablar con nuestro asistente de IA'
+              : 'Talk to our AI assistant'
+          }
         >
-          {isMuted ? (
-            <VolumeX className="text-slate-600" size={20} />
+          {isLoading ? (
+            <div className="w-6 h-6 border-3 border-slate-400 border-t-transparent rounded-full animate-spin" />
+          ) : isConnected ? (
+            <MicOff className="text-white" size={28} />
           ) : (
-            <Volume2 className="text-slate-600" size={20} />
+            <Mic className="text-red-600 group-hover:text-red-700" size={28} />
+          )}
+
+          {isConnected && (
+            <span className="absolute -top-1 -right-1 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
           )}
         </button>
-      )}
 
-      <div className="ml-2 text-left">
-        <div className="text-white font-semibold text-sm">
-          {language === 'es' ? 'Asistente de Voz' : 'Voice Assistant'}
-        </div>
-        <div className="text-slate-300 text-xs">
-          {isConnected
-            ? language === 'es'
-              ? 'Conectado'
-              : 'Connected'
-            : language === 'es'
-            ? 'Haz clic para hablar'
-            : 'Click to talk'}
-        </div>
-        {!isConnected && (
-          <div className="text-green-400 text-xs font-medium mt-1">
-            {language === 'es' ? '🇺🇸 English | 🇪🇸 Español' : '🇺🇸 English | 🇪🇸 Spanish'}
-          </div>
+        {isConnected && (
+          <button
+            onClick={toggleMute}
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 transform hover:scale-110"
+            title={isMuted ? 'Unmute' : 'Mute'}
+          >
+            {isMuted ? (
+              <VolumeX className="text-slate-600" size={20} />
+            ) : (
+              <Volume2 className="text-slate-600" size={20} />
+            )}
+          </button>
         )}
+
+        <div className="ml-2 text-left">
+          <div className="text-white font-semibold text-sm">
+            {language === 'es' ? 'Asistente de Voz' : 'Voice Assistant'}
+          </div>
+          <div className="text-slate-300 text-xs">
+            {isConnected
+              ? language === 'es'
+                ? 'Conectado'
+                : 'Connected'
+              : language === 'es'
+              ? 'Haz clic para hablar'
+              : 'Click to talk'}
+          </div>
+          {!isConnected && (
+            <div className="text-green-400 text-xs font-medium mt-1">
+              {language === 'es' ? '🇺🇸 English | 🇪🇸 Español' : '🇺🇸 English | 🇪🇸 Spanish'}
+            </div>
+          )}
+        </div>
       </div>
+
+      <a
+        href="https://automateplanet.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105"
+      >
+        <span className="text-slate-300 text-xs">
+          {language === 'es' ? 'Desarrollado por' : 'Powered by'}
+        </span>
+        <img
+          src="/automate planet12345.png"
+          alt="AutomatePlanet"
+          className="h-5"
+        />
+      </a>
     </div>
   );
 }
