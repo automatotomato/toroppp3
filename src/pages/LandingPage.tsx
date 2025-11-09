@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles, X } from 'lucide-react';
 import LanguageToggle from '../components/LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
+import RevenueGrowthChart from '../components/charts/RevenueGrowthChart';
+import ClientRetentionChart from '../components/charts/ClientRetentionChart';
+import ProfitMarginChart from '../components/charts/ProfitMarginChart';
+import ROICalculator from '../components/charts/ROICalculator';
+import SuccessMetrics from '../components/charts/SuccessMetrics';
+import LearningTimeline from '../components/charts/LearningTimeline';
 
 export default function LandingPage() {
   const { t } = useLanguage();
@@ -371,6 +377,14 @@ export default function LandingPage() {
             </p>
           </div>
 
+          <div className="mb-16">
+            <SuccessMetrics />
+          </div>
+
+          <div className="mb-16">
+            <ROICalculator />
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-slate-100">
               <div className="text-center mb-6">
@@ -379,32 +393,7 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Revenue Growth</h3>
               </div>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="text-slate-600">Before Academy</span>
-                    <span className="font-bold text-brand-main">$180K</span>
-                  </div>
-                  <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-slate-400 rounded-full" style={{ width: '30%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="text-slate-600">After Academy</span>
-                    <span className="font-bold text-brand-accent">$450K</span>
-                  </div>
-                  <div className="h-3 bg-red-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-brand-accent rounded-full" style={{ width: '75%' }}></div>
-                  </div>
-                </div>
-                <div className="pt-4 border-t border-slate-200">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-green-600">+250%</div>
-                    <div className="text-sm text-slate-600">Average Increase</div>
-                  </div>
-                </div>
-              </div>
+              <RevenueGrowthChart />
             </div>
 
             <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-slate-100">
@@ -414,32 +403,7 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Client Base</h3>
               </div>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="text-slate-600">Before Academy</span>
-                    <span className="font-bold text-brand-main">850</span>
-                  </div>
-                  <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-slate-400 rounded-full" style={{ width: '40%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="text-slate-600">After Academy</span>
-                    <span className="font-bold text-blue-600">1,800</span>
-                  </div>
-                  <div className="h-3 bg-blue-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-600 rounded-full" style={{ width: '85%' }}></div>
-                  </div>
-                </div>
-                <div className="pt-4 border-t border-slate-200">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-green-600">+112%</div>
-                    <div className="text-sm text-slate-600">Client Growth</div>
-                  </div>
-                </div>
-              </div>
+              <ClientRetentionChart />
             </div>
 
             <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-slate-100">
@@ -449,32 +413,7 @@ export default function LandingPage() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Profit Margin</h3>
               </div>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="text-slate-600">Before Academy</span>
-                    <span className="font-bold text-brand-main">18%</span>
-                  </div>
-                  <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-slate-400 rounded-full" style={{ width: '18%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="text-slate-600">After Academy</span>
-                    <span className="font-bold text-purple-600">42%</span>
-                  </div>
-                  <div className="h-3 bg-purple-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-purple-600 rounded-full" style={{ width: '42%' }}></div>
-                  </div>
-                </div>
-                <div className="pt-4 border-t border-slate-200">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-green-600">+24pts</div>
-                    <div className="text-sm text-slate-600">Margin Improvement</div>
-                  </div>
-                </div>
-              </div>
+              <ProfitMarginChart />
             </div>
           </div>
 
@@ -496,52 +435,7 @@ export default function LandingPage() {
 
       <section className="py-12 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-brand-main mb-4">
-              {t('journey.title')}
-            </h2>
-            <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
-            <p className="text-base md:text-xl text-slate-600 max-w-3xl mx-auto">
-              {t('journey.subtitle')}
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent via-purple-600 to-blue-600 transform -translate-y-1/2"></div>
-
-            <div className="grid md:grid-cols-5 gap-8 relative">
-              {[
-                { icon: Target, title: t('journey.step1'), desc: t('journey.step1desc'), color: 'red' },
-                { icon: TrendingUp, title: t('journey.step2'), desc: t('journey.step2desc'), color: 'orange' },
-                { icon: Zap, title: t('journey.step3'), desc: t('journey.step3desc'), color: 'amber' },
-                { icon: Users, title: t('journey.step4'), desc: t('journey.step4desc'), color: 'purple' },
-                { icon: Award, title: t('journey.step5'), desc: t('journey.step5desc'), color: 'blue' },
-              ].map((step, index) => {
-                const Icon = step.icon;
-                const colorClasses: Record<string, string> = {
-                  red: 'bg-brand-accent',
-                  orange: 'bg-orange-600',
-                  amber: 'bg-amber-600',
-                  purple: 'bg-purple-600',
-                  blue: 'bg-blue-600',
-                };
-                return (
-                  <div key={index} className="relative">
-                    <div className="bg-white rounded-2xl shadow-xl p-6 text-center border-4 border-white hover:border-slate-200 transition-all">
-                      <div className={`${colorClasses[step.color]} w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg`}>
-                        <Icon size={24} />
-                      </div>
-                      <div className="bg-brand-main text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
-                        Step {index + 1}
-                      </div>
-                      <h3 className="text-xl font-bold text-brand-main mb-2">{step.title}</h3>
-                      <p className="text-sm text-slate-600">{step.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <LearningTimeline />
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {[
