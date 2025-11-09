@@ -1,4 +1,4 @@
-import { Languages } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function LanguageToggle() {
@@ -7,11 +7,11 @@ export default function LanguageToggle() {
   return (
     <button
       onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-      className="flex items-center gap-2 text-white hover:text-brand-accent font-semibold transition-colors"
+      className="flex items-center gap-2 bg-brand-main hover:bg-slate-800 text-white px-3 py-2 rounded-full font-semibold transition-colors shadow-lg"
       aria-label="Toggle language"
     >
-      <Languages size={20} />
-      <span className="hidden sm:inline">{language === 'en' ? 'ES' : 'EN'}</span>
+      <Globe size={20} />
+      <span>{language === 'en' ? 'ES' : 'EN'}</span>
     </button>
   );
 }

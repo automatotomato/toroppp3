@@ -125,20 +125,21 @@ export default function LandingPage() {
           </div>
         </div>
       )}
-      <header className="bg-brand-main py-4 sticky top-0 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageToggle />
+      </div>
+
+      <header className="bg-brand-main py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
           <div className="flex items-center gap-4">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
             <span className="text-white text-xl font-bold">×</span>
             <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-8 sm:h-10" />
           </div>
-          <div className="flex items-center gap-4">
-            <LanguageToggle />
-          </div>
         </div>
       </header>
 
-      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-900 transition-all shadow-lg sticky top-16 z-40" onClick={() => setShowPromoModal(true)}>
+      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-900 transition-all shadow-lg z-40" onClick={() => setShowPromoModal(true)}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
           <Sparkles size={18} className="animate-pulse" />
           <span className="text-lg md:text-xl">
