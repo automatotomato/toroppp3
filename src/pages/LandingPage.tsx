@@ -177,7 +177,7 @@ export default function LandingPage() {
               <div className="mb-6 md:mb-8 flex justify-center lg:justify-start">
                 <VoiceAssistant />
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8 justify-center lg:justify-start">
                 <button
                   onClick={() => setShowPromoModal(true)}
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
