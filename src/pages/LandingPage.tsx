@@ -129,11 +129,11 @@ export default function LandingPage() {
         <LanguageToggle />
       </div>
 
-      <header className="bg-brand-main py-4">
+      <header className="bg-white py-4 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
           <div className="flex items-center gap-4">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
-            <span className="text-white text-xl font-bold">×</span>
+            <span className="text-slate-800 text-xl font-bold">×</span>
             <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-8 sm:h-10" />
           </div>
         </div>
