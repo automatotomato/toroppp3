@@ -50,17 +50,21 @@ export default function PaymentPage() {
         });
 
       // Create checkout session
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/stripe-checkout`, {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
-          price_id: selectedProduct.priceId,
+          priceId: selectedProduct.priceId,
           mode: selectedProduct.mode,
-          success_url: `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-          cancel_url: `${window.location.origin}/payment?plan=${plan}`
+          customerEmail: formData.email,
+          metadata: {
+            fullName: formData.fullName,
+            officeName: formData.officeName,
+            planType: plan
+          }
         }),
       });
 
