@@ -4,6 +4,7 @@ import { useAuth } from './hooks/useAuth'
 import Success from './pages/Success'
 import LandingPage from './pages/LandingPage'
 import AccountSetupPage from './pages/AccountSetupPage'
+import { Signup } from './pages/Signup'
 import DashboardPage from './pages/DashboardPage'
 import CoursesPage from './pages/CoursesPage'
 import PricingPage from './pages/PricingPage'
@@ -48,6 +49,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Navigate to="/account-setup" replace />} />
         <Route path="/register" element={<Navigate to="/account-setup" replace />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/account-setup" element={<AccountSetupPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
