@@ -37,7 +37,26 @@ export default function PaymentPage() {
 
     setLoading(true);
     try {
-      // Store payment intent in database
+      // Redirect to Stripe payment link immediately for promo plan
+      if (plan === 'promo') {
+        supabase
+          .from('payments')
+          .insert({
+            email: formData.email,
+            plan_type: plan,
+            full_name: formData.fullName,
+            office_name: formData.officeName,
+            amount_paid: Math.round(selectedProduct.price * 100),
+            payment_status: 'pending'
+          })
+          .then(() => console.log('Payment record created'))
+          .catch((err) => console.error('Failed to create payment record:', err));
+
+        window.location.href = 'https://buy.stripe.com/6oUfZj2o9eRD0ZMcQR9sk00';
+        return;
+      }
+
+      // For other plans, try to store payment intent then redirect
       await supabase
         .from('payments')
         .insert({
@@ -49,13 +68,6 @@ export default function PaymentPage() {
           payment_status: 'pending'
         });
 
-      // Redirect to Stripe payment link for promo plan
-      if (plan === 'promo') {
-        window.location.href = 'https://buy.stripe.com/6oUfZj2o9eRD0ZMcQR9sk00';
-        return;
-      }
-
-      // For other plans, redirect to success (payment handled separately)
       navigate('/payment-success');
     } catch (error) {
       console.error('Payment error:', error);
