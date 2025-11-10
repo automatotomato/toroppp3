@@ -162,26 +162,29 @@ export default function LandingPage() {
           }} />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="mb-4 md:mb-6 flex justify-center lg:justify-start items-center gap-6 md:gap-8 flex-wrap">
-                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-48 sm:h-56 md:h-64 lg:h-72" />
-                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">×</span>
-                <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-16 sm:h-20 md:h-24" />
-              </div>
-              <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
+          <div className="text-center">
+            <div className="mb-8 md:mb-12 flex flex-col items-center justify-center gap-4 md:gap-6">
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-56 sm:h-64 md:h-80 lg:h-96" />
+              <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">×</span>
+              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-12 sm:h-16 md:h-20" />
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-2xl sm:text-3xl md:text-4xl mb-6 md:mb-8 text-slate-200 font-bold">
                 {t('hero.title')}
               </p>
-              <p className="text-base md:text-lg text-slate-400 mb-6 md:mb-8 leading-relaxed">
+              <p className="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto">
                 {t('hero.description')}
               </p>
-              <div className="mb-6 md:mb-8 flex justify-center lg:justify-start">
+
+              <div className="mb-8 md:mb-10 flex justify-center">
                 <VoiceAssistant />
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8 justify-center lg:justify-start">
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-10 justify-center">
                 <button
                   onClick={() => setShowPromoModal(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Zap size={24} />
                   {t('hero.cta1')}
@@ -189,13 +192,14 @@ export default function LandingPage() {
                 </button>
                 <Link
                   to="/login"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold border-2 border-white/30 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white/30 transition-all"
                 >
                   Log In
                   <Play size={20} />
                 </Link>
               </div>
-              <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm flex-wrap">
+
+              <div className="flex items-center justify-center gap-6 md:gap-8 text-sm md:text-base flex-wrap">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="text-green-400" size={20} />
                   <span>12 Courses</span>
@@ -210,27 +214,29 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="grid grid-cols-2 gap-3 md:gap-4">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <DollarSign className="text-green-400 mb-2" size={28} />
-                <div className="text-4xl font-bold mb-2">250%</div>
-                <div className="text-slate-300 text-sm">Average Revenue Increase</div>
+          <div className="mt-16 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 gap-6 md:gap-8">
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
+                <DollarSign className="text-green-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl md:text-5xl font-bold mb-2">250%</div>
+                <div className="text-slate-300 text-sm md:text-base">Average Revenue Increase</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <TrendingUp className="text-blue-400 mb-2" size={28} />
-                <div className="text-4xl font-bold mb-2">85%</div>
-                <div className="text-slate-300 text-sm">Client Retention Rate</div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
+                <TrendingUp className="text-blue-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl md:text-5xl font-bold mb-2">85%</div>
+                <div className="text-slate-300 text-sm md:text-base">Client Retention Rate</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <Users className="text-purple-400 mb-2" size={28} />
-                <div className="text-4xl font-bold mb-2">100s</div>
-                <div className="text-slate-300 text-sm">of Successful Owners</div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
+                <Users className="text-cyan-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl md:text-5xl font-bold mb-2">100s</div>
+                <div className="text-slate-300 text-sm md:text-base">of Successful Owners</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                <Award className="text-amber-400 mb-2" size={28} />
-                <div className="text-4xl font-bold mb-2">4.9/5</div>
-                <div className="text-slate-300 text-sm">Satisfaction Rating</div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
+                <Award className="text-amber-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl md:text-5xl font-bold mb-2">4.9/5</div>
+                <div className="text-slate-300 text-sm md:text-base">Satisfaction Rating</div>
               </div>
             </div>
           </div>
