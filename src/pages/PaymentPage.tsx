@@ -60,6 +60,16 @@ export default function PaymentPage() {
           <div className="inline-flex items-center mb-6">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16" />
           </div>
+          {planType === 'promo' && (
+            <div className="mb-6 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-2xl">
+              <div className="text-sm font-semibold uppercase tracking-wide mb-1">Limited Time Offer</div>
+              <div className="text-3xl sm:text-4xl font-bold mb-2">
+                <span className="line-through opacity-75 text-2xl">$3,000</span>
+                {' '}<span className="text-5xl">$299</span>
+              </div>
+              <div className="text-lg font-semibold">Save $2,701 on Registration!</div>
+            </div>
+          )}
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
           <p className="text-slate-400">One step away from transforming your business</p>
         </div>
@@ -109,6 +119,9 @@ export default function PaymentPage() {
               <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl p-6 mb-6 text-white text-center">
                 <Sparkles className="mx-auto mb-2" size={32} />
                 <div className="font-bold text-lg sm:text-xl mb-2">🔥 Promotional Offer</div>
+                <div className="text-sm opacity-90 mb-2">
+                  <span className="font-bold text-base">Registration: $3,000 → $299</span>
+                </div>
                 <div className="text-sm opacity-90">Save $370/month • Includes $9,995 Business Analysis</div>
               </div>
             )}
