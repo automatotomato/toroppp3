@@ -133,9 +133,9 @@ export default function LandingPage() {
 
       <header className="bg-brand-main py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
-          <div className="flex items-center gap-4">
-            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-8 sm:h-10" />
-            <span className="text-white text-xl font-bold">×</span>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-24 sm:h-32" />
+            <span className="text-white text-2xl sm:text-3xl font-bold">×</span>
             <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-8 sm:h-10" />
           </div>
         </div>
@@ -164,10 +164,10 @@ export default function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="mb-4 md:mb-6 flex justify-center items-center gap-4 flex-wrap">
-                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-36 sm:h-42 md:h-54" />
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">×</span>
-                <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-24 sm:h-30 md:h-36" />
+              <div className="mb-4 md:mb-6 flex justify-center lg:justify-start items-center gap-6 md:gap-8 flex-wrap">
+                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-48 sm:h-56 md:h-64 lg:h-72" />
+                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">×</span>
+                <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-16 sm:h-20 md:h-24" />
               </div>
               <p className="text-xl sm:text-2xl md:text-3xl mb-4 md:mb-6 text-slate-300 font-semibold">
                 {t('hero.title')}
