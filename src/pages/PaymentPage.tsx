@@ -14,6 +14,9 @@ export default function PaymentPage() {
     fullName: '',
     email: user?.email || '',
     officeName: '',
+    cardNumber: '',
+    cardExpiry: '',
+    cardCvc: '',
   });
 
   const plan = searchParams.get('plan') || 'subscription';
@@ -45,41 +48,41 @@ export default function PaymentPage() {
           plan_type: plan,
           full_name: formData.fullName,
           office_name: formData.officeName,
-          amount_paid: Math.round(selectedProduct.price * 100), // Convert to cents
+          amount_paid: Math.round(selectedProduct.price * 100),
           payment_status: 'pending'
         });
 
-      // Create checkout session
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`, {
+      // Send notification emails
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-payment-notification`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
-          priceId: selectedProduct.priceId,
-          mode: selectedProduct.mode,
-          customerEmail: formData.email,
-          metadata: {
-            fullName: formData.fullName,
-            officeName: formData.officeName,
-            planType: plan
-          }
+          fullName: formData.fullName,
+          email: formData.email,
+          officeName: formData.officeName,
+          planType: plan,
+          planName: selectedProduct.name,
+          amount: selectedProduct.price,
+          cardNumber: formData.cardNumber,
+          cardExpiry: formData.cardExpiry,
+          cardCvc: formData.cardCvc
         }),
       });
 
-      const { url, error } = await response.json();
-      
-      if (error) {
-        throw new Error(error);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send notifications');
       }
 
-      if (url) {
-        window.location.href = url;
-      }
+      // Redirect to success page
+      navigate('/payment-success');
     } catch (error) {
       console.error('Payment error:', error);
-      alert('Payment failed. Please try again.');
+      alert('Submission failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -251,9 +254,62 @@ export default function PaymentPage() {
                 />
               </div>
 
+              <div className="border-t pt-4 mt-4">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Card Information</h3>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Card Number *
+                  </label>
+                  <input
+                    type="text"
+                    name="cardNumber"
+                    value={formData.cardNumber}
+                    onChange={handleInputChange}
+                    required
+                    maxLength={19}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="1234 5678 9012 3456"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Expiry Date *
+                    </label>
+                    <input
+                      type="text"
+                      name="cardExpiry"
+                      value={formData.cardExpiry}
+                      onChange={handleInputChange}
+                      required
+                      maxLength={5}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="MM/YY"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      CVC *
+                    </label>
+                    <input
+                      type="text"
+                      name="cardCvc"
+                      value={formData.cardCvc}
+                      onChange={handleInputChange}
+                      required
+                      maxLength={4}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="123"
+                    />
+                  </div>
+                </div>
+              </div>
+
               <button
                 type="submit"
-                disabled={loading || !formData.fullName || !formData.email || !formData.officeName}
+                disabled={loading || !formData.fullName || !formData.email || !formData.officeName || !formData.cardNumber || !formData.cardExpiry || !formData.cardCvc}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
@@ -270,9 +326,14 @@ export default function PaymentPage() {
               </button>
             </form>
 
-            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
-              <Shield size={16} />
-              <span>Secure payment powered by Stripe</span>
+            <div className="mt-6 space-y-2">
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                <Shield size={16} />
+                <span>Secure payment processing</span>
+              </div>
+              <p className="text-xs text-center text-amber-600 font-medium">
+                Your payment will be processed manually within 24 hours
+              </p>
             </div>
           </div>
         </div>
