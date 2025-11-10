@@ -78,11 +78,11 @@ export default function PaymentPage() {
     <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center mb-6">
+          <div className="inline-flex items-center mb-8">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-48" />
           </div>
           {planType === 'promo' && (
-            <div className="mb-6 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-2xl">
+            <div className="mb-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-2xl">
               <div className="text-sm font-semibold uppercase tracking-wide mb-1">Limited Time Offer</div>
               <div className="text-3xl sm:text-4xl font-bold mb-2">
                 <span className="line-through opacity-75 text-2xl">$3,000</span>
