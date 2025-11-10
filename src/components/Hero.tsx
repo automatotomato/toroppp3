@@ -24,7 +24,7 @@ export default function Hero() {
           </div>
           <div className="text-5xl font-bold text-white">×</div>
           <div className="bg-white/95 backdrop-blur-sm px-8 py-6 rounded-lg shadow-xl">
-            <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-32 w-auto" />
+            <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-40 w-auto" />
           </div>
         </div>
 
