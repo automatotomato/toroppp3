@@ -127,9 +127,6 @@ export default function LandingPage() {
           </div>
         </div>
       )}
-      <div className="fixed top-4 right-4 z-50">
-        <LanguageToggle />
-      </div>
 
       <header className="bg-brand-main py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -1125,6 +1122,9 @@ export default function LandingPage() {
                 </a>
               </div>
               <p className="text-slate-400 text-sm">&copy; 2025 Peak Performance Partners | {t('footer.rights')}</p>
+            </div>
+            <div className="fixed bottom-4 right-4 z-50">
+              <LanguageToggle />
             </div>
           </div>
         </div>
