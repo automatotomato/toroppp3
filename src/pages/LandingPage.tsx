@@ -115,11 +115,11 @@ export default function LandingPage() {
                 </div>
                 <Link
                   to="/payment?plan=promo"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
-                  <Zap size={24} />
-                  {t('modal.cta')}
-                  <ArrowRight size={24} />
+                  <Zap className="flex-shrink-0" size={20} />
+                  <span className="text-center">{t('modal.cta')}</span>
+                  <ArrowRight className="flex-shrink-0" size={20} />
                 </Link>
               </div>
             </div>
@@ -141,12 +141,12 @@ export default function LandingPage() {
       </header>
 
       <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-900 transition-all shadow-lg z-40" onClick={() => setShowPromoModal(true)}>
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
-          <Sparkles size={18} className="animate-pulse" />
-          <span className="text-lg md:text-xl">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+          <Sparkles size={16} className="animate-pulse flex-shrink-0" />
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">
             {t('banner.exclusive')}
           </span>
-          <button className="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg">
+          <button className="bg-white text-orange-600 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-bold hover:bg-slate-100 transition-all shadow-lg">
             View Offer
           </button>
         </div>
@@ -335,18 +335,18 @@ export default function LandingPage() {
               <div className="flex flex-col items-center gap-6">
                 <VoiceAssistant />
 
-                <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-4xl">
+                <div className="flex flex-col items-center gap-4 w-full">
                   <button
                     onClick={() => setShowPromoModal(true)}
-                    className="flex-1 inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105 whitespace-nowrap"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-4 sm:py-5 rounded-full text-base sm:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                   >
-                    <Zap size={28} />
-                    View Full Details & Sign Up
-                    <ArrowRight size={28} />
+                    <Zap className="flex-shrink-0" size={24} />
+                    <span className="text-center">View Full Details & Sign Up</span>
+                    <ArrowRight className="flex-shrink-0" size={24} />
                   </button>
 
-                  <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 whitespace-nowrap">
-                    <p className="text-green-900 font-bold text-center">$16,000+ Total Value | Includes LIFETIME ACCESS</p>
+                  <div className="bg-green-50 border-2 border-green-500 rounded-xl p-3 sm:p-4 w-full sm:w-auto">
+                    <p className="text-green-900 font-bold text-center text-sm sm:text-base">$16,000+ Total Value | Includes LIFETIME ACCESS</p>
                   </div>
                 </div>
               </div>
@@ -777,10 +777,10 @@ export default function LandingPage() {
             </div>
             <Link
               to="/payment"
-              className="inline-flex items-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105 w-full sm:w-auto max-w-md"
             >
               {t('cta.final')}
-              <ArrowRight size={28} />
+              <ArrowRight className="flex-shrink-0" size={24} />
             </Link>
           </div>
         </div>
@@ -927,10 +927,10 @@ export default function LandingPage() {
           <div className="text-center">
             <Link
               to="/payment"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-accent to-red-900 hover:from-red-900 hover:to-brand-accent text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-brand-accent to-red-900 hover:from-red-900 hover:to-brand-accent text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105 w-full sm:w-auto max-w-md"
             >
-              Start Your Transformation Today
-              <ArrowRight size={24} />
+              <span className="text-center">Start Your Transformation Today</span>
+              <ArrowRight className="flex-shrink-0" size={24} />
             </Link>
           </div>
         </div>

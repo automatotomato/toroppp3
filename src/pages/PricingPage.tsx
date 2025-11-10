@@ -11,16 +11,16 @@ export default function PricingPage() {
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
             
           </Link>
-          <div className="flex gap-4">
+          <div className="flex gap-2 sm:gap-4">
             <Link
               to="/login"
-              className="text-white hover:text-brand-accent font-semibold transition-colors"
+              className="text-white hover:text-brand-accent font-semibold transition-colors text-sm sm:text-base"
             >
               Login
             </Link>
             <Link
               to="/payment?plan=promo"
-              className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors shadow-lg"
+              className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-3 sm:px-6 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base font-semibold transition-colors shadow-lg"
             >
               Claim Offer
             </Link>
@@ -31,15 +31,15 @@ export default function PricingPage() {
       <section className="py-16 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-amber-500 text-white px-6 py-3 rounded-full font-bold text-lg mb-6 animate-pulse shadow-xl">
-              <Zap size={24} />
-              TOROCON EXCLUSIVE OFFER
-              <Zap size={24} />
+            <div className="inline-flex items-center gap-2 bg-amber-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base md:text-lg mb-6 animate-pulse shadow-xl">
+              <Zap className="flex-shrink-0" size={20} />
+              <span className="whitespace-nowrap">TOROCON EXCLUSIVE OFFER</span>
+              <Zap className="flex-shrink-0" size={20} />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
               Get Elite Access at Essentials Pricing
             </h1>
-            <p className="text-2xl text-slate-300 max-w-4xl mx-auto mb-8">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 max-w-4xl mx-auto mb-8">
               Pay only $129/month + $299 registration and get the full $499/month Elite Package
             </p>
             <div className="flex justify-center">
@@ -80,11 +80,11 @@ export default function PricingPage() {
                     </div>
                     <Link
                       to="/payment?plan=promo"
-                      className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3"
+                      className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105 inline-flex items-center justify-center gap-2 sm:gap-3"
                     >
-                      <Zap size={28} />
-                      Claim This Offer Now
-                      <ArrowRight size={28} />
+                      <Zap className="flex-shrink-0" size={24} />
+                      <span>Claim This Offer Now</span>
+                      <ArrowRight className="flex-shrink-0" size={24} />
                     </Link>
                   </div>
 

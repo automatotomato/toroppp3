@@ -60,13 +60,13 @@ export default function PaymentPage() {
           <div className="inline-flex items-center mb-6">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
           <p className="text-slate-400">One step away from transforming your business</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-slate-800 rounded-2xl p-8 text-white">
-            <h2 className="text-2xl font-bold mb-6">What's Included</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-6">What's Included</h2>
             <div className="space-y-4">
               {[
                 'Access to all 12 workshop courses',
@@ -101,14 +101,14 @@ export default function PaymentPage() {
 
           <div className="bg-white rounded-2xl shadow-2xl p-8">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-brand-main mb-2">Payment Details</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-main mb-2">Payment Details</h2>
               <p className="text-slate-600">Office: {profile?.office_name}</p>
             </div>
 
             {planType === 'promo' && (
               <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl p-6 mb-6 text-white text-center">
                 <Sparkles className="mx-auto mb-2" size={32} />
-                <div className="font-bold text-xl mb-2">🔥 Promotional Offer</div>
+                <div className="font-bold text-lg sm:text-xl mb-2">🔥 Promotional Offer</div>
                 <div className="text-sm opacity-90">Save $370/month • Includes $9,995 Business Analysis</div>
               </div>
             )}
