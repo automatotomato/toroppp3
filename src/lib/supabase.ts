@@ -59,6 +59,7 @@ export type Database = {
           paid_at: string | null
           created_at: string
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           id?: string
@@ -71,6 +72,7 @@ export type Database = {
           paid_at?: string | null
           created_at?: string
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           id?: string
@@ -83,6 +85,7 @@ export type Database = {
           paid_at?: string | null
           created_at?: string
           updated_at?: string
+          user_id?: string | null
         }
       }
       stripe_user_subscriptions: {
