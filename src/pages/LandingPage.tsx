@@ -166,8 +166,24 @@ export default function LandingPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-8 md:mb-12 flex flex-col items-center justify-center gap-4 md:gap-6">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-56 sm:h-64 md:h-80 lg:h-96" />
+            <div className="mb-6 md:mb-8 flex flex-col items-center justify-center gap-4 md:gap-6">
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-48 sm:h-56 md:h-64 lg:h-72" />
+
+              <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent rounded-2xl p-6 shadow-2xl border-2 border-amber-400 animate-pulse">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <Sparkles size={24} className="text-white" />
+                  <span className="text-xl md:text-2xl font-bold text-white">Limited Time Offer</span>
+                  <Sparkles size={24} className="text-white" />
+                </div>
+                <div className="flex items-center justify-center gap-4">
+                  <span className="text-4xl md:text-5xl font-bold text-white line-through opacity-70">$3,000</span>
+                  <span className="text-5xl md:text-6xl font-bold text-white">$299</span>
+                </div>
+                <div className="mt-2 text-lg md:text-xl font-semibold text-amber-100">
+                  Save $2,701 on Registration!
+                </div>
+              </div>
+
               <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">×</span>
               <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-12 sm:h-16 md:h-20" />
             </div>
