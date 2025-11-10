@@ -35,3 +35,7 @@ export const formatPrice = (price: number, currency: string = 'usd'): string => 
     currency: currency.toUpperCase(),
   }).format(price);
 };
+
+export const getProductByPriceId = (priceId: string): StripeProduct | undefined => {
+  return Object.values(STRIPE_PRODUCTS).find(product => product.priceId === priceId);
+};
