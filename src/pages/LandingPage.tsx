@@ -332,20 +332,22 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="text-center">
-                <div className="mb-6 flex justify-center">
-                  <VoiceAssistant />
-                </div>
-                <button
-                  onClick={() => setShowPromoModal(true)}
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-12 py-5 rounded-full text-2xl font-bold shadow-2xl transition-all transform hover:scale-105"
-                >
-                  <Zap size={32} />
-                  View Full Details & Sign Up
-                  <ArrowRight size={32} />
-                </button>
-                <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 mt-4 inline-block">
-                  <p className="text-green-900 font-bold">$16,000+ Total Value | Includes LIFETIME ACCESS</p>
+              <div className="flex flex-col items-center gap-6">
+                <VoiceAssistant />
+
+                <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-4xl">
+                  <button
+                    onClick={() => setShowPromoModal(true)}
+                    className="flex-1 inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105 whitespace-nowrap"
+                  >
+                    <Zap size={28} />
+                    View Full Details & Sign Up
+                    <ArrowRight size={28} />
+                  </button>
+
+                  <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 whitespace-nowrap">
+                    <p className="text-green-900 font-bold text-center">$16,000+ Total Value | Includes LIFETIME ACCESS</p>
+                  </div>
                 </div>
               </div>
             </div>
