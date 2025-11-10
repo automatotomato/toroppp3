@@ -113,6 +113,16 @@ async function handleEvent(event: Stripe.Event) {
         console.info(`Successfully processed one-time payment for session: ${checkout_session_id}`);
 
         if (customer_details?.email) {
+          await supabase
+            .from('payments')
+            .update({
+              payment_status: 'completed',
+              paid_at: new Date().toISOString()
+            })
+            .eq('email', customer_details.email)
+            .order('created_at', { ascending: false })
+            .limit(1);
+
           await sendWelcomeEmail(customer_details.email, customer_details.name || undefined);
         }
 

@@ -53,10 +53,11 @@ export default function PaymentPage() {
 
       if (authError) throw authError;
 
-      // Store payment intent in database
+      // Store payment intent in database with user ID
       await supabase
         .from('payments')
         .insert({
+          user_id: authData.user?.id,
           email: formData.email,
           plan_type: plan,
           full_name: formData.fullName,
@@ -64,6 +65,12 @@ export default function PaymentPage() {
           amount_paid: Math.round(selectedProduct.price * 100),
           payment_status: 'pending'
         });
+
+      // Store credentials temporarily for post-payment login
+      sessionStorage.setItem('pendingLogin', JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+      }));
 
       // Redirect to Stripe payment link for promo plan
       if (plan === 'promo') {
