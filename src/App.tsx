@@ -53,62 +53,13 @@ function App() {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/success" element={<Success />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard/courses"
-          element={
-            <ProtectedRoute>
-              <DashboardCoursesPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard/town-halls"
-          element={
-            <ProtectedRoute>
-              <DashboardTownHallsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard/podcasts"
-          element={
-            <ProtectedRoute>
-              <DashboardPodcastsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard/tips"
-          element={
-            <ProtectedRoute>
-              <DashboardTipsPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard/resources"
-          element={
-            <ProtectedRoute>
-              <DashboardResourcesPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/dashboard/faq"
-          element={
-            <ProtectedRoute>
-              <DashboardFAQPage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard/courses" element={<DashboardCoursesPage />} />
+        <Route path="/dashboard/town-halls" element={<DashboardTownHallsPage />} />
+        <Route path="/dashboard/podcasts" element={<DashboardPodcastsPage />} />
+        <Route path="/dashboard/tips" element={<DashboardTipsPage />} />
+        <Route path="/dashboard/resources" element={<DashboardResourcesPage />} />
+        <Route path="/dashboard/faq" element={<DashboardFAQPage />} />
       </Routes>
     </Router>
   )
