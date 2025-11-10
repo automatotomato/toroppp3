@@ -47,6 +47,44 @@ export type Database = {
           updated_at?: string
         }
       }
+      payments: {
+        Row: {
+          id: string
+          email: string
+          plan_type: string
+          full_name: string
+          office_name: string
+          amount_paid: number
+          payment_status: string
+          paid_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          plan_type: string
+          full_name: string
+          office_name: string
+          amount_paid: number
+          payment_status?: string
+          paid_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          plan_type?: string
+          full_name?: string
+          office_name?: string
+          amount_paid?: number
+          payment_status?: string
+          paid_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
       stripe_user_subscriptions: {
         Row: {
           customer_id: string
