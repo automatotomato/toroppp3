@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
-import { Lock, UserPlus, LogIn, CheckCircle2 } from 'lucide-react';
+import { Lock, UserPlus, LogIn, CheckCircle2, Eye, EyeOff, AlertCircle, Check, X } from 'lucide-react';
 
 export default function AccountSetupPage() {
   const [isSignUp, setIsSignUp] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState<any>(null);
@@ -15,6 +16,16 @@ export default function AccountSetupPage() {
   const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
+  const passwordRequirements = [
+    { label: 'At least 8 characters', test: (pwd: string) => pwd.length >= 8 },
+    { label: 'Contains uppercase letter', test: (pwd: string) => /[A-Z]/.test(pwd) },
+    { label: 'Contains lowercase letter', test: (pwd: string) => /[a-z]/.test(pwd) },
+    { label: 'Contains number', test: (pwd: string) => /[0-9]/.test(pwd) },
+    { label: 'Contains special character (!@#$%^&*)', test: (pwd: string) => /[!@#$%^&*(),.?":{}|<>]/.test(pwd) },
+  ];
+
+  const isPasswordValid = passwordRequirements.every(req => req.test(password));
 
   useEffect(() => {
     const emailParam = searchParams.get('email');
@@ -55,6 +66,11 @@ export default function AccountSetupPage() {
 
     if (!paymentInfo && isSignUp) {
       setError('Payment verification required. Please complete payment first.');
+      return;
+    }
+
+    if (isSignUp && !isPasswordValid) {
+      setError('Please meet all password requirements.');
       return;
     }
 
@@ -164,18 +180,47 @@ export default function AccountSetupPage() {
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   id="password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                  className="w-full pl-10 pr-12 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   placeholder="••••••••"
-                  minLength={6}
+                  minLength={isSignUp ? 8 : 6}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
               </div>
-              {isSignUp && (
-                <p className="text-xs text-slate-500 mt-1">Minimum 6 characters</p>
+              {isSignUp && password.length > 0 && (
+                <div className="mt-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <AlertCircle size={16} className="text-slate-600" />
+                    <span className="text-xs font-semibold text-slate-700">Password Requirements:</span>
+                  </div>
+                  <div className="space-y-1.5">
+                    {passwordRequirements.map((req, index) => {
+                      const isValid = req.test(password);
+                      return (
+                        <div key={index} className="flex items-center gap-2">
+                          {isValid ? (
+                            <Check size={14} className="text-green-600 flex-shrink-0" />
+                          ) : (
+                            <X size={14} className="text-slate-400 flex-shrink-0" />
+                          )}
+                          <span className={`text-xs ${isValid ? 'text-green-700' : 'text-slate-600'}`}>
+                            {req.label}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               )}
             </div>
 
