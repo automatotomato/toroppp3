@@ -79,7 +79,7 @@ export default function PaymentPage() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-flex items-center mb-6">
-            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16" />
+            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-48" />
           </div>
           {planType === 'promo' && (
             <div className="mb-6 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-2xl">
