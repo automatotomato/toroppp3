@@ -31,7 +31,7 @@ export default function Footer() {
               <img
                 src="/automate planet12345.png"
                 alt="Automate Planet"
-                className="h-24 inline-block"
+                className="h-8 inline-block"
               />
             </a>
           </div>
