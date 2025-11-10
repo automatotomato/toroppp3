@@ -132,12 +132,18 @@ export default function LandingPage() {
       </div>
 
       <header className="bg-brand-main py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-3 sm:gap-4">
             <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-12 sm:h-16" />
             <span className="text-white text-xl sm:text-2xl font-bold">×</span>
             <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-4 sm:h-5" />
           </div>
+          <Link
+            to="/dashboard"
+            className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold shadow-lg transition-all duration-300 transform hover:scale-105"
+          >
+            Dashboard
+          </Link>
         </div>
       </header>
 
