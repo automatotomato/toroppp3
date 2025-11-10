@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { Award, CreditCard, CheckCircle2, AlertCircle, Sparkles, Mail, User, Building2 } from 'lucide-react';
+import { Award, CreditCard, CheckCircle2, AlertCircle, Sparkles, Mail, User, Building2, Lock, Eye, EyeOff } from 'lucide-react';
 
 const plans = {
   promo: { name: 'Elite Package - Promotional Pricing', price: 299, recurring: 129, billing: '$299 today + $129/month' },
@@ -14,6 +14,8 @@ export default function PaymentPage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [fullName, setFullName] = useState('');
   const [officeName, setOfficeName] = useState('');
   const [searchParams] = useSearchParams();
@@ -236,6 +238,33 @@ export default function PaymentPage() {
                     placeholder="Toro Tax - Las Vegas"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-semibold text-slate-700 mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    id="password"
+                    required
+                    minLength={6}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full pl-10 pr-12 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
+                    placeholder="Create a password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+                <p className="text-xs text-slate-500 mt-1">Minimum 6 characters</p>
               </div>
 
               <div className="border-t border-slate-200 pt-6">
