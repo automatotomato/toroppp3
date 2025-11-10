@@ -51,10 +51,14 @@ export default function PaymentPage() {
         },
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        console.error('Auth error:', authError);
+        alert(`Account creation failed: ${authError.message}`);
+        return;
+      }
 
       // Store payment intent in database with user ID
-      await supabase
+      const { error: paymentError } = await supabase
         .from('payments')
         .insert({
           user_id: authData.user?.id,
@@ -65,6 +69,12 @@ export default function PaymentPage() {
           amount_paid: Math.round(selectedProduct.price * 100),
           payment_status: 'pending'
         });
+
+      if (paymentError) {
+        console.error('Payment insert error:', paymentError);
+        alert(`Payment record failed: ${paymentError.message}`);
+        return;
+      }
 
       // Store credentials temporarily for post-payment login
       sessionStorage.setItem('pendingLogin', JSON.stringify({
@@ -80,9 +90,9 @@ export default function PaymentPage() {
 
       // For other plans, redirect to success (payment handled separately)
       navigate('/payment-success');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Payment error:', error);
-      alert('Submission failed. Please try again.');
+      alert(`Submission failed: ${error.message || 'Please try again.'}`);
     } finally {
       setLoading(false);
     }
