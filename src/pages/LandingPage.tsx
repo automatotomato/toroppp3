@@ -133,7 +133,9 @@ export default function LandingPage() {
           <div className="grid grid-cols-3 items-center">
             <div></div>
             <div className="flex justify-center">
-              <h1 className="text-white text-xl sm:text-2xl font-bold">Advancement Academy</h1>
+              <h1 className="text-white text-xl sm:text-2xl font-bold text-center leading-tight">
+                Advancement<br />Academy
+              </h1>
             </div>
             <div className="flex justify-end">
               <Link
