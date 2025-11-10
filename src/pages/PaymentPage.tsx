@@ -125,6 +125,48 @@ export default function PaymentPage() {
       </header>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
+        {/* Promotional Deadline Banner */}
+        {isPromoOffer && (
+          <div className="mb-8 relative overflow-hidden">
+            <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-900 rounded-2xl p-8 text-center shadow-2xl border-4 border-red-400">
+              <div className="absolute top-0 left-0 w-full h-full opacity-10">
+                <div className="absolute top-4 left-4 w-32 h-32 bg-white rounded-full animate-pulse"></div>
+                <div className="absolute bottom-4 right-4 w-40 h-40 bg-white rounded-full animate-pulse"></div>
+              </div>
+              <div className="relative z-10">
+                <div className="inline-block bg-yellow-400 text-red-900 px-6 py-2 rounded-full font-black text-sm mb-4 animate-bounce">
+                  EXCLUSIVE TOROCON OFFER
+                </div>
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
+                  SAVE $3,000!
+                </h2>
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="text-center">
+                    <div className="text-white/80 text-sm mb-1">Regular Price</div>
+                    <div className="text-2xl font-bold text-white line-through">$3,000</div>
+                  </div>
+                  <div className="text-6xl text-yellow-400">→</div>
+                  <div className="text-center">
+                    <div className="text-yellow-400 text-sm mb-1 font-bold">ToroCon Price</div>
+                    <div className="text-5xl font-black text-white">$299</div>
+                  </div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-6 border-2 border-white/20">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Clock className="text-yellow-400" size={24} />
+                    <span className="text-white font-bold text-xl">Offer Expires:</span>
+                  </div>
+                  <div className="text-yellow-400 font-black text-3xl tracking-wider">
+                    November 13, 2025
+                  </div>
+                  <p className="text-white/90 text-sm mt-3 font-medium">
+                    Don't miss out! This incredible discount is only available for ToroCon attendees.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Order Summary */}
           <div className="bg-white rounded-xl shadow-lg p-6">
@@ -153,16 +195,16 @@ export default function PaymentPage() {
               </div>
               
               {isPromoOffer && (
-                <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-orange-400 rounded-lg p-4">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-400 rounded-lg p-4 shadow-md">
                   <div className="flex items-center gap-2 mb-2">
-                    <Clock className="text-orange-600 animate-pulse" size={20} />
-                    <span className="font-bold text-orange-900">Limited Time Offer!</span>
+                    <CheckCircle2 className="text-green-600" size={20} />
+                    <span className="font-bold text-green-900">You're Saving $2,701 Today!</span>
                   </div>
-                  <p className="text-sm text-orange-800 mb-2">
-                    Save $370/month! Regular Elite price $499/month, now just $129/month
+                  <p className="text-sm text-green-800 mb-1">
+                    Registration: $299 (Regular $3,000)
                   </p>
-                  <p className="text-xs text-orange-700 font-semibold">
-                    This exclusive promotional pricing won't last forever. Lock in your rate today!
+                  <p className="text-sm text-green-800">
+                    Monthly: $129 (Regular $499/month)
                   </p>
                 </div>
               )}

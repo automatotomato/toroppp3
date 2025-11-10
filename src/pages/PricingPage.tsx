@@ -39,9 +39,14 @@ export default function PricingPage() {
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
               Get Elite Access at Essentials Pricing
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 max-w-4xl mx-auto mb-8">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 max-w-4xl mx-auto mb-4">
               Pay only $129/month + $299 registration and get the full $499/month Elite Package
             </p>
+            <div className="inline-flex items-center gap-2 bg-red-600 border-2 border-yellow-400 px-6 py-3 rounded-full text-white font-black text-lg mb-8 shadow-2xl">
+              <span className="text-yellow-400">⚠️</span>
+              <span>Expires November 13, 2025 - Save $3,000!</span>
+              <span className="text-yellow-400">⚠️</span>
+            </div>
             <div className="flex justify-center">
               <VoiceAssistant />
             </div>
@@ -69,12 +74,18 @@ export default function PricingPage() {
                         <span className="text-3xl font-bold text-white">$299</span>
                         <span className="text-slate-300">registration fee</span>
                       </div>
-                      <div className="bg-red-500/20 border-2 border-red-500 rounded-xl p-4">
+                      <div className="bg-red-600 border-2 border-yellow-400 rounded-xl p-4">
+                        <div className="text-center mb-3">
+                          <p className="text-yellow-300 text-sm font-bold mb-1">OFFER EXPIRES: NOV 13, 2025</p>
+                        </div>
                         <p className="text-red-200 text-lg font-bold">
-                          Regular Price: <span className="line-through">$499/month</span>
+                          Regular Registration: <span className="line-through">$3,000</span>
                         </p>
-                        <p className="text-green-400 text-2xl font-bold mt-2">
-                          YOU SAVE $370/MONTH!
+                        <p className="text-green-400 text-3xl font-black mt-1">
+                          SAVE $3,000 TODAY!
+                        </p>
+                        <p className="text-white text-base font-semibold mt-3 border-t border-white/20 pt-3">
+                          Plus save $370 every month!
                         </p>
                       </div>
                     </div>

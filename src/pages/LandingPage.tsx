@@ -67,19 +67,51 @@ export default function LandingPage() {
                 </p>
               </div>
 
+              <div className="bg-red-600 border-4 border-yellow-400 rounded-2xl p-6 mb-6 shadow-2xl">
+                <div className="text-center mb-4">
+                  <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-2 rounded-full mb-3">
+                    <Clock className="text-red-900 animate-pulse" size={24} />
+                    <span className="font-black text-red-900 text-lg">OFFER EXPIRES: NOV 13, 2025</span>
+                  </div>
+                  <h3 className="text-5xl font-black text-white mb-2 drop-shadow-lg">SAVE $3,000!</h3>
+                  <p className="text-2xl text-yellow-300 font-bold">Exclusive ToroCon Special</p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                  <div className="bg-white/90 rounded-xl p-6 text-center shadow-xl">
+                    <div className="text-gray-600 mb-2 font-semibold">Regular Registration Fee</div>
+                    <div className="text-4xl font-black text-red-600 line-through mb-2">$3,000</div>
+                    <div className="text-sm text-gray-500">Standard pricing</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl p-6 text-center shadow-xl border-4 border-white transform scale-105">
+                    <div className="text-white mb-2 font-bold">ToroCon Special Price</div>
+                    <div className="text-6xl font-black text-white mb-2">$299</div>
+                    <div className="text-sm text-white font-bold bg-white/20 rounded-full px-3 py-1 inline-block">+ $129/month</div>
+                  </div>
+                </div>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-3">
+                <div className="bg-amber-500/20 border-2 border-amber-400 rounded-xl p-4 text-center">
+                  <p className="text-2xl text-yellow-300 font-black mb-1">$2,701 SAVED</p>
+                  <p className="text-white text-sm">On registration fee alone!</p>
+                </div>
+                <div className="bg-amber-500/20 border-2 border-amber-400 rounded-xl p-4 text-center">
+                  <p className="text-2xl text-yellow-300 font-black mb-1">$370/MONTH</p>
+                  <p className="text-white text-sm">Ongoing monthly savings!</p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="space-y-3 order-2 md:order-1">
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
                     <div className="text-slate-400 mb-1 text-sm">Regular Elite Price</div>
                     <div className="text-3xl font-bold text-red-300 line-through">$499/month</div>
                   </div>
                   <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 text-center">
-                    <div className="text-green-300 mb-1 font-semibold text-sm">Promotional Price</div>
+                    <div className="text-green-300 mb-1 font-semibold text-sm">Your ToroCon Price</div>
                     <div className="text-4xl font-bold text-green-400">$129/mo</div>
-                    <div className="text-base mt-1 text-white">+ $299 registration</div>
-                  </div>
-                  <div className="bg-amber-500/20 border-2 border-amber-500 rounded-xl p-3 text-center">
-                    <p className="text-xl text-amber-300 font-bold">SAVE $370 EVERY MONTH!</p>
+                    <div className="text-base mt-1 text-white">+ $299 one-time fee</div>
                   </div>
                 </div>
 
@@ -150,14 +182,14 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="bg-gradient-to-r from-amber-500 via-orange-600 to-brand-accent py-3 md:py-4 text-white text-center font-bold cursor-pointer hover:from-amber-600 hover:via-orange-700 hover:to-red-900 transition-all shadow-lg z-40" onClick={() => setShowPromoModal(true)}>
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-          <Sparkles size={16} className="animate-pulse flex-shrink-0" />
-          <span className="text-sm sm:text-base md:text-lg lg:text-xl">
-            {t('banner.exclusive')}
+      <div className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 py-4 md:py-5 text-white text-center font-bold cursor-pointer hover:from-red-800 hover:via-red-900 hover:to-red-950 transition-all shadow-xl z-40 border-y-4 border-yellow-400" onClick={() => setShowPromoModal(true)}>
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+          <Clock size={20} className="animate-pulse flex-shrink-0 text-yellow-400" />
+          <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
+            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroCon Special - Expires Nov 13, 2025
           </span>
-          <button className="bg-white text-orange-600 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-bold hover:bg-slate-100 transition-all shadow-lg">
-            View Offer
+          <button className="bg-yellow-400 text-red-900 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
+            CLAIM NOW
           </button>
         </div>
       </div>
