@@ -11,6 +11,12 @@ import PricingPage from './pages/PricingPage'
 import PaymentPage from './pages/PaymentPage'
 import PodcastsPage from './pages/PodcastsPage'
 import SubscriptionBanner from './components/SubscriptionBanner'
+import DashboardCoursesPage from './pages/DashboardCoursesPage'
+import DashboardTownHallsPage from './pages/DashboardTownHallsPage'
+import DashboardPodcastsPage from './pages/DashboardPodcastsPage'
+import DashboardTipsPage from './pages/DashboardTipsPage'
+import DashboardResourcesPage from './pages/DashboardResourcesPage'
+import DashboardFAQPage from './pages/DashboardFAQPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -56,10 +62,50 @@ function App() {
           }
         />
         <Route
+          path="/dashboard/courses"
+          element={
+            <ProtectedRoute>
+              <DashboardCoursesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/town-halls"
+          element={
+            <ProtectedRoute>
+              <DashboardTownHallsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/dashboard/podcasts"
           element={
             <ProtectedRoute>
-              <PodcastsPage />
+              <DashboardPodcastsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/tips"
+          element={
+            <ProtectedRoute>
+              <DashboardTipsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/resources"
+          element={
+            <ProtectedRoute>
+              <DashboardResourcesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/faq"
+          element={
+            <ProtectedRoute>
+              <DashboardFAQPage />
             </ProtectedRoute>
           }
         />
