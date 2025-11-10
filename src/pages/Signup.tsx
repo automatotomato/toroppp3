@@ -29,7 +29,7 @@ export function Signup() {
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
           <Link
-            to="/login"
+            to="/account-setup"
             className="font-medium text-blue-600 hover:text-blue-500"
           >
             sign in to your existing account

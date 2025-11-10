@@ -112,7 +112,7 @@ export default function CoursesListPage() {
             ← Back to Home
           </Link>
           <Link
-            to="/register"
+            to="/account-setup"
             className="bg-brand-accent hover:bg-red-900 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
           >
             Enroll Now
@@ -179,7 +179,7 @@ export default function CoursesListPage() {
 
           <div className="text-center mt-12">
             <Link
-              to="/register"
+              to="/account-setup"
               className="inline-block bg-brand-accent hover:bg-red-900 text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl transition-all transform hover:scale-105"
             >
               Enroll in All 12 Courses

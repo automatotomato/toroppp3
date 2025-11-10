@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   // Temporarily disabled for testing - allow access without login
   // if (!user) {
-  //   return <Navigate to="/login" replace />;
+  //   return <Navigate to="/account-setup" replace />;
   // }
 
   return <>{children}</>;

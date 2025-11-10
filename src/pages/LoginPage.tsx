@@ -99,7 +99,7 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <p className="text-slate-600">
               Don't have an account?{' '}
-              <Link to="/register" className="text-brand-accent hover:text-red-700 font-semibold">
+              <Link to="/account-setup" className="text-brand-accent hover:text-red-700 font-semibold">
                 Register here
               </Link>
             </p>
