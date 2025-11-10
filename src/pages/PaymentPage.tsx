@@ -79,14 +79,8 @@ export default function PaymentPage() {
         password: formData.password,
       }));
 
-      // Redirect to Stripe payment link for promo plan
-      if (plan === 'promo') {
-        window.location.href = 'https://buy.stripe.com/6oUfZj2o9eRD0ZMcQR9sk00';
-        return;
-      }
-
-      // For other plans, redirect to success (payment handled separately)
-      navigate('/payment-success');
+      // Redirect to Stripe payment link
+      window.location.href = 'https://buy.stripe.com/6oUfZj2o9eRD0ZMcQR9sk00';
     } catch (error: any) {
       console.error('Payment error:', error);
       alert(`Submission failed: ${error.message || 'Please try again.'}`);
