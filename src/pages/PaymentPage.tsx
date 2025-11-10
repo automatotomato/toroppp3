@@ -151,13 +151,16 @@ export default function PaymentPage() {
               </div>
               
               {isPromoOffer && (
-                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-orange-400 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="text-green-600" size={20} />
-                    <span className="font-bold text-green-900">Special Offer Applied!</span>
+                    <Clock className="text-orange-600 animate-pulse" size={20} />
+                    <span className="font-bold text-orange-900">Limited Time Offer!</span>
                   </div>
-                  <p className="text-sm text-green-800">
+                  <p className="text-sm text-orange-800 mb-2">
                     Save $370/month! Regular Elite price $499/month, now just $129/month
+                  </p>
+                  <p className="text-xs text-orange-700 font-semibold">
+                    This exclusive promotional pricing won't last forever. Lock in your rate today!
                   </p>
                 </div>
               )}

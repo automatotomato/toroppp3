@@ -116,7 +116,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <Link
-                  to={`/payment?plan=subscription`}
+                  to={`/payment?plan=promo`}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
                   <Zap className="flex-shrink-0" size={20} />
