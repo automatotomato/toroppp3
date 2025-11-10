@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
-import { CreditCard, Shield, ArrowLeft, Loader2, CheckCircle2, Users, BookOpen, Clock } from 'lucide-react';
+import { CreditCard, Shield, ArrowLeft, Loader2, CheckCircle2, Users, BookOpen, Clock, Eye, EyeOff } from 'lucide-react';
 import { STRIPE_PRODUCTS, formatPrice, StripeProduct } from '../stripe-config';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -10,10 +10,12 @@ export default function PaymentPage() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: user?.email || '',
     officeName: '',
+    password: '',
   });
 
   const plan = searchParams.get('plan') || 'subscription';
@@ -37,6 +39,20 @@ export default function PaymentPage() {
 
     setLoading(true);
     try {
+      // Create user account in Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName,
+            office_name: formData.officeName,
+          },
+        },
+      });
+
+      if (authError) throw authError;
+
       // Store payment intent in database
       await supabase
         .from('payments')
@@ -273,10 +289,37 @@ export default function PaymentPage() {
                 />
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Create Password *
+                </label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                    minLength={6}
+                    className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter your password (min. 6 characters)"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  You'll use this password to access your account
+                </p>
+              </div>
 
               <button
                 type="submit"
-                disabled={loading || !formData.fullName || !formData.email || !formData.officeName}
+                disabled={loading || !formData.fullName || !formData.email || !formData.officeName || !formData.password || formData.password.length < 6}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
