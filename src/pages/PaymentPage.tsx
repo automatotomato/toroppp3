@@ -118,6 +118,23 @@ export default function PaymentPage() {
                 <span className="text-slate-700 font-semibold text-lg">{selectedPlan.name}</span>
               </div>
               <div className="border-t border-slate-200 pt-4">
+                {planType === 'promo' && (
+                  <div className="mb-4 p-4 bg-green-50 border-2 border-green-200 rounded-lg">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-slate-500 line-through text-sm">Regular Price</span>
+                      <span className="text-slate-500 line-through text-xl">$3,000</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-green-700 font-bold">Special Promo Price</span>
+                      <span className="text-green-700 font-bold text-2xl">${selectedPlan.price}</span>
+                    </div>
+                    <div className="mt-2 text-center">
+                      <span className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                        Save $2,701 Today!
+                      </span>
+                    </div>
+                  </div>
+                )}
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-lg text-slate-700">Registration Fee (Today)</span>
                   <span className="text-2xl font-bold text-brand-main">${selectedPlan.price}</span>
