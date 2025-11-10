@@ -51,17 +51,29 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </Link>
 
             <div className="hidden md:flex items-center gap-6">
-              <div className="text-right">
-                <p className="text-sm font-semibold text-white">{profile?.full_name}</p>
-                <p className="text-xs text-blue-100">{profile?.office_name}</p>
-              </div>
-              <button
-                onClick={handleSignOut}
-                className="flex items-center gap-2 text-white hover:text-blue-100 font-semibold transition-colors"
-              >
-                <LogOut size={20} />
-                Sign Out
-              </button>
+              {profile && (
+                <>
+                  <div className="text-right">
+                    <p className="text-sm font-semibold text-white">{profile.full_name}</p>
+                    <p className="text-xs text-blue-100">{profile.office_name}</p>
+                  </div>
+                  <button
+                    onClick={handleSignOut}
+                    className="flex items-center gap-2 text-white hover:text-blue-100 font-semibold transition-colors"
+                  >
+                    <LogOut size={20} />
+                    Sign Out
+                  </button>
+                </>
+              )}
+              {!profile && (
+                <Link
+                  to="/login"
+                  className="flex items-center gap-2 text-white hover:text-blue-100 font-semibold transition-colors"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
 
             <button
@@ -96,13 +108,24 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 </Link>
               );
             })}
-            <button
-              onClick={handleSignOut}
-              className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50 w-full"
-            >
-              <LogOut size={20} />
-              Sign Out
-            </button>
+            {profile && (
+              <button
+                onClick={handleSignOut}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50 w-full"
+              >
+                <LogOut size={20} />
+                Sign Out
+              </button>
+            )}
+            {!profile && (
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       )}

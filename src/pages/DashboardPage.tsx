@@ -6,6 +6,9 @@ import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, C
 export default function DashboardPage() {
   const { profile } = useAuth();
 
+  const displayName = profile?.full_name || 'Guest';
+  const displayOffice = profile?.office_name || 'Welcome to the Academy';
+
   const recentCourses = [
     { id: 1, title: 'Building a 6-Figure Tax Business', progress: 35, duration: '8 hrs' },
     { id: 2, title: 'Marketing Strategies That Work', progress: 60, duration: '6 hrs' },
@@ -27,9 +30,9 @@ export default function DashboardPage() {
     <DashboardLayout>
       <div className="mb-6 md:mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-brand-main mb-2">
-          Welcome back, {profile?.full_name}!
+          Welcome back, {displayName}!
         </h1>
-        <p className="text-sm md:text-base text-slate-600">{profile?.office_name}</p>
+        <p className="text-sm md:text-base text-slate-600">{displayOffice}</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
