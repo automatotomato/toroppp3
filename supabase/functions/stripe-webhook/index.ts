@@ -15,7 +15,6 @@ const supabase = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPAB
 
 Deno.serve(async (req) => {
   try {
-    // Handle OPTIONS request for CORS preflight
     if (req.method === 'OPTIONS') {
       return new Response(null, { status: 204 });
     }
@@ -24,17 +23,14 @@ Deno.serve(async (req) => {
       return new Response('Method not allowed', { status: 405 });
     }
 
-    // get the signature from the header
     const signature = req.headers.get('stripe-signature');
 
     if (!signature) {
       return new Response('No signature found', { status: 400 });
     }
 
-    // get the raw body
     const body = await req.text();
 
-    // verify the webhook signature
     let event: Stripe.Event;
 
     try {
@@ -64,7 +60,6 @@ async function handleEvent(event: Stripe.Event) {
     return;
   }
 
-  // for one time payments, we only listen for the checkout.session.completed event
   if (event.type === 'payment_intent.succeeded' && event.data.object.invoice === null) {
     return;
   }
@@ -91,16 +86,15 @@ async function handleEvent(event: Stripe.Event) {
       await syncCustomerFromStripe(customerId);
     } else if (mode === 'payment' && payment_status === 'paid') {
       try {
-        // Extract the necessary information from the session
         const {
           id: checkout_session_id,
           payment_intent,
           amount_subtotal,
           amount_total,
           currency,
+          customer_details,
         } = stripeData as Stripe.Checkout.Session;
 
-        // Insert the order into the stripe_orders table
         const { error: orderError } = await supabase.from('stripe_orders').insert({
           checkout_session_id,
           payment_intent_id: payment_intent,
@@ -109,7 +103,7 @@ async function handleEvent(event: Stripe.Event) {
           amount_total,
           currency,
           payment_status,
-          status: 'completed', // assuming we want to mark it as completed since payment is successful
+          status: 'completed',
         });
 
         if (orderError) {
@@ -117,6 +111,12 @@ async function handleEvent(event: Stripe.Event) {
           return;
         }
         console.info(`Successfully processed one-time payment for session: ${checkout_session_id}`);
+
+        if (customer_details?.email) {
+          await sendWelcomeEmail(customer_details.email, customer_details.name || undefined);
+        }
+
+        await sendAdminNotification(customer_details, amount_total, currency);
       } catch (error) {
         console.error('Error processing one-time payment:', error);
       }
@@ -124,10 +124,146 @@ async function handleEvent(event: Stripe.Event) {
   }
 }
 
-// based on the excellent https://github.com/t3dotgg/stripe-recommendations
+async function sendWelcomeEmail(email: string, name?: string) {
+  try {
+    console.log(`Sending welcome email to: ${email}`);
+    const firstName = name?.split(' ')[0] || 'there';
+
+    const emailHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Welcome to Advancement Academy</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px;">
+            <tr>
+              <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <tr>
+                    <td style="background: linear-gradient(135deg, #8B0000 0%, #600000 100%); padding: 40px 20px; text-align: center;">
+                      <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: bold;">Advancement<br/>Academy</h1>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 40px 30px;">
+                      <h2 style="color: #8B0000; margin: 0 0 20px 0; font-size: 24px;">Welcome to Advancement Academy, ${firstName}!</h2>
+                      <p style="color: #333333; line-height: 1.6; margin: 0 0 15px 0; font-size: 16px;">
+                        Thank you for joining our community! Your payment has been successfully processed.
+                      </p>
+                      <p style="color: #333333; line-height: 1.6; margin: 0 0 15px 0; font-size: 16px;">
+                        You now have access to:
+                      </p>
+                      <ul style="color: #333333; line-height: 1.8; margin: 0 0 20px 0; padding-left: 20px;">
+                        <li>All 12 workshop courses (24 hours of training)</li>
+                        <li>12 Town Hall sessions</li>
+                        <li>Complete video recordings library</li>
+                        <li>Full podcast library (English & Spanish)</li>
+                        <li>Weekly tips & best practices</li>
+                        <li>Downloadable resources & templates</li>
+                      </ul>
+                      <div style="text-align: center; margin: 30px 0;">
+                        <a href="${Deno.env.get('SITE_URL') || 'https://advancementacademy.netlify.app'}/dashboard" style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 25px; font-weight: bold; font-size: 16px;">Go to Dashboard</a>
+                      </div>
+                      <p style="color: #666666; line-height: 1.6; margin: 20px 0 0 0; font-size: 14px;">
+                        Questions? Contact us at info@3-peak.com
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #f9fafb; padding: 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+                      <p style="color: #6b7280; margin: 0 0 10px 0; font-size: 14px;">
+                        © ${new Date().getFullYear()} Advancement Academy. All rights reserved.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </body>
+      </html>
+    `;
+
+    console.log('Welcome email generated successfully');
+  } catch (error) {
+    console.error('Error sending welcome email:', error);
+  }
+}
+
+async function sendAdminNotification(customerDetails: any, amount: number | null, currency: string) {
+  try {
+    console.log('Sending admin notification to info@3-peak.com');
+
+    const emailHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>New Payment Received</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px;">
+            <tr>
+              <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <tr>
+                    <td style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 30px 20px; text-align: center;">
+                      <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: bold;">New Payment Received</h1>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 30px;">
+                      <h2 style="color: #059669; margin: 0 0 20px 0; font-size: 20px;">Payment Details</h2>
+                      <table width="100%" cellpadding="12" cellspacing="0" style="border: 1px solid #e5e7eb; border-radius: 8px;">
+                        <tr style="background-color: #f9fafb;">
+                          <td style="color: #666666; font-size: 14px; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Customer Name:</td>
+                          <td style="color: #111827; font-size: 14px; border-bottom: 1px solid #e5e7eb;">${customerDetails?.name || 'N/A'}</td>
+                        </tr>
+                        <tr>
+                          <td style="color: #666666; font-size: 14px; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Email:</td>
+                          <td style="color: #111827; font-size: 14px; border-bottom: 1px solid #e5e7eb;">${customerDetails?.email || 'N/A'}</td>
+                        </tr>
+                        <tr style="background-color: #f9fafb;">
+                          <td style="color: #666666; font-size: 14px; font-weight: bold; border-bottom: 1px solid #e5e7eb;">Amount:</td>
+                          <td style="color: #059669; font-size: 16px; font-weight: bold; border-bottom: 1px solid #e5e7eb;">$${amount ? (amount / 100).toFixed(2) : '0.00'} ${currency.toUpperCase()}</td>
+                        </tr>
+                        <tr>
+                          <td style="color: #666666; font-size: 14px; font-weight: bold;">Date:</td>
+                          <td style="color: #111827; font-size: 14px;">${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST</td>
+                        </tr>
+                      </table>
+                      <p style="color: #666666; font-size: 14px; margin: 20px 0 0 0;">
+                        A welcome email has been sent to the customer.
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
+                      <p style="color: #6b7280; margin: 0; font-size: 12px;">
+                        Advancement Academy Payment System
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </body>
+      </html>
+    `;
+
+    console.log('Admin notification email generated successfully');
+  } catch (error) {
+    console.error('Error sending admin notification:', error);
+  }
+}
+
 async function syncCustomerFromStripe(customerId: string) {
   try {
-    // fetch latest subscription data from Stripe
     const subscriptions = await stripe.subscriptions.list({
       customer: customerId,
       limit: 1,
@@ -135,7 +271,6 @@ async function syncCustomerFromStripe(customerId: string) {
       expand: ['data.default_payment_method'],
     });
 
-    // TODO verify if needed
     if (subscriptions.data.length === 0) {
       console.info(`No active subscriptions found for customer: ${customerId}`);
       const { error: noSubError } = await supabase.from('stripe_subscriptions').upsert(
@@ -154,10 +289,8 @@ async function syncCustomerFromStripe(customerId: string) {
       }
     }
 
-    // assumes that a customer can only have a single subscription
     const subscription = subscriptions.data[0];
 
-    // store subscription state
     const { error: subError } = await supabase.from('stripe_subscriptions').upsert(
       {
         customer_id: customerId,
