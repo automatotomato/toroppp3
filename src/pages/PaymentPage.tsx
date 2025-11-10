@@ -1,348 +1,272 @@
-import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { CreditCard, Shield, ArrowLeft, Loader2, CheckCircle2, Users, BookOpen, Clock } from 'lucide-react';
+import { STRIPE_PRODUCTS, formatPrice, StripeProduct } from '../stripe-config';
+import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
-import { Award, CreditCard, CheckCircle2, AlertCircle, Sparkles, Mail, User, Building2, Lock, Eye, EyeOff } from 'lucide-react';
-
-const plans = {
-  promo: { name: 'Elite Package - Promotional Pricing', price: 299, recurring: 129, billing: '$299 today + $129/month' },
-  essentials: { name: 'Essentials', price: 129, recurring: 129, billing: '$129/month' },
-  elite: { name: 'Elite - Standard Pricing', price: 499, recurring: 499, billing: '$499/month' },
-};
 
 export default function PaymentPage() {
-  const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [error, setError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [fullName, setFullName] = useState('');
-  const [officeName, setOfficeName] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: user?.email || '',
+    officeName: '',
+  });
 
-  const planType = (searchParams.get('plan') || 'promo') as keyof typeof plans;
-  const selectedPlan = plans[planType];
+  const plan = searchParams.get('plan') || 'subscription';
+  const selectedProduct = plan === 'promo' ? STRIPE_PRODUCTS.subscription : STRIPE_PRODUCTS[plan as keyof typeof STRIPE_PRODUCTS];
 
-  const handleExpiryDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.replace(/\D/g, '');
-
-    if (value.length >= 2) {
-      value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
+  useEffect(() => {
+    if (user?.email) {
+      setFormData(prev => ({ ...prev, email: user.email || '' }));
     }
+  }, [user]);
 
-    setExpiryDate(value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  const handlePayment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
+  const handlePayment = async () => {
+    if (!selectedProduct) return;
 
+    setLoading(true);
     try {
-      const { error: insertError } = await supabase
+      // Store payment intent in database
+      await supabase
         .from('payments')
         .insert({
-          email: email.toLowerCase(),
-          plan_type: planType,
-          full_name: fullName,
-          office_name: officeName,
-          amount_paid: selectedPlan.price * 100,
-          payment_status: 'completed',
-          paid_at: new Date().toISOString(),
+          email: formData.email,
+          plan_type: plan,
+          full_name: formData.fullName,
+          office_name: formData.officeName,
+          amount_paid: Math.round(selectedProduct.price * 100), // Convert to cents
+          payment_status: 'pending'
         });
 
-      if (insertError) throw insertError;
+      // Create checkout session
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({
+          priceId: selectedProduct.priceId,
+          mode: selectedProduct.mode,
+          customerEmail: formData.email,
+          metadata: {
+            fullName: formData.fullName,
+            officeName: formData.officeName,
+            planType: plan
+          }
+        }),
+      });
 
-      setShowSuccess(true);
-      setTimeout(() => {
-        navigate(`/account-setup?email=${encodeURIComponent(email)}`);
-      }, 2000);
-    } catch (err: any) {
-      setError(err.message || 'Payment failed. Please try again.');
+      const { url, error } = await response.json();
+      
+      if (error) {
+        throw new Error(error);
+      }
+
+      if (url) {
+        window.location.href = url;
+      }
+    } catch (error) {
+      console.error('Payment error:', error);
+      alert('Payment failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  if (showSuccess) {
+  if (!selectedProduct) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 flex items-center justify-center px-4">
-        <div className="max-w-lg w-full bg-white rounded-2xl shadow-2xl p-12 text-center">
-          <div className="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="text-green-600" size={48} />
-          </div>
-          <h2 className="text-3xl font-bold text-brand-main mb-4">
-            Payment Successful!
-          </h2>
-          <p className="text-lg text-slate-700 mb-6">
-            Your payment has been processed. Next, create your account to access all courses and resources.
-          </p>
-          <p className="text-slate-600">
-            Redirecting to account setup...
-          </p>
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Invalid Plan</h2>
+          <p className="text-gray-600 mb-4">The selected plan is not available.</p>
+          <Link to="/" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            Return Home
+          </Link>
         </div>
       </div>
     );
   }
 
+  const isPromoOffer = plan === 'promo';
+  const registrationFee = isPromoOffer ? STRIPE_PRODUCTS.registration.price : 0;
+  const totalFirstPayment = selectedProduct.price + registrationFee;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-8">
-            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-48" />
-          </div>
-          {planType === 'promo' && (
-            <div className="mb-8 inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl shadow-2xl">
-              <div className="text-sm font-semibold uppercase tracking-wide mb-1">Limited Time Offer</div>
-              <div className="text-3xl sm:text-4xl font-bold mb-2">
-                <span className="line-through opacity-75 text-2xl">$3,000</span>
-                {' '}<span className="text-5xl">$299</span>
-              </div>
-              <div className="text-lg font-semibold">Save $2,701 on Registration!</div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+              <ArrowLeft size={20} />
+              Back to Home
+            </Link>
+            <h1 className="text-2xl font-bold text-gray-900">Secure Checkout</h1>
+            <div className="flex items-center gap-2 text-green-600">
+              <Shield size={20} />
+              <span className="text-sm font-medium">SSL Secured</span>
             </div>
-          )}
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Complete Your Enrollment</h1>
-          <p className="text-slate-400">One step away from transforming your business</p>
+          </div>
         </div>
+      </header>
 
+      <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-slate-800 rounded-2xl p-8 text-white">
-            <h2 className="text-xl sm:text-2xl font-bold mb-6">What's Included</h2>
-            <div className="space-y-4">
-              {[
-                'Access to all 12 workshop courses',
-                'Complete video library with recordings',
-                'Town Hall recordings and Q&A sessions',
-                'Bilingual podcast content (English & Spanish)',
-                'Weekly tips and best practices',
-                'Downloadable resources and templates',
-                'Tools, charts, and graphs',
-                'CBA results tracking',
-                'Community support and networking',
-                'Lifetime updates and new content',
-              ].map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-brand-accent flex-shrink-0 mt-1" size={20} />
-                  <span className="text-slate-200">{feature}</span>
+          {/* Order Summary */}
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
+            
+            <div className="space-y-4 mb-6">
+              <div className="border rounded-lg p-4 bg-blue-50">
+                <h3 className="font-bold text-lg text-gray-900 mb-2">{selectedProduct.name}</h3>
+                <p className="text-gray-600 text-sm mb-4">{selectedProduct.description}</p>
+                
+                <div className="flex justify-between items-center text-lg font-bold">
+                  <span>
+                    {selectedProduct.mode === 'subscription' ? 'Monthly Price:' : 'One-time Payment:'}
+                  </span>
+                  <span className="text-blue-600">{formatPrice(selectedProduct.price)}</span>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-8 p-6 bg-brand-main rounded-xl">
-              <div className="flex items-center gap-2 text-amber-400 mb-3">
-                <AlertCircle size={20} />
-                <span className="font-semibold">Important Note</span>
-              </div>
-              <p className="text-slate-300 text-sm">
-                This membership is per office. All team members in your office can share access using the same login credentials.
-                Individual memberships are available for separate access.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-2xl p-8">
-            <div className="mb-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-brand-main mb-2">Payment Details</h2>
-            </div>
-
-            {planType === 'promo' && (
-              <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl p-6 mb-6 text-white text-center">
-                <Sparkles className="mx-auto mb-2" size={32} />
-                <div className="font-bold text-lg sm:text-xl mb-2">🔥 Promotional Offer</div>
-                <div className="text-sm opacity-90 mb-2">
-                  <span className="font-bold text-base">Registration: $3,000 → $299</span>
-                </div>
-                <div className="text-sm opacity-90">Save $370/month • Includes $9,995 Business Analysis</div>
-              </div>
-            )}
-
-            <div className="bg-slate-50 rounded-xl p-6 mb-8">
-              <div className="mb-4">
-                <span className="text-slate-700 font-semibold text-lg">{selectedPlan.name}</span>
-              </div>
-              <div className="border-t border-slate-200 pt-4">
-                {planType === 'promo' && (
-                  <div className="mb-4 p-4 bg-green-50 border-2 border-green-200 rounded-lg">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-slate-500 line-through text-sm">Regular Price</span>
-                      <span className="text-slate-500 line-through text-xl">$3,000</span>
-                    </div>
+                
+                {isPromoOffer && (
+                  <div className="mt-2 pt-2 border-t border-blue-200">
                     <div className="flex justify-between items-center">
-                      <span className="text-green-700 font-bold">Special Promo Price</span>
-                      <span className="text-green-700 font-bold text-2xl">${selectedPlan.price}</span>
-                    </div>
-                    <div className="mt-2 text-center">
-                      <span className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold">
-                        Save $2,701 Today!
-                      </span>
+                      <span className="text-sm">Registration Fee:</span>
+                      <span className="font-semibold">{formatPrice(registrationFee)}</span>
                     </div>
                   </div>
                 )}
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-lg text-slate-700">Registration Fee (Today)</span>
-                  <span className="text-2xl font-bold text-brand-main">${selectedPlan.price}</span>
-                </div>
-                {selectedPlan.recurring && selectedPlan.recurring !== selectedPlan.price && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg text-slate-700">Then Monthly</span>
-                    <span className="text-2xl font-bold text-brand-accent">${selectedPlan.recurring}</span>
+              </div>
+              
+              {isPromoOffer && (
+                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle2 className="text-green-600" size={20} />
+                    <span className="font-bold text-green-900">Special Offer Applied!</span>
                   </div>
-                )}
-                <p className="text-sm text-slate-600 mt-4">{selectedPlan.billing}</p>
-              </div>
-            </div>
-
-            <form onSubmit={handlePayment} className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <p className="text-xs text-slate-500 mt-1">You'll use this email to sign in after payment</p>
-              </div>
-
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                  <input
-                    type="text"
-                    id="fullName"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                    placeholder="John Doe"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="officeName" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Office Name
-                </label>
-                <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                  <input
-                    type="text"
-                    id="officeName"
-                    required
-                    value={officeName}
-                    onChange={(e) => setOfficeName(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                    placeholder="Toro Tax - Las Vegas"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="password" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Password
-                </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    id="password"
-                    required
-                    minLength={6}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-12 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                    placeholder="Create a password"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                  >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                  </button>
-                </div>
-                <p className="text-xs text-slate-500 mt-1">Minimum 6 characters</p>
-              </div>
-
-              <div className="border-t border-slate-200 pt-6">
-                <h3 className="text-sm font-semibold text-slate-700 mb-4">Payment Information</h3>
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Card Number
-                  </label>
-                  <div className="relative">
-                    <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                    <input
-                      type="text"
-                      placeholder="4242 4242 4242 4242"
-                      required
-                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Expiry Date
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="MM / YY"
-                    required
-                    value={expiryDate}
-                    onChange={handleExpiryDateChange}
-                    maxLength={7}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    CVV
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="123"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
-                  />
-                </div>
-              </div>
-
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-                  {error}
+                  <p className="text-sm text-green-800">
+                    Save $370/month! Regular Elite price $499/month, now just $129/month
+                  </p>
                 </div>
               )}
+            </div>
+
+            <div className="border-t pt-4">
+              <div className="flex justify-between items-center text-xl font-bold">
+                <span>Total {isPromoOffer ? 'First Payment' : ''}:</span>
+                <span className="text-green-600">{formatPrice(totalFirstPayment)}</span>
+              </div>
+              {selectedProduct.mode === 'subscription' && (
+                <p className="text-sm text-gray-600 mt-2">
+                  {isPromoOffer ? 'Then $129/month thereafter' : `Then ${formatPrice(selectedProduct.price)}/month`}
+                </p>
+              )}
+            </div>
+
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <BookOpen size={16} />
+                <span>12 Expert Workshops</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock size={16} />
+                <span>90+ Hours of Training</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Users size={16} />
+                <span>Lifetime Access</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Form */}
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <CreditCard className="text-blue-600" size={24} />
+              <h2 className="text-2xl font-bold text-gray-900">Payment Details</h2>
+            </div>
+
+            <form onSubmit={(e) => { e.preventDefault(); handlePayment(); }} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Office/Business Name *
+                </label>
+                <input
+                  type="text"
+                  name="officeName"
+                  value={formData.officeName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter your office name"
+                />
+              </div>
 
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full bg-brand-accent hover:bg-red-900 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                disabled={loading || !formData.fullName || !formData.email || !formData.officeName}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {loading ? 'Processing Payment...' : `Complete Payment - $${selectedPlan.price}`}
+                {loading ? (
+                  <>
+                    <Loader2 className="animate-spin" size={20} />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    <CreditCard size={20} />
+                    Complete Payment - {formatPrice(totalFirstPayment)}
+                  </>
+                )}
               </button>
-
-              <p className="text-xs text-slate-500 text-center">
-                Your payment information is secure and encrypted. By completing this purchase,
-                you agree to our terms of service.
-              </p>
             </form>
+
+            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
+              <Shield size={16} />
+              <span>Secure payment powered by Stripe</span>
+            </div>
           </div>
         </div>
       </div>

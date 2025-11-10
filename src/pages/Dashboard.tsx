@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { SubscriptionStatus } from '../components/subscription/SubscriptionStatus'
+import SubscriptionStatus from '../components/SubscriptionStatus'
 import { BookOpen, Users, TrendingUp, Award } from 'lucide-react'
 
 export function Dashboard() {
@@ -47,6 +48,9 @@ export function Dashboard() {
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="mb-8">
+            <div className="mb-6">
+              <SubscriptionStatus />
+            </div>
             <h2 className="text-3xl font-bold text-gray-900">
               Welcome back, {user.email}!
             </h2>

@@ -9,6 +9,7 @@ import DashboardPage from './pages/DashboardPage'
 import CoursesPage from './pages/CoursesPage'
 import PricingPage from './pages/PricingPage'
 import PaymentPage from './pages/PaymentPage'
+import PaymentSuccessPage from './pages/PaymentSuccessPage'
 import PodcastsPage from './pages/PodcastsPage'
 import SubscriptionBanner from './components/SubscriptionBanner'
 import DashboardCoursesPage from './pages/DashboardCoursesPage'
@@ -54,6 +55,7 @@ function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/payment-success" element={<PaymentSuccessPage />} />
         <Route path="/success" element={<Success />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/dashboard/courses" element={<ProtectedRoute><DashboardCoursesPage /></ProtectedRoute>} />
