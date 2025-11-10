@@ -17,7 +17,7 @@ export default function PaymentPage() {
   });
 
   const plan = searchParams.get('plan') || 'subscription';
-  const selectedProduct = plan === 'promo' ? STRIPE_PRODUCTS.subscription : STRIPE_PRODUCTS[plan as keyof typeof STRIPE_PRODUCTS];
+  const selectedProduct = plan === 'promo' ? STRIPE_PRODUCTS.registration : STRIPE_PRODUCTS[plan as keyof typeof STRIPE_PRODUCTS];
 
   useEffect(() => {
     if (user?.email) {
@@ -100,8 +100,7 @@ export default function PaymentPage() {
   }
 
   const isPromoOffer = plan === 'promo';
-  const registrationFee = isPromoOffer ? STRIPE_PRODUCTS.registration.price : 0;
-  const totalFirstPayment = selectedProduct.price + registrationFee;
+  const totalFirstPayment = selectedProduct.price;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -135,16 +134,16 @@ export default function PaymentPage() {
                 
                 <div className="flex justify-between items-center text-lg font-bold">
                   <span>
-                    {selectedProduct.mode === 'subscription' ? 'Monthly Price:' : 'One-time Payment:'}
+                    {isPromoOffer ? 'Registration Fee (One-time):' : selectedProduct.mode === 'subscription' ? 'Monthly Price:' : 'One-time Payment:'}
                   </span>
                   <span className="text-blue-600">{formatPrice(selectedProduct.price)}</span>
                 </div>
-                
+
                 {isPromoOffer && (
                   <div className="mt-2 pt-2 border-t border-blue-200">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Registration Fee:</span>
-                      <span className="font-semibold">{formatPrice(registrationFee)}</span>
+                    <div className="flex justify-between items-center text-sm text-gray-700">
+                      <span>Then monthly subscription:</span>
+                      <span className="font-semibold">{formatPrice(STRIPE_PRODUCTS.subscription.price)}/mo</span>
                     </div>
                   </div>
                 )}
@@ -168,12 +167,17 @@ export default function PaymentPage() {
 
             <div className="border-t pt-4">
               <div className="flex justify-between items-center text-xl font-bold">
-                <span>Total {isPromoOffer ? 'First Payment' : ''}:</span>
+                <span>Total {isPromoOffer ? 'Today' : ''}:</span>
                 <span className="text-green-600">{formatPrice(totalFirstPayment)}</span>
               </div>
-              {selectedProduct.mode === 'subscription' && (
+              {isPromoOffer && (
                 <p className="text-sm text-gray-600 mt-2">
-                  {isPromoOffer ? 'Then $129/month thereafter' : `Then ${formatPrice(selectedProduct.price)}/month`}
+                  Your monthly subscription of {formatPrice(STRIPE_PRODUCTS.subscription.price)} will begin after registration
+                </p>
+              )}
+              {!isPromoOffer && selectedProduct.mode === 'subscription' && (
+                <p className="text-sm text-gray-600 mt-2">
+                  Then {formatPrice(selectedProduct.price)}/month
                 </p>
               )}
             </div>
