@@ -188,10 +188,10 @@ export default function LandingPage() {
                   <ArrowRight size={24} />
                 </button>
                 <Link
-                  to="/courses"
+                  to="/login"
                   className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold border-2 border-white/30 transition-all"
                 >
-                  {t('hero.cta2')}
+                  Log In
                   <Play size={20} />
                 </Link>
               </div>
