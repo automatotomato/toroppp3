@@ -128,6 +128,12 @@ async function sendWelcomeEmail(email: string, name?: string) {
   try {
     console.log(`Sending welcome email to: ${email}`);
     const firstName = name?.split(' ')[0] || 'there';
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
+
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY not configured');
+      return;
+    }
 
     const emailHtml = `
       <!DOCTYPE html>
@@ -187,7 +193,26 @@ async function sendWelcomeEmail(email: string, name?: string) {
       </html>
     `;
 
-    console.log('Welcome email generated successfully');
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Advancement Academy <onboarding@resend.dev>',
+        to: [email],
+        subject: 'Welcome to Advancement Academy!',
+        html: emailHtml,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Failed to send welcome email:', errorText);
+    } else {
+      console.log('Welcome email sent successfully to:', email);
+    }
   } catch (error) {
     console.error('Error sending welcome email:', error);
   }
@@ -196,6 +221,12 @@ async function sendWelcomeEmail(email: string, name?: string) {
 async function sendAdminNotification(customerDetails: any, amount: number | null, currency: string) {
   try {
     console.log('Sending admin notification to info@3-peak.com');
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
+
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY not configured');
+      return;
+    }
 
     const emailHtml = `
       <!DOCTYPE html>
@@ -256,7 +287,26 @@ async function sendAdminNotification(customerDetails: any, amount: number | null
       </html>
     `;
 
-    console.log('Admin notification email generated successfully');
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Advancement Academy <onboarding@resend.dev>',
+        to: ['info@3-peak.com'],
+        subject: 'New Payment Received - Advancement Academy',
+        html: emailHtml,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Failed to send admin notification:', errorText);
+    } else {
+      console.log('Admin notification sent successfully');
+    }
   } catch (error) {
     console.error('Error sending admin notification:', error);
   }
