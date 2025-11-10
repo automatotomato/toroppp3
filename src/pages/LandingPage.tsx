@@ -738,7 +738,7 @@ export default function LandingPage() {
                 step: '3',
                 icon: BookOpen,
                 title: 'Start Learning',
-                description: 'Immediate access to all 12 workshops and begin your transformation.',
+                description: 'Immediate access to your training program and begin your transformation.',
                 time: '5 min',
               },
             ].map((step, index) => {
