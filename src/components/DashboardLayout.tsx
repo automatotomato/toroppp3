@@ -107,10 +107,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex gap-8">
-          <aside className="hidden md:block w-64 flex-shrink-0">
-            <nav className="bg-white rounded-xl shadow-sm p-4 sticky top-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+        <div className="flex gap-6 md:gap-8">
+          <aside className="hidden md:block w-56 lg:w-64 flex-shrink-0">
+            <nav className="bg-white rounded-xl shadow-sm p-3 md:p-4 sticky top-24">
               <div className="space-y-1">
                 {navigation.map((item) => {
                   const Icon = item.icon;
@@ -119,14 +119,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                      className={`flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-lg transition-colors text-sm md:text-base ${
                         isActive
                           ? 'bg-red-50 text-brand-accent font-semibold'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
-                      <Icon size={20} />
-                      {item.name}
+                      <Icon size={18} className="flex-shrink-0" />
+                      <span className="truncate">{item.name}</span>
                     </Link>
                   );
                 })}
@@ -134,7 +134,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </nav>
           </aside>
 
-          <main className="flex-1">
+          <main className="flex-1 min-w-0">
             {children}
           </main>
         </div>
