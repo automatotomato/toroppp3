@@ -164,7 +164,7 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-4 md:mb-6 flex justify-center items-center gap-4 flex-wrap">
-                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-16 sm:h-20 md:h-24" />
+                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-24 sm:h-28 md:h-36" />
                 <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">×</span>
                 <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-16 sm:h-20 md:h-24" />
               </div>
