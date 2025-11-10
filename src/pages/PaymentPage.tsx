@@ -18,11 +18,22 @@ export default function PaymentPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [fullName, setFullName] = useState('');
   const [officeName, setOfficeName] = useState('');
+  const [expiryDate, setExpiryDate] = useState('');
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const planType = (searchParams.get('plan') || 'promo') as keyof typeof plans;
   const selectedPlan = plans[planType];
+
+  const handleExpiryDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, '');
+
+    if (value.length >= 2) {
+      value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
+    }
+
+    setExpiryDate(value);
+  };
 
   const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -294,6 +305,9 @@ export default function PaymentPage() {
                     type="text"
                     placeholder="MM / YY"
                     required
+                    value={expiryDate}
+                    onChange={handleExpiryDateChange}
+                    maxLength={7}
                     className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-accent focus:ring-2 focus:ring-red-600/20 outline-none transition-all"
                   />
                 </div>
