@@ -1096,7 +1096,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-6">
             <div className="flex flex-wrap items-center justify-center gap-8">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-12" />
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-36" />
               <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-12" />
             </div>
             <p className="text-slate-400 text-center">
