@@ -113,6 +113,7 @@ async function handleEvent(event: Stripe.Event) {
         console.info(`Successfully processed one-time payment for session: ${checkout_session_id}`);
 
         if (customer_details?.email) {
+          // Update payment status
           await supabase
             .from('payments')
             .update({
@@ -122,6 +123,14 @@ async function handleEvent(event: Stripe.Event) {
             .eq('email', customer_details.email)
             .order('created_at', { ascending: false })
             .limit(1);
+
+          // Update user profile to active subscription
+          await supabase
+            .from('profiles')
+            .update({
+              subscription_status: 'active'
+            })
+            .eq('email', customer_details.email);
 
           await sendWelcomeEmail(customer_details.email, customer_details.name || undefined);
         }
