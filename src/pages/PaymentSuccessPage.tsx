@@ -1,55 +1,30 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams, Link, useNavigate } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, BookOpen, Users, Clock, Download, Mail } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 export default function PaymentSuccessPage() {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [paymentData, setPaymentData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [loggingIn, setLoggingIn] = useState(false);
 
   const sessionId = searchParams.get('session_id');
 
   useEffect(() => {
     const fetchPaymentData = async () => {
+      if (!sessionId) return;
+
       try {
-        // Check for pending login credentials
-        const pendingLoginStr = sessionStorage.getItem('pendingLogin');
-        if (pendingLoginStr) {
-          const { email, password } = JSON.parse(pendingLoginStr);
-
-          // Auto-login the user
-          setLoggingIn(true);
-          const { error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-          });
-
-          // Clear stored credentials
-          sessionStorage.removeItem('pendingLogin');
-
-          if (!error) {
-            // Update payment status to completed
-            await supabase
-              .from('payments')
-              .update({ payment_status: 'completed' })
-              .eq('email', email)
-              .order('created_at', { ascending: false })
-              .limit(1);
-          }
-        }
-
+        // In a real implementation, you might fetch payment details from Stripe
+        // For now, we'll show a success message
         setPaymentData({
           amount: searchParams.get('amount') || '129.00',
           plan: searchParams.get('plan') || 'subscription'
         });
       } catch (error) {
-        console.error('Error processing payment success:', error);
+        console.error('Error fetching payment data:', error);
       } finally {
         setLoading(false);
-        setLoggingIn(false);
       }
     };
 
@@ -92,7 +67,7 @@ export default function PaymentSuccessPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Check Your Email</h3>
                     <p className="text-sm text-gray-600">
-                      You'll receive a welcome email with full access details.
+                      You'll receive login credentials and access instructions within 5 minutes.
                     </p>
                   </div>
                 </div>
@@ -158,14 +133,14 @@ export default function PaymentSuccessPage() {
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white text-center mb-8">
           <h3 className="text-xl font-bold mb-2">Ready to Transform Your Business?</h3>
           <p className="text-blue-100 mb-4">
-            {loggingIn ? 'Setting up your account...' : 'Your account is ready! Access your dashboard now.'}
+            Your training platform is being prepared. In the meantime, download our Quick Start Guide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              to="/dashboard"
+              to="/account-setup"
               className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-colors"
             >
-              Go to Dashboard
+              Set Up Account
               <ArrowRight size={16} />
             </Link>
             <button className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
