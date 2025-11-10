@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { STRIPE_PRODUCTS, formatPrice } from '../stripe-config';
 import LanguageToggle from '../components/LanguageToggle';
 import VoiceAssistant from '../components/VoiceAssistant';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -115,7 +116,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <Link
-                  to="/payment?plan=promo"
+                  to={`/payment?plan=subscription`}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
                   <Zap className="flex-shrink-0" size={20} />
@@ -300,7 +301,7 @@ export default function LandingPage() {
                 </div>
                 <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-center text-white shadow-xl transform scale-110">
                   <div className="text-green-100 mb-2 font-semibold">Promo Price</div>
-                  <div className="text-5xl font-bold">$129</div>
+                  <div className="text-5xl font-bold">{formatPrice(STRIPE_PRODUCTS.subscription.price).replace('.00', '')}</div>
                   <div className="text-lg">per month</div>
                 </div>
                 <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-center text-white shadow-xl">
@@ -361,7 +362,7 @@ export default function LandingPage() {
                   </button>
 
                   <div className="bg-green-50 border-2 border-green-500 rounded-xl p-3 sm:p-4 w-full sm:w-auto">
-                    <p className="text-green-900 font-bold text-center text-sm sm:text-base">$16,000+ Total Value | Includes LIFETIME ACCESS</p>
+                    <p className="text-green-900 font-bold text-center text-sm sm:text-base">Includes LIFETIME ACCESS</p>
                   </div>
                 </div>
               </div>
@@ -832,7 +833,7 @@ export default function LandingPage() {
               </div>
               <p className="text-2xl text-green-400 font-bold mb-6">SAVE $370 EVERY MONTH!</p>
               <Link
-                to="/payment?plan=promo"
+                to="/payment?plan=subscription"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
               >
                 Claim This Offer Now
@@ -844,11 +845,11 @@ export default function LandingPage() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
-              <div className="text-4xl font-bold mb-2">$129</div>
-              <div className="text-red-100 font-semibold mb-2">Essentials</div>
+              <div className="text-4xl font-bold mb-2">{formatPrice(STRIPE_PRODUCTS.subscription.price).replace('.00', '')}</div>
+              <div className="text-red-100 font-semibold mb-2">Monthly Subscription</div>
               <div className="text-sm text-red-200 mb-4">Monthly • Classes Only</div>
               <Link
-                to="/payment?plan=essentials"
+                to="/payment?plan=subscription"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
                 Select Plan
@@ -856,11 +857,11 @@ export default function LandingPage() {
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
-              <div className="text-4xl font-bold mb-2">$499</div>
-              <div className="text-red-100 font-semibold mb-2">Elite</div>
-              <div className="text-sm text-red-200 mb-4">Monthly • No Registration</div>
+              <div className="text-4xl font-bold mb-2">{formatPrice(STRIPE_PRODUCTS.registration.price).replace('.00', '')}</div>
+              <div className="text-red-100 font-semibold mb-2">Registration Fee</div>
+              <div className="text-sm text-red-200 mb-4">One-time • Full Access</div>
               <Link
-                to="/payment?plan=elite"
+                to="/payment?plan=registration"
                 className="w-full bg-white/20 hover:bg-white/30 border-2 border-white text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
               >
                 Select Plan
