@@ -57,18 +57,15 @@ export default function PaymentPage() {
         return;
       }
 
-      // Store payment intent in database with user ID
-      const { error: paymentError } = await supabase
-        .from('payments')
-        .insert({
-          user_id: authData.user?.id,
-          email: formData.email,
-          plan_type: plan,
-          full_name: formData.fullName,
-          office_name: formData.officeName,
-          amount_paid: Math.round(selectedProduct.price * 100),
-          payment_status: 'pending'
-        });
+      // Store payment intent in database with user ID using RPC function
+      const { error: paymentError } = await supabase.rpc('insert_payment', {
+        p_user_id: authData.user?.id,
+        p_email: formData.email,
+        p_plan_type: plan,
+        p_full_name: formData.fullName,
+        p_office_name: formData.officeName,
+        p_amount_paid: Math.round(selectedProduct.price * 100)
+      });
 
       if (paymentError) {
         console.error('Payment insert error:', paymentError);
