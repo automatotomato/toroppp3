@@ -24,7 +24,10 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
         email,
         password,
         options: {
-          emailRedirectTo: undefined, // Disable email confirmation
+          emailRedirectTo: undefined,
+          data: {
+            full_name: fullName,
+          }
         }
       })
 
