@@ -1,10 +1,27 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/DashboardLayout';
-import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp } from 'lucide-react';
+import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
 
 export default function DashboardPage() {
   const { profile } = useAuth();
+
+  const recentCourses = [
+    { id: 1, title: 'Building a 6-Figure Tax Business', progress: 35, duration: '8 hrs' },
+    { id: 2, title: 'Marketing Strategies That Work', progress: 60, duration: '6 hrs' },
+    { id: 3, title: 'Financial Management Basics', progress: 15, duration: '7 hrs' },
+  ];
+
+  const upcomingEvents = [
+    { title: 'Live Town Hall Q&A', date: 'Nov 15, 2025', time: '2:00 PM PST' },
+    { title: 'Advanced Sales Workshop', date: 'Nov 22, 2025', time: '3:00 PM PST' },
+  ];
+
+  const recentResources = [
+    { title: 'Client Retention Checklist', type: 'PDF', downloads: 245 },
+    { title: 'Tax Season Calendar 2026', type: 'Template', downloads: 389 },
+    { title: 'Social Media Graphics Pack', type: 'ZIP', downloads: 156 },
+  ];
 
   return (
     <DashboardLayout>
@@ -24,7 +41,7 @@ export default function DashboardPage() {
 
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
           <TrendingUp size={40} className="mb-4" />
-          <h3 className="text-2xl font-bold mb-2">0%</h3>
+          <h3 className="text-2xl font-bold mb-2">37%</h3>
           <p className="text-blue-100">Completion Rate</p>
         </div>
 
@@ -32,6 +49,79 @@ export default function DashboardPage() {
           <FileText size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">50+</h3>
           <p className="text-green-100">Resources Available</p>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6 mb-8">
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <h2 className="text-xl font-bold text-brand-main mb-4 flex items-center gap-2">
+            <Play size={24} className="text-brand-accent" />
+            Continue Learning
+          </h2>
+          <div className="space-y-4">
+            {recentCourses.map((course) => (
+              <div key={course.id} className="border border-slate-200 rounded-lg p-4 hover:border-brand-accent transition-colors cursor-pointer">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-semibold text-brand-main">{course.title}</h3>
+                  <span className="text-xs text-slate-500 flex items-center gap-1">
+                    <Clock size={12} />
+                    {course.duration}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div
+                      className="bg-gradient-to-r from-brand-accent to-red-600 h-full rounded-full transition-all"
+                      style={{ width: `${course.progress}%` }}
+                    />
+                  </div>
+                  <span className="text-sm font-semibold text-slate-600">{course.progress}%</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Link
+            to="/dashboard/courses"
+            className="mt-4 block text-center bg-brand-main hover:bg-slate-800 text-white py-3 rounded-lg font-semibold transition-colors"
+          >
+            View All Courses
+          </Link>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <h2 className="text-xl font-bold text-brand-main mb-4 flex items-center gap-2">
+            <Video size={24} className="text-blue-600" />
+            Upcoming Events
+          </h2>
+          <div className="space-y-4 mb-6">
+            {upcomingEvents.map((event, index) => (
+              <div key={index} className="border-l-4 border-blue-600 bg-blue-50 rounded-r-lg p-4">
+                <h3 className="font-semibold text-brand-main mb-2">{event.title}</h3>
+                <div className="flex items-center gap-4 text-sm text-slate-600">
+                  <span className="flex items-center gap-1">
+                    <Clock size={14} />
+                    {event.date}
+                  </span>
+                  <span>{event.time}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <h2 className="text-xl font-bold text-brand-main mb-4 mt-8 flex items-center gap-2">
+            <FileText size={24} className="text-green-600" />
+            Latest Resources
+          </h2>
+          <div className="space-y-3">
+            {recentResources.map((resource, index) => (
+              <div key={index} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                <div>
+                  <h3 className="font-semibold text-brand-main text-sm">{resource.title}</h3>
+                  <p className="text-xs text-slate-500">{resource.type} • {resource.downloads} downloads</p>
+                </div>
+                <CheckCircle size={20} className="text-green-600" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

@@ -43,7 +43,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <header className="bg-white shadow-sm sticky top-0 z-40">
+      <header className="bg-gradient-to-r from-blue-600 to-blue-700 shadow-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link to="/dashboard" className="flex items-center">
@@ -52,12 +52,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
             <div className="hidden md:flex items-center gap-6">
               <div className="text-right">
-                <p className="text-sm font-semibold text-brand-main">{profile?.full_name}</p>
-                <p className="text-xs text-slate-600">{profile?.office_name}</p>
+                <p className="text-sm font-semibold text-white">{profile?.full_name}</p>
+                <p className="text-xs text-blue-100">{profile?.office_name}</p>
               </div>
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 text-slate-600 hover:text-brand-accent font-semibold transition-colors"
+                className="flex items-center gap-2 text-white hover:text-blue-100 font-semibold transition-colors"
               >
                 <LogOut size={20} />
                 Sign Out
@@ -66,7 +66,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-slate-600"
+              className="md:hidden text-white"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
