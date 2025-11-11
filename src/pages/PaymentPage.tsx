@@ -38,27 +38,25 @@ export default function PaymentPage() {
 
     setLoading(true);
     try {
-      // Create account if user is not logged in
-      if (!user) {
-        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-          email: formData.email,
-          password: formData.password,
-          options: {
-            data: {
-              full_name: formData.fullName,
-              office_name: formData.officeName,
-            },
+      // Create account with user data
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.fullName,
+            office_name: formData.officeName,
           },
-        });
+        },
+      });
 
-        if (signUpError) {
-          console.error('Account creation error:', signUpError);
-          alert(`Failed to create account: ${signUpError.message}`);
-          return;
-        }
-
-        console.log('Account created successfully:', signUpData.user?.email);
+      if (signUpError) {
+        console.error('Account creation error:', signUpError);
+        alert(`Failed to create account: ${signUpError.message}`);
+        return;
       }
+
+      console.log('Account created successfully:', signUpData.user?.email);
 
       // Store payment record in background
       supabase
