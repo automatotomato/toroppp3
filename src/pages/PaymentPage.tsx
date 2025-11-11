@@ -14,6 +14,7 @@ export default function PaymentPage() {
     fullName: '',
     email: user?.email || '',
     officeName: '',
+    password: '',
   });
 
   const plan = searchParams.get('plan') || 'subscription';
@@ -37,27 +38,30 @@ export default function PaymentPage() {
 
     setLoading(true);
     try {
-      // Redirect to Stripe payment link immediately for promo plan
-      if (plan === 'promo') {
-        supabase
-          .from('payments')
-          .insert({
-            email: formData.email,
-            plan_type: plan,
-            full_name: formData.fullName,
-            office_name: formData.officeName,
-            amount_paid: Math.round(selectedProduct.price * 100),
-            payment_status: 'pending'
-          })
-          .then(() => console.log('Payment record created'))
-          .catch((err) => console.error('Failed to create payment record:', err));
+      // Create account if user is not logged in
+      if (!user) {
+        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            data: {
+              full_name: formData.fullName,
+              office_name: formData.officeName,
+            },
+          },
+        });
 
-        window.location.href = 'https://buy.stripe.com/6oUfZj2o9eRD0ZMcQR9sk00';
-        return;
+        if (signUpError) {
+          console.error('Account creation error:', signUpError);
+          alert(`Failed to create account: ${signUpError.message}`);
+          return;
+        }
+
+        console.log('Account created successfully:', signUpData.user?.email);
       }
 
-      // For other plans, try to store payment intent then redirect
-      await supabase
+      // Store payment record in background
+      supabase
         .from('payments')
         .insert({
           email: formData.email,
@@ -66,9 +70,16 @@ export default function PaymentPage() {
           office_name: formData.officeName,
           amount_paid: Math.round(selectedProduct.price * 100),
           payment_status: 'pending'
-        });
+        })
+        .then(() => console.log('Payment record created'))
+        .catch((err) => console.error('Failed to create payment record:', err));
 
-      navigate('/payment-success');
+      // Redirect to Stripe payment link
+      if (plan === 'promo') {
+        window.location.href = 'https://buy.stripe.com/6oUfZj2o9eRD0ZMcQR9sk00';
+      } else {
+        navigate('/payment-success');
+      }
     } catch (error) {
       console.error('Payment error:', error);
       alert('Submission failed. Please try again.');
@@ -285,10 +296,30 @@ export default function PaymentPage() {
                 />
               </div>
 
+              {!user && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Create Password *
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                    minLength={6}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Minimum 6 characters"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Create a password to access your account after payment
+                  </p>
+                </div>
+              )}
 
               <button
                 type="submit"
-                disabled={loading || !formData.fullName || !formData.email || !formData.officeName}
+                disabled={loading || !formData.fullName || !formData.email || !formData.officeName || (!user && !formData.password) || (!user && formData.password.length < 6)}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
