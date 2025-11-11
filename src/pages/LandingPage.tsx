@@ -847,10 +847,13 @@ export default function LandingPage() {
 
           <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 mb-12 max-w-5xl mx-auto shadow-2xl">
             <div className="bg-brand-main rounded-3xl p-8 text-center">
-              <div className="inline-flex items-center gap-2 bg-amber-500 px-6 py-2 rounded-full mb-4 animate-pulse">
+              <Link
+                to="/payment?plan=promo"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 px-6 py-2 rounded-full mb-4 animate-pulse transition-all cursor-pointer"
+              >
                 <Sparkles size={24} />
                 <span className="font-bold text-lg">TOROCON EXCLUSIVE OFFER</span>
-              </div>
+              </Link>
               <h3 className="text-4xl md:text-5xl font-bold mb-6">Get Elite for Only $129/month</h3>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
