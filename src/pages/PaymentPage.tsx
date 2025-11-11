@@ -296,30 +296,28 @@ export default function PaymentPage() {
                 />
               </div>
 
-              {!user && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Create Password *
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleInputChange}
-                    required
-                    minLength={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Minimum 6 characters"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">
-                    Create a password to access your account after payment
-                  </p>
-                </div>
-              )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Create Password *
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  minLength={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Minimum 6 characters"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Create a password to access your account after payment
+                </p>
+              </div>
 
               <button
                 type="submit"
-                disabled={loading || !formData.fullName || !formData.email || !formData.officeName || (!user && !formData.password) || (!user && formData.password.length < 6)}
+                disabled={loading || !formData.fullName || !formData.email || !formData.officeName || !formData.password || formData.password.length < 6}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
