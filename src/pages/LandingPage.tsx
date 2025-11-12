@@ -54,11 +54,14 @@ export default function LandingPage() {
               </button>
 
               <div className="text-center mb-6 clear-both">
-                <div className="inline-flex items-center gap-2 bg-amber-500 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl">
+                <Link
+                  to="/payment?plan=promo"
+                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl transition-all cursor-pointer"
+                >
                   <Sparkles size={20} className="text-white" />
                   <span className="font-bold text-base md:text-lg text-white">{t('modal.exclusive')}</span>
                   <Sparkles size={20} className="text-white" />
-                </div>
+                </Link>
                 <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
                   {t('modal.title')}
                 </h2>
