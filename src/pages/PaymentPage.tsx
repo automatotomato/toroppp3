@@ -166,6 +166,11 @@ export default function PaymentPage() {
             </div>
           </div>
         )}
+        {/* 12-Month Learning Path Section */}
+        <div className="mb-8 max-w-6xl mx-auto">
+          <LearningTimeline />
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8">
           {/* Order Summary */}
           <div className="bg-white rounded-xl shadow-lg p-6">
@@ -345,11 +350,6 @@ export default function PaymentPage() {
               )}
             </div>
           </div>
-        </div>
-
-        {/* 12-Month Learning Path Section */}
-        <div className="mt-12 max-w-6xl mx-auto">
-          <LearningTimeline />
         </div>
       </div>
     </div>
