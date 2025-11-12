@@ -4,6 +4,7 @@ import { CreditCard, Shield, ArrowLeft, Loader2, CheckCircle2, Users, BookOpen, 
 import { STRIPE_PRODUCTS, formatPrice, StripeProduct } from '../stripe-config';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
+import LearningTimeline from '../components/charts/LearningTimeline';
 
 export default function PaymentPage() {
   const [searchParams] = useSearchParams();
@@ -344,6 +345,11 @@ export default function PaymentPage() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* 12-Month Learning Path Section */}
+        <div className="mt-12 max-w-6xl mx-auto">
+          <LearningTimeline />
         </div>
       </div>
     </div>
