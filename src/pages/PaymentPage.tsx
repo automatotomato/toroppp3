@@ -156,7 +156,7 @@ export default function PaymentPage() {
                     <span className="text-white font-bold text-xl">Offer Expires:</span>
                   </div>
                   <div className="text-yellow-400 font-black text-3xl tracking-wider">
-                    November 13, 2025
+                    December 15, 2025
                   </div>
                   <p className="text-white/90 text-sm mt-3 font-medium">
                     Don't miss out! This incredible discount is only available for ToroCon attendees.

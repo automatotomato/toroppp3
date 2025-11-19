@@ -74,7 +74,7 @@ export default function LandingPage() {
                 <div className="text-center mb-4">
                   <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-2 rounded-full mb-3">
                     <Clock className="text-red-900 animate-pulse" size={24} />
-                    <span className="font-black text-red-900 text-lg">OFFER EXPIRES: NOV 13, 2025</span>
+                    <span className="font-black text-red-900 text-lg">OFFER EXPIRES: DEC 15, 2025</span>
                   </div>
                   <h3 className="text-5xl font-black text-white mb-2 drop-shadow-lg">SAVE $3,000!</h3>
                   <p className="text-2xl text-yellow-300 font-bold">Exclusive ToroCon Special</p>
@@ -189,7 +189,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
           <Clock size={20} className="animate-pulse flex-shrink-0 text-yellow-400" />
           <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
-            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroCon Special - Expires Nov 13, 2025
+            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroCon Special - Expires Dec 15, 2025
           </span>
           <button className="bg-yellow-400 text-red-900 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
             CLAIM NOW

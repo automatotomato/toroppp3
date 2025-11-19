@@ -44,7 +44,7 @@ export default function PricingPage() {
             </p>
             <div className="inline-flex items-center gap-2 bg-red-600 border-2 border-yellow-400 px-6 py-3 rounded-full text-white font-black text-lg mb-8 shadow-2xl">
               <span className="text-yellow-400">⚠️</span>
-              <span>Expires November 13, 2025 - Save $3,000!</span>
+              <span>Expires December 15, 2025 - Save $3,000!</span>
               <span className="text-yellow-400">⚠️</span>
             </div>
             <div className="flex justify-center">
@@ -76,7 +76,7 @@ export default function PricingPage() {
                       </div>
                       <div className="bg-red-600 border-2 border-yellow-400 rounded-xl p-4">
                         <div className="text-center mb-3">
-                          <p className="text-yellow-300 text-sm font-bold mb-1">OFFER EXPIRES: NOV 13, 2025</p>
+                          <p className="text-yellow-300 text-sm font-bold mb-1">OFFER EXPIRES: DEC 15, 2025</p>
                         </div>
                         <p className="text-red-200 text-lg font-bold">
                           Regular Registration: <span className="line-through">$3,000</span>
