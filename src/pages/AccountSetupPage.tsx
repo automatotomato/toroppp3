@@ -180,9 +180,19 @@ export default function AccountSetupPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-slate-700 mb-2">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="password" className="block text-sm font-semibold text-slate-700">
+                  Password
+                </label>
+                {!isSignUp && (
+                  <Link
+                    to="/forgot-password"
+                    className="text-sm text-brand-accent hover:text-red-700 font-semibold"
+                  >
+                    Forgot password?
+                  </Link>
+                )}
+              </div>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
                 <input
