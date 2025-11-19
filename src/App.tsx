@@ -18,6 +18,8 @@ import DashboardPodcastsPage from './pages/DashboardPodcastsPage'
 import DashboardTipsPage from './pages/DashboardTipsPage'
 import DashboardResourcesPage from './pages/DashboardResourcesPage'
 import DashboardFAQPage from './pages/DashboardFAQPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -64,6 +66,8 @@ function App() {
         <Route path="/dashboard/tips" element={<ProtectedRoute><DashboardTipsPage /></ProtectedRoute>} />
         <Route path="/dashboard/resources" element={<ProtectedRoute><DashboardResourcesPage /></ProtectedRoute>} />
         <Route path="/dashboard/faq" element={<ProtectedRoute><DashboardFAQPage /></ProtectedRoute>} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
       </Routes>
     </Router>
   )
