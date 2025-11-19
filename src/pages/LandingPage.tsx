@@ -11,6 +11,7 @@ import ProfitMarginChart from '../components/charts/ProfitMarginChart';
 import ROICalculator from '../components/charts/ROICalculator';
 import SuccessMetrics from '../components/charts/SuccessMetrics';
 import LearningTimeline from '../components/charts/LearningTimeline';
+import ValueShowcase from '../components/ValueShowcase';
 
 export default function LandingPage() {
   const { t } = useLanguage();
@@ -346,41 +347,8 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="bg-green-50 border-2 border-green-500 rounded-xl p-6 mb-8">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-xl font-bold text-green-900 mb-4">What's Included:</h3>
-                    <ul className="space-y-2">
-                      {[
-                        t('promo.included1'),
-                        t('promo.included2'),
-                        t('promo.included3'),
-                        t('promo.included4'),
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2 text-green-900">
-                          <CheckCircle2 className="text-green-600 flex-shrink-0 mt-0.5" size={18} />
-                          <span className="font-medium">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-green-900 mb-4">&nbsp;</h3>
-                    <ul className="space-y-2">
-                      {[
-                        t('promo.included5'),
-                        t('promo.included6'),
-                        t('promo.included7'),
-                        t('promo.included8'),
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2 text-green-900">
-                          <CheckCircle2 className="text-green-600 flex-shrink-0 mt-0.5" size={18} />
-                          <span className="font-medium">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+              <div className="mb-8">
+                <ValueShowcase />
               </div>
 
               <div className="flex flex-col items-center gap-6">
@@ -907,7 +875,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center mb-16">
             <Link
               to="/pricing"
               className="inline-flex items-center gap-2 text-white hover:text-amber-300 font-bold text-lg transition-colors mb-4"
@@ -918,6 +886,10 @@ export default function LandingPage() {
             <p className="text-red-100 text-sm">
               {t('pricing.allPlans')}
             </p>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <ValueShowcase />
           </div>
         </div>
       </section>
