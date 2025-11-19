@@ -14,12 +14,22 @@ export function PasswordResetForm() {
     setMessage(null);
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/reset-password`,
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+      const response = await fetch(`${supabaseUrl}/functions/v1/send-password-reset`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${supabaseAnonKey}`,
+        },
+        body: JSON.stringify({ email }),
       });
 
-      if (error) {
-        setMessage({ type: 'error', text: error.message });
+      const data = await response.json();
+
+      if (!response.ok) {
+        setMessage({ type: 'error', text: data.error || 'Failed to send reset email' });
       } else {
         setMessage({
           type: 'success',
