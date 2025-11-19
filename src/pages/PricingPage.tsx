@@ -33,7 +33,7 @@ export default function PricingPage() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 bg-amber-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base md:text-lg mb-6 animate-pulse shadow-xl">
               <Zap className="flex-shrink-0" size={20} />
-              <span className="whitespace-nowrap">TOROCON EXCLUSIVE OFFER</span>
+              <span className="whitespace-nowrap">TOROTAX EXCLUSIVE OFFER</span>
               <Zap className="flex-shrink-0" size={20} />
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6">

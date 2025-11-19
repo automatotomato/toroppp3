@@ -134,7 +134,7 @@ export default function PaymentPage() {
               </div>
               <div className="relative z-10">
                 <div className="inline-block bg-yellow-400 text-red-900 px-6 py-2 rounded-full font-black text-sm mb-4 animate-bounce">
-                  EXCLUSIVE TOROCON OFFER
+                  EXCLUSIVE TOROTAX OFFER
                 </div>
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
                   SAVE $3,000!
@@ -146,7 +146,7 @@ export default function PaymentPage() {
                   </div>
                   <div className="text-6xl text-yellow-400">→</div>
                   <div className="text-center">
-                    <div className="text-yellow-400 text-sm mb-1 font-bold">ToroCon Price</div>
+                    <div className="text-yellow-400 text-sm mb-1 font-bold">ToroTax Price</div>
                     <div className="text-5xl font-black text-white">$299</div>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function PaymentPage() {
                     December 15, 2025
                   </div>
                   <p className="text-white/90 text-sm mt-3 font-medium">
-                    Don't miss out! This incredible discount is only available for ToroCon attendees.
+                    Don't miss out! This incredible discount is only available for ToroTax franchisees.
                   </p>
                 </div>
               </div>

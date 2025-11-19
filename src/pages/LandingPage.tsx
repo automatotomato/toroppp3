@@ -77,7 +77,7 @@ export default function LandingPage() {
                     <span className="font-black text-red-900 text-lg">OFFER EXPIRES: DEC 15, 2025</span>
                   </div>
                   <h3 className="text-5xl font-black text-white mb-2 drop-shadow-lg">SAVE $3,000!</h3>
-                  <p className="text-2xl text-yellow-300 font-bold">Exclusive ToroCon Special</p>
+                  <p className="text-2xl text-yellow-300 font-bold">Exclusive ToroTax Special</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -87,7 +87,7 @@ export default function LandingPage() {
                     <div className="text-sm text-gray-500">Standard pricing</div>
                   </div>
                   <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl p-6 text-center shadow-xl border-4 border-white transform scale-105">
-                    <div className="text-white mb-2 font-bold">ToroCon Special Price</div>
+                    <div className="text-white mb-2 font-bold">ToroTax Special Price</div>
                     <div className="text-6xl font-black text-white mb-2">$299</div>
                     <div className="text-sm text-white font-bold bg-white/20 rounded-full px-3 py-1 inline-block">+ $129/month</div>
                   </div>
@@ -112,7 +112,7 @@ export default function LandingPage() {
                     <div className="text-3xl font-bold text-red-300 line-through">$499/month</div>
                   </div>
                   <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 text-center">
-                    <div className="text-green-300 mb-1 font-semibold text-sm">Your ToroCon Price</div>
+                    <div className="text-green-300 mb-1 font-semibold text-sm">Your ToroTax Price</div>
                     <div className="text-4xl font-bold text-green-400">$129/mo</div>
                     <div className="text-base mt-1 text-white">+ $299 one-time fee</div>
                   </div>
@@ -189,7 +189,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
           <Clock size={20} className="animate-pulse flex-shrink-0 text-yellow-400" />
           <span className="text-base sm:text-lg md:text-xl lg:text-2xl">
-            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroCon Special - Expires Dec 15, 2025
+            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroTax Special - Expires Dec 15, 2025
           </span>
           <button className="bg-yellow-400 text-red-900 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
             CLAIM NOW
@@ -855,7 +855,7 @@ export default function LandingPage() {
                 className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 px-6 py-2 rounded-full mb-4 animate-pulse transition-all cursor-pointer"
               >
                 <Sparkles size={24} />
-                <span className="font-bold text-lg">TOROCON EXCLUSIVE OFFER</span>
+                <span className="font-bold text-lg">TOROTAX EXCLUSIVE OFFER</span>
               </Link>
               <h3 className="text-4xl md:text-5xl font-bold mb-6">Get Elite for Only $129/month</h3>
               <div className="grid md:grid-cols-2 gap-6 mb-6">
