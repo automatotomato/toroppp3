@@ -34,22 +34,28 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
       if (error) {
         setMessage({ type: 'error', text: error.message })
       } else if (data.user) {
-        // Create profile
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert({
-            id: data.user.id,
-            email: data.user.email!,
-            full_name: fullName,
-          })
+        setMessage({ type: 'success', text: 'Account created successfully!' })
 
-        if (profileError) {
-          console.error('Error creating profile:', profileError)
-          setMessage({ type: 'error', text: 'Account created but profile setup failed' })
-        } else {
-          setMessage({ type: 'success', text: 'Account created successfully!' })
-          onSuccess?.()
+        try {
+          const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+          const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+          await fetch(`${supabaseUrl}/functions/v1/send-welcome-email`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${supabaseAnonKey}`,
+            },
+            body: JSON.stringify({
+              email: data.user.email,
+              name: fullName,
+            }),
+          })
+        } catch (emailError) {
+          console.error('Error sending welcome email:', emailError)
         }
+
+        onSuccess?.()
       }
     } catch (error) {
       setMessage({ type: 'error', text: 'An unexpected error occurred' })
