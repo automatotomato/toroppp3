@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, MessageSquare, Shield, Sparkles, X, ChevronDown, ChevronUp } from 'lucide-react';
+import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, Shield, Sparkles, X } from 'lucide-react';
 import { STRIPE_PRODUCTS, formatPrice } from '../stripe-config';
 import LanguageToggle from '../components/LanguageToggle';
 import VoiceAssistant from '../components/VoiceAssistant';
@@ -16,7 +16,6 @@ import ValueShowcase from '../components/ValueShowcase';
 export default function LandingPage() {
   const { t } = useLanguage();
   const [showPromoModal, setShowPromoModal] = useState(false);
-  const [openFaqIndex, setOpenFaqIndex] = useState<string | null>(null);
 
   const courses = [
     { number: 1, title: t('courses.course1') },
@@ -894,152 +893,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-24 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-brand-main mb-4">
-              Frequently Asked Questions
-            </h2>
-            <div className="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
-            <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
-              Everything you need to know about Advancement Academy
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                category: 'Payment & Billing',
-                questions: [
-                  {
-                    question: 'When is my first payment due?',
-                    answer: 'Your first payment is made at the time of registration. This includes your one-time Advancement Academy membership fee, which unlocks your access to the full training library and resources.',
-                  },
-                  {
-                    question: 'When does my monthly subscription begin?',
-                    answer: 'Your monthly subscription begins 30 days after registration, and renews automatically on the same day each month thereafter.',
-                  },
-                  {
-                    question: 'How do I update my payment method?',
-                    answer: 'If you need to update your credit card or payment information, please email Info@3-peak.com, and our team will send you a secure link to update your billing details safely.',
-                  },
-                  {
-                    question: 'Will my membership price ever increase?',
-                    answer: 'No. The price you start with is locked in for life. Even as new members join at higher rates or as additional features are added, your monthly rate will never change.',
-                  },
-                ],
-              },
-              {
-                category: 'Access & Usage',
-                questions: [
-                  {
-                    question: 'How do I access the classes and resources?',
-                    answer: 'Once you register, you\'ll receive an email with your login credentials and step-by-step instructions for accessing the Advancement Academy online training portal. All courses are on-demand, allowing you and your team to train anytime, anywhere, and at your own pace—perfect for busy tax-season schedules.',
-                  },
-                  {
-                    question: 'Who can access the training under my membership?',
-                    answer: 'Your investment covers your entire office. Team members working within your Toro Tax franchise location can use your login to complete courses together and strengthen performance across your team.',
-                  },
-                  {
-                    question: 'Does the cost cover per person or per office?',
-                    answer: 'The membership is per office. This means your entire office can use the same login credentials to access all training materials, courses, and resources.',
-                  },
-                ],
-              },
-              {
-                category: 'Membership Management',
-                questions: [
-                  {
-                    question: 'How do I cancel my membership?',
-                    answer: 'You can cancel anytime by contacting our support team at Info@3-peak.com. We\'ll guide you through a quick, no-hassle cancellation process.',
-                  },
-                  {
-                    question: 'What happens if I cancel my subscription—can I rejoin later?',
-                    answer: 'Yes, you can rejoin at any time. However, if you cancel, you will be required to pay the full $3,000 registration fee again when re-enrolling.',
-                  },
-                  {
-                    question: 'Can I pause my membership instead of canceling?',
-                    answer: 'Yes. If you need a short break—such as during the off-season—you may request to pause your membership for up to 60 days while keeping your locked-in rate.',
-                  },
-                  {
-                    question: 'What happens after I complete the 12-month training program?',
-                    answer: 'Your membership is lifetime. You\'ll continue to have access to all current and future courses, tools, and resources added to the Advancement Academy.',
-                  },
-                ],
-              },
-              {
-                category: 'Content & Support',
-                questions: [
-                  {
-                    question: 'Are the courses available in Spanish?',
-                    answer: 'Currently, the main workshop content is in English, but our podcast library includes both English and Spanish versions. We are working on expanding Spanish language support across all content.',
-                  },
-                  {
-                    question: 'Can I download the resources and materials?',
-                    answer: 'Yes! All handouts, templates, charts, graphs, and tools are available for download. You can save them to your computer and use them in your business operations.',
-                  },
-                  {
-                    question: 'What support is included with my membership?',
-                    answer: 'Members have ongoing access to the Peak Performance Partners support team for help with billing, technical access, or training questions. You can reach us anytime at Info@3-peak.com.',
-                  },
-                ],
-              },
-            ].map((categoryData, catIndex) => (
-              <div key={catIndex} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-brand-main to-slate-800 px-4 md:px-6 py-3 md:py-4">
-                  <h3 className="text-lg md:text-xl font-bold text-white">{categoryData.category}</h3>
-                </div>
-                <div className="divide-y divide-slate-200">
-                  {categoryData.questions.map((faq, qIndex) => {
-                    const key = `${catIndex}-${qIndex}`;
-                    const isOpen = openFaqIndex === key;
-                    return (
-                      <div key={qIndex} className="p-4 md:p-6">
-                        <button
-                          onClick={() => setOpenFaqIndex(isOpen ? null : key)}
-                          className="w-full flex items-center justify-between text-left group"
-                        >
-                          <h4 className="text-base md:text-lg font-semibold text-brand-main group-hover:text-brand-accent transition-colors pr-4">
-                            {faq.question}
-                          </h4>
-                          {isOpen ? (
-                            <ChevronUp className="text-brand-accent flex-shrink-0" size={24} />
-                          ) : (
-                            <ChevronDown className="text-slate-400 group-hover:text-brand-accent flex-shrink-0 transition-colors" size={24} />
-                          )}
-                        </button>
-                        {isOpen && (
-                          <div className="mt-3 md:mt-4 text-sm md:text-base text-slate-700 leading-relaxed">
-                            {faq.answer}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 bg-white rounded-xl shadow-lg p-6 md:p-8 text-center">
-            <MessageSquare className="text-blue-600 mx-auto mb-4" size={40} />
-            <h3 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Still have questions?</h3>
-            <p className="text-slate-600 mb-6">
-              Contact our support team or try our AI voice assistant
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="mailto:info@3-peak.com"
-                className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Email Support
-              </a>
-              <VoiceAssistant />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -1119,7 +972,8 @@ export default function LandingPage() {
               <a href="https://www.3-peak.com" className="hover:text-brand-accent transition-colors">www.3-peak.com</a> |
               <a href="https://www.torotaxes.com" className="hover:text-brand-accent transition-colors ml-2">www.torotaxes.com</a><br />
               <a href="mailto:ricky@3-peak.com" className="hover:text-brand-accent transition-colors">ricky@3-peak.com</a> |
-              <a href="tel:9154901889" className="hover:text-brand-accent transition-colors ml-2">(915) 490-1889</a>
+              <a href="tel:9154901889" className="hover:text-brand-accent transition-colors ml-2">(915) 490-1889</a><br />
+              <Link to="/dashboard/faq" className="hover:text-brand-accent transition-colors text-sm mt-2 inline-block">FAQ</Link>
             </p>
             <div className="text-center border-t border-slate-800 pt-8 w-full space-y-4">
               <div className="flex items-center justify-center gap-2 text-slate-400 text-sm">
