@@ -15,7 +15,6 @@ const supabase = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPAB
 
 Deno.serve(async (req) => {
   try {
-    // Handle OPTIONS request for CORS preflight
     if (req.method === 'OPTIONS') {
       return new Response(null, { status: 204 });
     }
@@ -24,17 +23,14 @@ Deno.serve(async (req) => {
       return new Response('Method not allowed', { status: 405 });
     }
 
-    // get the signature from the header
     const signature = req.headers.get('stripe-signature');
 
     if (!signature) {
       return new Response('No signature found', { status: 400 });
     }
 
-    // get the raw body
     const body = await req.text();
 
-    // verify the webhook signature
     let event: Stripe.Event;
 
     try {
@@ -64,7 +60,6 @@ async function handleEvent(event: Stripe.Event) {
     return;
   }
 
-  // for one time payments, we only listen for the checkout.session.completed event
   if (event.type === 'payment_intent.succeeded' && event.data.object.invoice === null) {
     return;
   }
@@ -91,32 +86,43 @@ async function handleEvent(event: Stripe.Event) {
       await syncCustomerFromStripe(customerId);
     } else if (mode === 'payment' && payment_status === 'paid') {
       try {
-        // Extract the necessary information from the session
+        const session = stripeData as Stripe.Checkout.Session;
         const {
           id: checkout_session_id,
           payment_intent,
           amount_subtotal,
           amount_total,
           currency,
-        } = stripeData as Stripe.Checkout.Session;
+          customer_details,
+          metadata,
+        } = session;
 
-        // Insert the order into the stripe_orders table
-        const { error: orderError } = await supabase.from('stripe_orders').insert({
-          checkout_session_id,
-          payment_intent_id: payment_intent,
-          customer_id: customerId,
-          amount_subtotal,
-          amount_total,
-          currency,
-          payment_status,
-          status: 'completed', // assuming we want to mark it as completed since payment is successful
-        });
+        const customerEmail = customer_details?.email || metadata?.email;
+        const customerName = customer_details?.name || metadata?.full_name || '';
+        const officeName = metadata?.office_name || '';
+        const planType = metadata?.plan_type || 'unknown';
 
-        if (orderError) {
-          console.error('Error inserting order:', orderError);
+        if (!customerEmail) {
+          console.error('No customer email found in session');
           return;
         }
-        console.info(`Successfully processed one-time payment for session: ${checkout_session_id}`);
+
+        const { error: paymentError } = await supabase.from('payments').insert({
+          email: customerEmail.toLowerCase(),
+          plan_type: planType,
+          full_name: customerName,
+          office_name: officeName,
+          amount_paid: amount_total || 0,
+          payment_status: 'completed',
+          paid_at: new Date().toISOString(),
+        });
+
+        if (paymentError) {
+          console.error('Error inserting payment record:', paymentError);
+          return;
+        }
+
+        console.info(`Successfully processed payment for ${customerEmail}`);
       } catch (error) {
         console.error('Error processing one-time payment:', error);
       }
@@ -124,10 +130,8 @@ async function handleEvent(event: Stripe.Event) {
   }
 }
 
-// based on the excellent https://github.com/t3dotgg/stripe-recommendations
 async function syncCustomerFromStripe(customerId: string) {
   try {
-    // fetch latest subscription data from Stripe
     const subscriptions = await stripe.subscriptions.list({
       customer: customerId,
       limit: 1,
@@ -135,7 +139,6 @@ async function syncCustomerFromStripe(customerId: string) {
       expand: ['data.default_payment_method'],
     });
 
-    // TODO verify if needed
     if (subscriptions.data.length === 0) {
       console.info(`No active subscriptions found for customer: ${customerId}`);
       const { error: noSubError } = await supabase.from('stripe_subscriptions').upsert(
@@ -154,10 +157,8 @@ async function syncCustomerFromStripe(customerId: string) {
       }
     }
 
-    // assumes that a customer can only have a single subscription
     const subscription = subscriptions.data[0];
 
-    // store subscription state
     const { error: subError } = await supabase.from('stripe_subscriptions').upsert(
       {
         customer_id: customerId,
