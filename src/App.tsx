@@ -6,7 +6,6 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import CoursesPage from './pages/CoursesPage'
-import PricingPage from './pages/PricingPage'
 import PaymentPage from './pages/PaymentPage'
 import PaymentSuccessPage from './pages/PaymentSuccessPage'
 import PodcastsPage from './pages/PodcastsPage'
@@ -51,11 +50,11 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/sign-in" element={<LoginPage />} />
         <Route path="/login" element={<Navigate to="/sign-in" replace />} />
-        <Route path="/register" element={<Navigate to="/pricing" replace />} />
-        <Route path="/signup" element={<Navigate to="/pricing" replace />} />
+        <Route path="/register" element={<Navigate to="/payment" replace />} />
+        <Route path="/signup" element={<Navigate to="/payment" replace />} />
+        <Route path="/pricing" element={<Navigate to="/payment" replace />} />
         <Route path="/account-setup" element={<Navigate to="/sign-in" replace />} />
         <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/pricing" element={<PricingPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/payment-success" element={<PaymentSuccessPage />} />
         <Route path="/success" element={<Success />} />
