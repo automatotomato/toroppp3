@@ -164,19 +164,19 @@ export default function LandingPage() {
         </div>
       )}
 
-      <header className="bg-brand-main py-4">
+      <header className="bg-brand-main py-3 sm:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-3 items-center">
-            <div></div>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex-1"></div>
             <div className="flex justify-center">
-              <h1 className="text-white text-xl sm:text-2xl font-bold text-center leading-tight">
-                Advancement<br />Academy
+              <h1 className="text-white text-lg sm:text-xl md:text-2xl font-bold text-center leading-tight whitespace-nowrap">
+                Advancement Academy
               </h1>
             </div>
-            <div className="flex justify-end">
+            <div className="flex-1 flex justify-end">
               <Link
                 to="/dashboard"
-                className="inline-flex items-center justify-center gap-1 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center justify-center gap-1 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
               >
                 Dashboard
               </Link>
@@ -197,7 +197,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <section className="relative py-12 md:py-24 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
@@ -207,80 +207,80 @@ export default function LandingPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-8 md:mb-12 flex flex-col items-center justify-center gap-4 md:gap-6">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-56 sm:h-64 md:h-80 lg:h-96" />
-              <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">×</span>
-              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-12 sm:h-16 md:h-20" />
+            <div className="mb-6 sm:mb-8 md:mb-10 flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5">
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="w-auto h-32 sm:h-40 md:h-48 lg:h-56 max-w-full object-contain" />
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">×</span>
+              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="w-auto h-10 sm:h-12 md:h-14 lg:h-16 max-w-full object-contain" />
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <p className="text-2xl sm:text-3xl md:text-4xl mb-6 md:mb-8 text-slate-200 font-bold">
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8 text-slate-200 font-bold leading-tight px-2">
                 {t('hero.title')}
               </p>
-              <p className="text-base md:text-xl text-slate-300 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2">
                 {t('hero.description')}
               </p>
 
-              <div className="mb-8 md:mb-10 flex justify-center">
+              <div className="mb-6 sm:mb-8 md:mb-10 flex justify-center">
                 <VoiceAssistant />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-10 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10 justify-center px-4">
                 <button
                   onClick={() => setShowPromoModal(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
-                  <Zap size={24} />
-                  {t('hero.cta1')}
-                  <ArrowRight size={24} />
+                  <Zap size={20} className="flex-shrink-0" />
+                  <span>{t('hero.cta1')}</span>
+                  <ArrowRight size={20} className="flex-shrink-0" />
                 </button>
                 <Link
                   to="/sign-in"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white/30 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold border-2 border-white/30 transition-all"
                 >
                   Sign In
-                  <Play size={20} />
+                  <Play size={18} />
                 </Link>
               </div>
 
-              <div className="flex items-center justify-center gap-6 md:gap-8 text-sm md:text-base flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="text-green-400" size={20} />
+              <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm md:text-base flex-wrap px-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
                   <span>12 Courses</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="text-green-400" size={20} />
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
                   <span>90+ Hours</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="text-green-400" size={20} />
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
                   <span>Lifetime Access</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-16 max-w-5xl mx-auto">
-            <div className="grid grid-cols-2 gap-6 md:gap-8">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
-                <DollarSign className="text-green-400 mb-3 mx-auto" size={32} />
-                <div className="text-4xl md:text-5xl font-bold mb-2">250%</div>
-                <div className="text-slate-300 text-sm md:text-base">Average Revenue Increase</div>
+          <div className="mt-8 sm:mt-12 md:mt-16 max-w-5xl mx-auto px-2">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
+                <DollarSign className="text-green-400 mb-2 sm:mb-3 mx-auto" size={24} />
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">250%</div>
+                <div className="text-slate-300 text-xs sm:text-sm md:text-base">Average Revenue Increase</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
-                <TrendingUp className="text-blue-400 mb-3 mx-auto" size={32} />
-                <div className="text-4xl md:text-5xl font-bold mb-2">85%</div>
-                <div className="text-slate-300 text-sm md:text-base">Client Retention Rate</div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
+                <TrendingUp className="text-blue-400 mb-2 sm:mb-3 mx-auto" size={24} />
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">85%</div>
+                <div className="text-slate-300 text-xs sm:text-sm md:text-base">Client Retention Rate</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
-                <Users className="text-cyan-400 mb-3 mx-auto" size={32} />
-                <div className="text-4xl md:text-5xl font-bold mb-2">100s</div>
-                <div className="text-slate-300 text-sm md:text-base">of Successful Owners</div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
+                <Users className="text-cyan-400 mb-2 sm:mb-3 mx-auto" size={24} />
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">100s</div>
+                <div className="text-slate-300 text-xs sm:text-sm md:text-base">of Successful Owners</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20 text-center">
-                <Award className="text-amber-400 mb-3 mx-auto" size={32} />
-                <div className="text-4xl md:text-5xl font-bold mb-2">4.9/5</div>
-                <div className="text-slate-300 text-sm md:text-base">Satisfaction Rating</div>
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
+                <Award className="text-amber-400 mb-2 sm:mb-3 mx-auto" size={24} />
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">4.9/5</div>
+                <div className="text-slate-300 text-xs sm:text-sm md:text-base">Satisfaction Rating</div>
               </div>
             </div>
           </div>
