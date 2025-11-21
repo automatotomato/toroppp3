@@ -164,19 +164,21 @@ export default function LandingPage() {
         </div>
       )}
 
-      <header className="bg-white border-b border-slate-200">
+      <header className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            <div className="flex items-center gap-6">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-14 w-auto object-contain" />
-              <div className="hidden sm:block w-px h-10 bg-slate-200"></div>
-              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="hidden sm:block h-8 w-auto object-contain" />
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-4">
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-12 w-auto object-contain" />
+              <div className="hidden sm:flex items-center gap-2">
+                <div className="w-px h-8 bg-gradient-to-b from-transparent via-slate-500 to-transparent"></div>
+                <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-6 w-auto object-contain" />
+              </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <Link
                 to="/dashboard"
-                className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-medium border border-white/10 hover:border-white/20 transition-all"
               >
                 Dashboard
               </Link>
@@ -185,34 +187,59 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="bg-slate-900 py-3 text-white text-center font-medium cursor-pointer hover:bg-slate-800 transition-all" onClick={() => setShowPromoModal(true)}>
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 flex-wrap">
-          <span className="text-sm sm:text-base">
-            <span className="font-semibold">Limited Time:</span> Save $3,000 on ToroTax Special - Expires Dec 15, 2025
+      <div className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 py-2.5 sm:py-3 text-white text-center font-bold cursor-pointer hover:from-red-800 hover:via-red-900 hover:to-red-950 transition-all shadow-xl z-40 border-y-2 border-yellow-400" onClick={() => setShowPromoModal(true)}>
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+          <Clock size={16} className="animate-pulse flex-shrink-0 text-yellow-400" />
+          <span className="text-sm sm:text-base md:text-lg">
+            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroTax Special - Expires Dec 15, 2025
           </span>
+          <button className="bg-yellow-400 text-red-900 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
+            CLAIM NOW
+          </button>
         </div>
       </div>
 
-      <section className="relative py-20 sm:py-24 md:py-32 lg:py-40 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)]"></div>
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(234, 88, 12, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.03) 0%, transparent 50%)',
+          }} />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+        </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-12 flex items-center justify-center gap-8">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-20 sm:h-24 md:h-28 w-auto object-contain" />
-              <div className="text-slate-300 text-4xl font-light">×</div>
-              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-14 sm:h-16 md:h-20 w-auto object-contain" />
+            <div className="mb-8 sm:mb-10 md:mb-12 flex items-center justify-center gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl rounded-full"></div>
+                <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="relative w-auto h-16 sm:h-20 md:h-24 lg:h-28 object-contain" />
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+                <span className="text-amber-400 text-xs font-semibold tracking-wider">IN PARTNERSHIP WITH</span>
+                <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-orange-500/20 blur-xl rounded-full"></div>
+                <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="relative w-auto h-12 sm:h-14 md:h-16 lg:h-20 object-contain" />
+              </div>
             </div>
 
             <div className="mb-6">
-              <span className="inline-block text-slate-600 text-sm font-medium tracking-wide uppercase">Advancement Academy</span>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-full px-4 py-2 backdrop-blur-sm">
+                <Sparkles className="text-amber-400" size={16} />
+                <span className="text-amber-300 text-sm font-semibold">Advancement Academy</span>
+              </div>
             </div>
 
             <div className="max-w-5xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 font-bold leading-tight tracking-tight text-slate-900 px-2">
-                {t('hero.title')}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-6 sm:mb-8 font-bold leading-tight tracking-tight px-2">
+                <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                  {t('hero.title')}
+                </span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed max-w-3xl mx-auto px-2">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-400 mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-3xl mx-auto px-2 font-light">
                 {t('hero.description')}
               </p>
 
@@ -220,57 +247,82 @@ export default function LandingPage() {
                 <VoiceAssistant />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center px-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-10 sm:mb-12 md:mb-14 justify-center px-4">
                 <button
                   onClick={() => setShowPromoModal(true)}
-                  className="group inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg text-lg font-medium transition-all"
+                  className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold shadow-lg shadow-amber-500/25 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-amber-500/40"
                 >
+                  <Zap size={20} className="flex-shrink-0 group-hover:rotate-12 transition-transform" />
                   <span>{t('hero.cta1')}</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={20} className="flex-shrink-0 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <Link
                   to="/sign-in"
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-900 px-8 py-4 rounded-lg text-lg font-medium border border-slate-200 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-base sm:text-lg font-semibold border border-white/10 hover:border-white/20 transition-all"
                 >
                   Sign In
-                  <ArrowRight size={18} />
+                  <Play size={18} />
                 </Link>
               </div>
 
-              <div className="flex items-center justify-center gap-6 text-sm text-slate-600 flex-wrap px-2">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="text-slate-400" size={18} />
-                  <span>12 Courses</span>
+              <div className="flex items-center justify-center gap-6 sm:gap-8 md:gap-10 text-sm md:text-base flex-wrap px-2">
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+                  <CheckCircle2 className="text-emerald-400 flex-shrink-0" size={18} />
+                  <span className="text-slate-300">12 Courses</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="text-slate-400" size={18} />
-                  <span>90+ Hours</span>
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+                  <CheckCircle2 className="text-emerald-400 flex-shrink-0" size={18} />
+                  <span className="text-slate-300">90+ Hours</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="text-slate-400" size={18} />
-                  <span>Lifetime Access</span>
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+                  <CheckCircle2 className="text-emerald-400 flex-shrink-0" size={18} />
+                  <span className="text-slate-300">Lifetime Access</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-16 sm:mt-20 max-w-6xl mx-auto px-2">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-5xl font-bold text-slate-900 mb-2">250%</div>
-                <div className="text-slate-600 text-sm">Average Revenue Increase</div>
+          <div className="mt-12 sm:mt-16 md:mt-20 max-w-6xl mx-auto px-2">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-emerald-500/30 text-center transition-all duration-300 hover:transform hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity"></div>
+                <div className="relative">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-4">
+                    <DollarSign className="text-emerald-400" size={24} />
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">250%</div>
+                  <div className="text-slate-400 text-sm font-medium">Average Revenue Increase</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-slate-900 mb-2">85%</div>
-                <div className="text-slate-600 text-sm">Client Retention Rate</div>
+              <div className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 text-center transition-all duration-300 hover:transform hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity"></div>
+                <div className="relative">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 mb-4">
+                    <TrendingUp className="text-blue-400" size={24} />
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">85%</div>
+                  <div className="text-slate-400 text-sm font-medium">Client Retention Rate</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-slate-900 mb-2">100s</div>
-                <div className="text-slate-600 text-sm">of Successful Owners</div>
+              <div className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-cyan-500/30 text-center transition-all duration-300 hover:transform hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity"></div>
+                <div className="relative">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 mb-4">
+                    <Users className="text-cyan-400" size={24} />
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">100s</div>
+                  <div className="text-slate-400 text-sm font-medium">of Successful Owners</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-slate-900 mb-2">4.9/5</div>
-                <div className="text-slate-600 text-sm">Satisfaction Rating</div>
+              <div className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-amber-500/30 text-center transition-all duration-300 hover:transform hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity"></div>
+                <div className="relative">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 mb-4">
+                    <Award className="text-amber-400" size={24} />
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-br from-white to-slate-300 bg-clip-text text-transparent">4.9/5</div>
+                  <div className="text-slate-400 text-sm font-medium">Satisfaction Rating</div>
+                </div>
               </div>
             </div>
           </div>
