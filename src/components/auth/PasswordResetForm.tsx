@@ -14,31 +14,21 @@ export function PasswordResetForm() {
     setMessage(null);
 
     try {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-password-reset`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseAnonKey}`,
-        },
-        body: JSON.stringify({ email }),
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setMessage({ type: 'error', text: data.error || 'Failed to send reset email' });
+      if (error) {
+        setMessage({ type: 'error', text: error.message || 'Failed to send reset email' });
       } else {
         setMessage({
           type: 'success',
-          text: 'Password reset link has been sent to your email. Please check your inbox.'
+          text: 'If an account exists with this email, you will receive a password reset link. Please check your inbox and spam folder.'
         });
         setEmail('');
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'An unexpected error occurred' });
+      setMessage({ type: 'error', text: 'An unexpected error occurred. Please try again.' });
     } finally {
       setLoading(false);
     }

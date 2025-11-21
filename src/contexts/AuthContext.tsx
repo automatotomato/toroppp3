@@ -95,6 +95,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/dashboard`,
+        data: {
+          full_name: fullName,
+          office_name: officeName,
+        }
+      }
     });
 
     if (authError) return { error: authError };
@@ -111,7 +118,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           },
         ]);
 
-      if (profileError) return { error: profileError };
+      if (profileError) {
+        console.error('Profile creation error:', profileError);
+        return { error: profileError };
+      }
     }
 
     return { error: null };
