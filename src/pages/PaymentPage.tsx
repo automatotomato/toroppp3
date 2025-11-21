@@ -18,7 +18,7 @@ export default function PaymentPage() {
     password: '',
   });
 
-  const plan = searchParams.get('plan') || 'promo';
+  const plan = searchParams.get('plan') || 'subscription';
   const selectedProduct = plan === 'promo' ? STRIPE_PRODUCTS.registration : STRIPE_PRODUCTS[plan as keyof typeof STRIPE_PRODUCTS];
 
   useEffect(() => {
@@ -127,53 +127,38 @@ export default function PaymentPage() {
         {/* Promotional Deadline Banner */}
         {isPromoOffer && (
           <div className="mb-8 relative overflow-hidden">
-            <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-900 rounded-2xl p-8 text-center shadow-2xl border-4 border-yellow-400">
+            <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-900 rounded-2xl p-8 text-center shadow-2xl border-4 border-red-400">
               <div className="absolute top-0 left-0 w-full h-full opacity-10">
                 <div className="absolute top-4 left-4 w-32 h-32 bg-white rounded-full animate-pulse"></div>
                 <div className="absolute bottom-4 right-4 w-40 h-40 bg-white rounded-full animate-pulse"></div>
               </div>
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-2 rounded-full mb-4 animate-pulse">
-                  <span className="font-black text-red-900 text-sm">EXCLUSIVE TOROTAX OFFER</span>
+                <div className="inline-block bg-yellow-400 text-red-900 px-6 py-2 rounded-full font-black text-sm mb-4 animate-bounce">
+                  EXCLUSIVE TOROTAX OFFER
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
                   SAVE $3,000!
                 </h2>
-                <p className="text-xl md:text-2xl text-yellow-300 font-bold mb-6">You're Getting an Exclusive Deal!</p>
-
-                <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-                  <div className="bg-white/90 rounded-xl p-6 text-center shadow-xl">
-                    <div className="text-gray-600 mb-2 font-semibold text-sm">Regular Registration Fee</div>
-                    <div className="text-4xl font-black text-red-600 line-through mb-1">$3,000</div>
-                    <div className="text-xs text-gray-500">Standard pricing</div>
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="text-center">
+                    <div className="text-white/80 text-sm mb-1">Regular Price</div>
+                    <div className="text-2xl font-bold text-white line-through">$3,000</div>
                   </div>
-                  <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl p-6 text-center shadow-xl border-4 border-white">
-                    <div className="text-white mb-2 font-bold text-sm">Your ToroTax Price</div>
-                    <div className="text-5xl font-black text-white mb-1">$299</div>
-                    <div className="text-xs text-white font-bold bg-white/20 rounded-full px-3 py-1 inline-block">+ $129/month</div>
+                  <div className="text-6xl text-yellow-400">→</div>
+                  <div className="text-center">
+                    <div className="text-yellow-400 text-sm mb-1 font-bold">ToroTax Price</div>
+                    <div className="text-5xl font-black text-white">$299</div>
                   </div>
                 </div>
-
-                <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
-                  <div className="bg-amber-500/30 border-2 border-amber-400 rounded-xl p-3 text-center">
-                    <p className="text-xl md:text-2xl text-yellow-300 font-black mb-1">$2,701</p>
-                    <p className="text-white text-xs">Registration Savings!</p>
-                  </div>
-                  <div className="bg-amber-500/30 border-2 border-amber-400 rounded-xl p-3 text-center">
-                    <p className="text-xl md:text-2xl text-yellow-300 font-black mb-1">$370/mo</p>
-                    <p className="text-white text-xs">Monthly Savings!</p>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border-2 border-white/20">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mt-6 border-2 border-white/20">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <Clock className="text-yellow-400 animate-pulse" size={24} />
-                    <span className="text-white font-bold text-lg">Offer Expires:</span>
+                    <Clock className="text-yellow-400" size={24} />
+                    <span className="text-white font-bold text-xl">Offer Expires:</span>
                   </div>
-                  <div className="text-yellow-400 font-black text-2xl md:text-3xl tracking-wider mb-2">
+                  <div className="text-yellow-400 font-black text-3xl tracking-wider">
                     December 15, 2025
                   </div>
-                  <p className="text-white/90 text-sm font-medium">
+                  <p className="text-white/90 text-sm mt-3 font-medium">
                     Don't miss out! This incredible discount is only available for ToroTax franchisees.
                   </p>
                 </div>
