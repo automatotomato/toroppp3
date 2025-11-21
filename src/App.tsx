@@ -31,7 +31,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     )
   }
 
-  return user ? <>{children}</> : <Navigate to="/login" />
+  return user ? <>{children}</> : <Navigate to="/sign-in" />
 }
 
 function AppContent() {
@@ -49,10 +49,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/sign-in" element={<LoginPage />} />
+        <Route path="/login" element={<Navigate to="/sign-in" replace />} />
         <Route path="/register" element={<Navigate to="/pricing" replace />} />
         <Route path="/signup" element={<Navigate to="/pricing" replace />} />
-        <Route path="/account-setup" element={<Navigate to="/login" replace />} />
+        <Route path="/account-setup" element={<Navigate to="/sign-in" replace />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/payment" element={<PaymentPage />} />

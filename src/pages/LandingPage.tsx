@@ -235,10 +235,10 @@ export default function LandingPage() {
                   <ArrowRight size={24} />
                 </button>
                 <Link
-                  to="/login"
+                  to="/sign-in"
                   className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white/30 transition-all"
                 >
-                  Log In
+                  Sign In
                   <Play size={20} />
                 </Link>
               </div>

@@ -38,11 +38,11 @@ export function PasswordResetForm() {
     <div className="space-y-6">
       <div>
         <Link
-          to="/login"
+          to="/sign-in"
           className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
         >
           <ArrowLeft size={16} />
-          Back to Login
+          Back to Sign In
         </Link>
       </div>
 
