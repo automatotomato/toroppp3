@@ -43,121 +43,84 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {showPromoModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300 overflow-y-auto">
-          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300 my-8">
-            <div className="bg-brand-main rounded-3xl p-6 md:p-8 relative max-h-[85vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 max-w-2xl w-full shadow-2xl animate-in zoom-in duration-300">
+            <div className="bg-brand-main rounded-3xl p-8 md:p-10 relative">
               <button
                 onClick={() => setShowPromoModal(false)}
-                className="sticky top-0 right-0 float-right bg-slate-800 hover:bg-brand-accent text-white p-2 rounded-full transition-colors shadow-lg z-10"
+                className="absolute top-4 right-4 bg-slate-800 hover:bg-brand-accent text-white p-2 rounded-full transition-colors shadow-lg z-10"
               >
                 <X size={24} />
               </button>
 
-              <div className="text-center mb-6 clear-both">
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 bg-yellow-400 px-4 py-2 rounded-full mb-4 animate-pulse">
+                  <Sparkles size={20} className="text-red-900" />
+                  <span className="font-black text-red-900 text-sm">EXCLUSIVE TOROTAX OFFER</span>
+                  <Sparkles size={20} className="text-red-900" />
+                </div>
+
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+                  SAVE $3,000!
+                </h2>
+
+                <div className="bg-red-600 border-4 border-yellow-400 rounded-2xl p-6 mb-6 shadow-2xl">
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <div className="text-white/80 text-sm mb-1">Regular Price</div>
+                      <div className="text-3xl font-bold text-white line-through">$3,000</div>
+                    </div>
+                    <div>
+                      <div className="text-yellow-400 text-sm mb-1 font-bold">ToroTax Price</div>
+                      <div className="text-5xl font-black text-white">$299</div>
+                    </div>
+                  </div>
+                  <div className="bg-yellow-400/20 rounded-xl p-3 border-2 border-yellow-400">
+                    <p className="text-yellow-300 font-bold text-lg">+ Only $129/month (Regular $499/month)</p>
+                  </div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Clock className="text-yellow-400 animate-pulse" size={20} />
+                    <span className="text-white font-bold">Offer Expires: December 15, 2025</span>
+                  </div>
+                  <p className="text-slate-300 text-sm">
+                    Don't miss this limited-time offer for ToroTax franchisees
+                  </p>
+                </div>
+
+                <ul className="text-left space-y-2 mb-6 bg-white/5 rounded-xl p-4">
+                  <li className="flex items-start gap-2 text-white text-sm">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                    <span>12 Power-Packed Workshops</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-white text-sm">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                    <span>Live Town Hall Sessions</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-white text-sm">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                    <span>Exclusive Resources & Tools</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-white text-sm">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                    <span>Private Community Access</span>
+                  </li>
+                </ul>
+
                 <Link
                   to="/payment?plan=promo"
-                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl transition-all cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
-                  <Sparkles size={20} className="text-white" />
-                  <span className="font-bold text-base md:text-lg text-white">{t('modal.exclusive')}</span>
-                  <Sparkles size={20} className="text-white" />
+                  <Zap size={24} />
+                  Get Started Now
+                  <ArrowRight size={24} />
                 </Link>
-                <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
-                  {t('modal.title')}
-                </h2>
-                <p className="text-base md:text-lg text-slate-300 mb-4">
-                  {t('modal.subtitle')}
+
+                <p className="text-slate-400 text-xs mt-4">
+                  Click to see full details and complete your registration
                 </p>
-              </div>
-
-              <div className="bg-red-600 border-4 border-yellow-400 rounded-2xl p-6 mb-6 shadow-2xl">
-                <div className="text-center mb-4">
-                  <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-2 rounded-full mb-3">
-                    <Clock className="text-red-900 animate-pulse" size={24} />
-                    <span className="font-black text-red-900 text-lg">OFFER EXPIRES: DEC 15, 2025</span>
-                  </div>
-                  <h3 className="text-5xl font-black text-white mb-2 drop-shadow-lg">SAVE $3,000!</h3>
-                  <p className="text-2xl text-yellow-300 font-bold">Exclusive ToroTax Special</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                  <div className="bg-white/90 rounded-xl p-6 text-center shadow-xl">
-                    <div className="text-gray-600 mb-2 font-semibold">Regular Registration Fee</div>
-                    <div className="text-4xl font-black text-red-600 line-through mb-2">$3,000</div>
-                    <div className="text-sm text-gray-500">Standard pricing</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl p-6 text-center shadow-xl border-4 border-white transform scale-105">
-                    <div className="text-white mb-2 font-bold">ToroTax Special Price</div>
-                    <div className="text-6xl font-black text-white mb-2">$299</div>
-                    <div className="text-sm text-white font-bold bg-white/20 rounded-full px-3 py-1 inline-block">+ $129/month</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-amber-500/20 border-2 border-amber-400 rounded-xl p-4 text-center">
-                  <p className="text-2xl text-yellow-300 font-black mb-1">$2,701 SAVED</p>
-                  <p className="text-white text-sm">On registration fee alone!</p>
-                </div>
-                <div className="bg-amber-500/20 border-2 border-amber-400 rounded-xl p-4 text-center">
-                  <p className="text-2xl text-yellow-300 font-black mb-1">$370/MONTH</p>
-                  <p className="text-white text-sm">Ongoing monthly savings!</p>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-3 order-2 md:order-1">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <div className="text-slate-400 mb-1 text-sm">Regular Elite Price</div>
-                    <div className="text-3xl font-bold text-red-300 line-through">$499/month</div>
-                  </div>
-                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 text-center">
-                    <div className="text-green-300 mb-1 font-semibold text-sm">Your ToroTax Price</div>
-                    <div className="text-4xl font-bold text-green-400">$129/mo</div>
-                    <div className="text-base mt-1 text-white">+ $299 one-time fee</div>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4">
-                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-3 mb-3 text-center">
-                    <p className="text-green-300 font-bold text-sm">{t('modal.features')}</p>
-                  </div>
-                  <ul className="space-y-1.5 text-white">
-                    {[
-                      t('modal.feature1'),
-                      t('modal.feature2'),
-                      t('modal.feature3'),
-                      t('modal.feature4'),
-                      t('modal.feature5'),
-                      t('modal.feature6'),
-                      t('modal.feature7'),
-                      t('modal.feature8'),
-                    ].map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-4 mb-6">
-                  <div className="text-center">
-                    <div className="text-white text-sm font-semibold mb-1">{t('modal.totalValue')}</div>
-                    <div className="text-4xl font-bold text-white mb-1">{t('modal.valueAmount')}</div>
-                    <div className="text-green-100 text-sm">{t('modal.valueDesc')}</div>
-                  </div>
-                </div>
-                <Link
-                  to={`/payment?plan=promo`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
-                >
-                  <Zap className="flex-shrink-0" size={20} />
-                  <span className="text-center">{t('modal.cta')}</span>
-                  <ArrowRight className="flex-shrink-0" size={20} />
-                </Link>
               </div>
             </div>
           </div>
