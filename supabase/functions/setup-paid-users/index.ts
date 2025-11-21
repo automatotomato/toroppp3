@@ -67,7 +67,7 @@ Deno.serve(async (req: Request) => {
         const userId = authData.user.id;
 
         const expiresAt = new Date();
-        expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+        expiresAt.setMonth(expiresAt.getMonth() + 1);
 
         const { error: profileError } = await supabase
           .from('profiles')
