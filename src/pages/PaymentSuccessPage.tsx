@@ -137,10 +137,10 @@ export default function PaymentSuccessPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              to="/account-setup"
+              to="/dashboard"
               className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-colors"
             >
-              Set Up Account
+              Go to Dashboard
               <ArrowRight size={16} />
             </Link>
             <button className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white px-6 py-3 rounded-lg font-semibold transition-colors">

@@ -13,7 +13,7 @@ export default function PricingPage() {
           </Link>
           <div className="flex gap-2 sm:gap-4">
             <Link
-              to="/account-setup"
+              to="/login"
               className="text-white hover:text-brand-accent font-semibold transition-colors text-sm sm:text-base"
             >
               Login

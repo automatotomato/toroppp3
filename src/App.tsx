@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useAuth } from './hooks/useAuth'
 import Success from './pages/Success'
 import LandingPage from './pages/LandingPage'
-import AccountSetupPage from './pages/AccountSetupPage'
-import { Signup } from './pages/Signup'
+import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import CoursesPage from './pages/CoursesPage'
 import PricingPage from './pages/PricingPage'
@@ -32,7 +31,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     )
   }
 
-  return user ? <>{children}</> : <Navigate to="/account-setup" />
+  return user ? <>{children}</> : <Navigate to="/login" />
 }
 
 function AppContent() {
@@ -50,10 +49,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Navigate to="/account-setup" replace />} />
-        <Route path="/register" element={<Navigate to="/account-setup" replace />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/account-setup" element={<AccountSetupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<Navigate to="/pricing" replace />} />
+        <Route path="/signup" element={<Navigate to="/pricing" replace />} />
+        <Route path="/account-setup" element={<Navigate to="/login" replace />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/payment" element={<PaymentPage />} />

@@ -87,7 +87,7 @@ export default function Success() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/account-setup"
+                to="/login"
                 className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
               >
                 Access Your Academy
