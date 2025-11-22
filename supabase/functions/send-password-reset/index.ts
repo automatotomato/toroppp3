@@ -68,7 +68,7 @@ Deno.serve(async (req: Request) => {
     }
 
     const resetUrl = tokenData.properties.action_link;
-    const siteUrl = Deno.env.get('SITE_URL') || 'https://advancementacademy.netlify.app';
+    const siteUrl = Deno.env.get('SITE_URL') || 'https://3-peakavanza.com';
 
     const emailHtml = `
       <!DOCTYPE html>
