@@ -30,6 +30,13 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     )
   }
 
+  const isPasswordRecovery = window.location.pathname === '/reset-password' &&
+    (window.location.hash.includes('type=recovery') || window.location.search.includes('type=recovery'))
+
+  if (isPasswordRecovery) {
+    return <>{children}</>
+  }
+
   return user ? <>{children}</> : <Navigate to="/sign-in" />
 }
 
@@ -67,6 +74,7 @@ function App() {
         <Route path="/dashboard/faq" element={<ProtectedRoute><DashboardFAQPage /></ProtectedRoute>} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/update-password" element={<ResetPasswordPage />} />
       </Routes>
     </Router>
   )
