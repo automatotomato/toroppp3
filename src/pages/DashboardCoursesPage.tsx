@@ -1,7 +1,10 @@
 import DashboardLayout from '../components/DashboardLayout';
+import LockedContentOverlay from '../components/LockedContentOverlay';
+import { isContentLocked } from '../utils/contentLock';
 import { BookOpen, Clock, Play, Lock, CheckCircle, TrendingUp } from 'lucide-react';
 
 export default function DashboardCoursesPage() {
+  const contentLocked = isContentLocked();
   const courses = [
     {
       id: 1,
@@ -158,6 +161,7 @@ export default function DashboardCoursesPage() {
 
   return (
     <DashboardLayout>
+      <LockedContentOverlay isLocked={contentLocked}>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Workshop Courses</h1>
         <p className="text-slate-600">
@@ -272,6 +276,7 @@ export default function DashboardCoursesPage() {
           </div>
         ))}
       </div>
+      </LockedContentOverlay>
     </DashboardLayout>
   );
 }

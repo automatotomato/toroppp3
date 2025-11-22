@@ -1,7 +1,10 @@
 import DashboardLayout from '../components/DashboardLayout';
+import LockedContentOverlay from '../components/LockedContentOverlay';
+import { isContentLocked } from '../utils/contentLock';
 import { FileText, Download, FolderOpen, TrendingUp, File, Image, FileSpreadsheet } from 'lucide-react';
 
 export default function DashboardResourcesPage() {
+  const contentLocked = isContentLocked();
   const resources = [
     {
       id: 1,
@@ -141,6 +144,7 @@ export default function DashboardResourcesPage() {
 
   return (
     <DashboardLayout>
+      <LockedContentOverlay isLocked={contentLocked}>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Resources & Tools</h1>
         <p className="text-slate-600">
@@ -264,6 +268,7 @@ export default function DashboardResourcesPage() {
           </div>
         </div>
       </div>
+      </LockedContentOverlay>
     </DashboardLayout>
   );
 }

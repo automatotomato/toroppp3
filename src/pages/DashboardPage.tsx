@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/DashboardLayout';
+import LockedContentOverlay from '../components/LockedContentOverlay';
+import { isContentLocked } from '../utils/contentLock';
 import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
 
 export default function DashboardPage() {
   const { profile } = useAuth();
+  const contentLocked = isContentLocked();
 
   const displayName = profile?.full_name || 'Guest';
   const displayOffice = profile?.office_name || 'Welcome to the Academy';
@@ -28,6 +31,7 @@ export default function DashboardPage() {
 
   return (
     <DashboardLayout>
+      <LockedContentOverlay isLocked={contentLocked}>
       <div className="mb-6 md:mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-brand-main mb-2">
           Welcome back, {displayName}!
@@ -195,6 +199,7 @@ export default function DashboardPage() {
           </p>
         </Link>
       </div>
+      </LockedContentOverlay>
     </DashboardLayout>
   );
 }

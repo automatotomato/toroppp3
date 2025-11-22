@@ -1,7 +1,10 @@
 import DashboardLayout from '../components/DashboardLayout';
+import LockedContentOverlay from '../components/LockedContentOverlay';
+import { isContentLocked } from '../utils/contentLock';
 import { Video, Calendar, Clock, Users, Play, Eye } from 'lucide-react';
 
 export default function DashboardTownHallsPage() {
+  const contentLocked = isContentLocked();
   const townHalls = [
     {
       id: 1,
@@ -85,6 +88,7 @@ export default function DashboardTownHallsPage() {
 
   return (
     <DashboardLayout>
+      <LockedContentOverlay isLocked={contentLocked}>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Town Hall Recordings</h1>
         <p className="text-slate-600">
@@ -182,6 +186,7 @@ export default function DashboardTownHallsPage() {
           View Upcoming Schedule
         </button>
       </div>
+      </LockedContentOverlay>
     </DashboardLayout>
   );
 }
