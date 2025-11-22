@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '../../lib/supabase';
+import { env } from '../../config/env';
 import { Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -14,26 +15,11 @@ export function PasswordResetForm() {
     setMessage(null);
 
     try {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-      if (!supabaseUrl || !supabaseAnonKey) {
-        console.error('Missing environment variables:', {
-          hasUrl: !!supabaseUrl,
-          hasKey: !!supabaseAnonKey
-        });
-        setMessage({
-          type: 'error',
-          text: 'Configuration error. Please contact support.'
-        });
-        return;
-      }
-
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-password-reset`, {
+      const response = await fetch(`${env.supabase.url}/functions/v1/send-password-reset`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${supabaseAnonKey}`,
+          'Authorization': `Bearer ${env.supabase.anonKey}`,
         },
         body: JSON.stringify({ email }),
       });

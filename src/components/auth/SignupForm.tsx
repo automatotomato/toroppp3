@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import { env } from '../../config/env'
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react'
 
 interface SignupFormProps {
@@ -37,14 +38,11 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
         setMessage({ type: 'success', text: 'Account created successfully!' })
 
         try {
-          const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-          const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-          await fetch(`${supabaseUrl}/functions/v1/send-welcome-email`, {
+          await fetch(`${env.supabase.url}/functions/v1/send-welcome-email`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${supabaseAnonKey}`,
+              'Authorization': `Bearer ${env.supabase.anonKey}`,
             },
             body: JSON.stringify({
               email: data.user.email,

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { useAuth } from './useAuth';
+import { useAuth } from '../contexts/AuthContext';
 
 interface SubscriptionData {
   customer_id: string;
@@ -53,16 +53,11 @@ export function useSubscription() {
   }, [user]);
 
   const hasActiveSubscription = subscription?.subscription_status === 'active';
-  
-  const isSubscriptionActive = () => {
-    return hasActiveSubscription;
-  };
 
   return {
     subscription,
     loading,
     error,
-    hasActiveSubscription,
-    isSubscriptionActive
+    hasActiveSubscription
   };
 }

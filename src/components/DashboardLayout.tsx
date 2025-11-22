@@ -68,7 +68,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               )}
               {!profile && (
                 <Link
-                  to="/account-setup"
+                  to="/sign-in"
                   className="flex items-center gap-2 text-white hover:text-blue-100 font-semibold transition-colors"
                 >
                   Sign In
@@ -119,7 +119,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             )}
             {!profile && (
               <Link
-                to="/account-setup"
+                to="/sign-in"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"
               >

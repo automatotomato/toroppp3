@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import { env } from '../../config/env'
 import { StripeProduct } from '../../stripe-config'
-import { useAuth } from '../../hooks/useAuth'
+import { useAuth } from '../../contexts/AuthContext'
 import { CreditCard, Loader2 } from 'lucide-react'
 
 interface CheckoutButtonProps {
@@ -27,7 +28,7 @@ export function CheckoutButton({ product, className = '' }: CheckoutButtonProps)
         throw new Error('No access token available')
       }
 
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/stripe-checkout`, {
+      const response = await fetch(`${env.supabase.url}/functions/v1/stripe-checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

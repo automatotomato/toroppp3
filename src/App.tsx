@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { useAuth } from './hooks/useAuth'
-import Success from './pages/Success'
+import { useAuth } from './contexts/AuthContext'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
@@ -64,7 +63,7 @@ function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/payment-success" element={<PaymentSuccessPage />} />
-        <Route path="/success" element={<Success />} />
+        <Route path="/success" element={<PaymentSuccessPage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/dashboard/courses" element={<ProtectedRoute><DashboardCoursesPage /></ProtectedRoute>} />
         <Route path="/dashboard/town-halls" element={<ProtectedRoute><DashboardTownHallsPage /></ProtectedRoute>} />

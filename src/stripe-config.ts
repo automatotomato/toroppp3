@@ -26,6 +26,15 @@ export const STRIPE_PRODUCTS: Record<string, StripeProduct> = {
     price: 299.00,
     currency: 'usd',
     mode: 'payment'
+  },
+  promo: {
+    id: 'prod_TOBPI3Wu71aepy',
+    priceId: 'price_1SRP2lP4Be5cIimOVVohq8hw',
+    name: 'ToroTax Exclusive Offer',
+    description: 'Special promotional pricing: $299 registration + $129/month subscription. Save $370 every month! Includes all Elite features and $9,995 Business Analysis.',
+    price: 129.00,
+    currency: 'usd',
+    mode: 'subscription'
   }
 };
 
