@@ -7,6 +7,11 @@ export const env = {
 
 export function validateEnv() {
   if (!env.supabase.url || !env.supabase.anonKey) {
-    throw new Error('Missing required environment variables. Please check your .env file.');
+    console.error('Environment validation failed:', {
+      url: env.supabase.url,
+      anonKeyPresent: !!env.supabase.anonKey,
+      allEnvVars: import.meta.env
+    });
+    throw new Error(`Missing required environment variables. URL: ${env.supabase.url ? 'present' : 'MISSING'}, Key: ${env.supabase.anonKey ? 'present' : 'MISSING'}`);
   }
 }
