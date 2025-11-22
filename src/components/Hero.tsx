@@ -27,7 +27,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex justify-center items-center gap-10 mb-16 flex-wrap">
           <div className="group bg-white px-10 py-8 rounded-2xl shadow-2xl hover:shadow-red-500/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border-2 border-white/10">
-            <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-28 w-auto drop-shadow-lg" />
+            <img src="/peak_performance (1) copy copy.png" alt="Peak Performance Partners" className="h-28 w-auto drop-shadow-lg" />
           </div>
           <div className="text-6xl font-light text-white/40">×</div>
           <div className="group bg-white px-10 py-8 rounded-2xl shadow-2xl hover:shadow-red-500/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border-2 border-white/10">
