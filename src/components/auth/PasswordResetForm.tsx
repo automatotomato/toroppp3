@@ -17,6 +17,18 @@ export function PasswordResetForm() {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+      if (!supabaseUrl || !supabaseAnonKey) {
+        console.error('Missing environment variables:', {
+          hasUrl: !!supabaseUrl,
+          hasKey: !!supabaseAnonKey
+        });
+        setMessage({
+          type: 'error',
+          text: 'Configuration error. Please contact support.'
+        });
+        return;
+      }
+
       const response = await fetch(`${supabaseUrl}/functions/v1/send-password-reset`, {
         method: 'POST',
         headers: {
@@ -29,6 +41,7 @@ export function PasswordResetForm() {
       const data = await response.json();
 
       if (!response.ok) {
+        console.error('Password reset error:', data);
         setMessage({ type: 'error', text: data.error || 'Failed to send reset email' });
       } else {
         setMessage({
@@ -38,6 +51,7 @@ export function PasswordResetForm() {
         setEmail('');
       }
     } catch (error) {
+      console.error('Unexpected error during password reset:', error);
       setMessage({ type: 'error', text: 'An unexpected error occurred. Please try again.' });
     } finally {
       setLoading(false);
