@@ -42,26 +42,26 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <header className="bg-gradient-to-r from-blue-600 to-blue-700 shadow-sm sticky top-0 z-40">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      <header className="bg-gradient-to-r from-brand-main via-slate-800 to-slate-900 shadow-lg sticky top-0 z-40 border-b-4 border-brand-accent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link to="/dashboard" className="flex items-center">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
+          <div className="flex justify-between items-center py-3 md:py-4">
+            <Link to="/dashboard" className="flex items-center hover:opacity-90 transition-opacity">
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-12 md:h-14" />
             </Link>
 
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-4">
               {profile && (
                 <>
-                  <div className="text-right">
-                    <p className="text-sm font-semibold text-white">{profile.full_name}</p>
-                    <p className="text-xs text-blue-100">{profile.office_name}</p>
+                  <div className="text-right bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                    <p className="text-sm font-bold text-white">{profile.full_name}</p>
+                    <p className="text-xs text-slate-300">{profile.office_name}</p>
                   </div>
                   <button
                     onClick={handleSignOut}
-                    className="flex items-center gap-2 text-white hover:text-blue-100 font-semibold transition-colors"
+                    className="flex items-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-4 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
                   >
-                    <LogOut size={20} />
+                    <LogOut size={18} />
                     Sign Out
                   </button>
                 </>
@@ -130,10 +130,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         <div className="flex gap-6 md:gap-8">
           <aside className="hidden md:block w-56 lg:w-64 flex-shrink-0">
-            <nav className="bg-white rounded-xl shadow-sm p-3 md:p-4 sticky top-24">
+            <nav className="bg-white rounded-2xl shadow-xl p-4 sticky top-24 border border-slate-200">
               <div className="space-y-1">
                 {navigation.map((item) => {
                   const Icon = item.icon;
