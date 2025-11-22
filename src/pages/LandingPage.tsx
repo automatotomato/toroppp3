@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {  ArrowRight, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, Shield, Sparkles, X } from 'lucide-react';
+import {  ArrowRight, ArrowDown, CheckCircle2, BookOpen, Users, TrendingUp, Award, Play, DollarSign, Target, Zap, Clock, BarChart3, Star, Shield, Sparkles, X } from 'lucide-react';
 import { STRIPE_PRODUCTS, formatPrice } from '../stripe-config';
 import LanguageToggle from '../components/LanguageToggle';
 import VoiceAssistant from '../components/VoiceAssistant';
@@ -197,93 +197,132 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.88) 50%, rgba(15, 23, 42, 0.92) 100%), url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-          }} />
+            backgroundAttachment: 'fixed',
+          }}
+        />
+
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-red-600/5 to-orange-600/5 rounded-full blur-3xl" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="mb-6 sm:mb-8 md:mb-10 flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="w-auto h-32 sm:h-40 md:h-48 lg:h-56 max-w-full object-contain" />
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">×</span>
-              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="w-auto h-10 sm:h-12 md:h-14 lg:h-16 max-w-full object-contain" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          <div className="mb-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12">
+            <div className="group transform transition-all duration-500 hover:scale-105">
+              <div className="bg-white/95 backdrop-blur-sm px-8 py-6 rounded-3xl shadow-2xl hover:shadow-red-500/30 border-2 border-white/20">
+                <img
+                  src="/peak_performance (1).png"
+                  alt="Peak Performance Partners"
+                  className="h-32 sm:h-40 lg:h-48 w-auto drop-shadow-xl"
+                />
+              </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8 text-slate-200 font-bold leading-tight px-2">
-                {t('hero.title')}
-              </p>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2">
-                {t('hero.description')}
-              </p>
-
-              <div className="mb-6 sm:mb-8 md:mb-10 flex justify-center">
-                <VoiceAssistant />
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="text-6xl sm:text-7xl lg:text-8xl font-bold text-transparent bg-gradient-to-br from-red-500 via-amber-500 to-orange-500 bg-clip-text drop-shadow-2xl animate-pulse">
+                  ×
+                </div>
+                <div className="absolute inset-0 blur-xl bg-gradient-to-br from-red-500/20 to-amber-500/20 rounded-full" />
               </div>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10 justify-center px-4">
-                <button
-                  onClick={() => setShowPromoModal(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105"
-                >
+            <div className="group transform transition-all duration-500 hover:scale-105">
+              <div className="bg-white/95 backdrop-blur-sm px-8 py-6 rounded-3xl shadow-2xl hover:shadow-red-500/30 border-2 border-white/20">
+                <img
+                  src="/idQtrRK2tN_1762721271687.png"
+                  alt="Toro Taxes"
+                  className="h-20 sm:h-24 lg:h-28 w-auto drop-shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              {t('hero.title')}
+            </h1>
+
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-200 mb-10 leading-relaxed max-w-3xl mx-auto px-4">
+              {t('hero.description')}
+            </p>
+
+            <div className="mb-10 flex justify-center">
+              <VoiceAssistant />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center px-4">
+              <button
+                onClick={() => setShowPromoModal(true)}
+                className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center gap-2">
                   <Zap size={20} className="flex-shrink-0" />
                   <span>{t('hero.cta1')}</span>
                   <ArrowRight size={20} className="flex-shrink-0" />
-                </button>
-                <Link
-                  to="/sign-in"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold border-2 border-white/30 transition-all"
-                >
-                  Sign In
-                  <Play size={18} />
-                </Link>
-              </div>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              </button>
 
-              <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm md:text-base flex-wrap px-2">
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
-                  <span>12 Courses</span>
-                </div>
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
-                  <span>90+ Hours</span>
-                </div>
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
-                  <span>Lifetime Access</span>
-                </div>
+              <Link
+                to="/sign-in"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-8 py-4 rounded-full text-lg font-bold border-2 border-white/40 transition-all duration-300 hover:border-white/60"
+              >
+                Sign In
+                <Play size={18} />
+              </Link>
+            </div>
+
+            <div className="flex items-center justify-center gap-6 md:gap-8 text-sm md:text-base flex-wrap px-4 mb-16">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
+                <span className="font-semibold">12 Courses</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
+                <span className="font-semibold">90+ Hours</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                <CheckCircle2 className="text-green-400 flex-shrink-0" size={18} />
+                <span className="font-semibold">Lifetime Access</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto px-4">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center transform transition-all duration-300 hover:scale-105 hover:from-white/15 hover:to-white/10">
+                <DollarSign className="text-green-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl lg:text-5xl font-bold mb-2">250%</div>
+                <div className="text-slate-300 text-sm">Average Revenue Increase</div>
+              </div>
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center transform transition-all duration-300 hover:scale-105 hover:from-white/15 hover:to-white/10">
+                <TrendingUp className="text-blue-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl lg:text-5xl font-bold mb-2">85%</div>
+                <div className="text-slate-300 text-sm">Client Retention Rate</div>
+              </div>
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center transform transition-all duration-300 hover:scale-105 hover:from-white/15 hover:to-white/10">
+                <Users className="text-cyan-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl lg:text-5xl font-bold mb-2">100s</div>
+                <div className="text-slate-300 text-sm">of Successful Owners</div>
+              </div>
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/20 text-center transform transition-all duration-300 hover:scale-105 hover:from-white/15 hover:to-white/10">
+                <Award className="text-amber-400 mb-3 mx-auto" size={32} />
+                <div className="text-4xl lg:text-5xl font-bold mb-2">4.9/5</div>
+                <div className="text-slate-300 text-sm">Satisfaction Rating</div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="mt-8 sm:mt-12 md:mt-16 max-w-5xl mx-auto px-2">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
-                <DollarSign className="text-green-400 mb-2 sm:mb-3 mx-auto" size={24} />
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">250%</div>
-                <div className="text-slate-300 text-xs sm:text-sm md:text-base">Average Revenue Increase</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
-                <TrendingUp className="text-blue-400 mb-2 sm:mb-3 mx-auto" size={24} />
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">85%</div>
-                <div className="text-slate-300 text-xs sm:text-sm md:text-base">Client Retention Rate</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
-                <Users className="text-cyan-400 mb-2 sm:mb-3 mx-auto" size={24} />
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">100s</div>
-                <div className="text-slate-300 text-xs sm:text-sm md:text-base">of Successful Owners</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 text-center">
-                <Award className="text-amber-400 mb-2 sm:mb-3 mx-auto" size={24} />
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">4.9/5</div>
-                <div className="text-slate-300 text-xs sm:text-sm md:text-base">Satisfaction Rating</div>
-              </div>
-            </div>
-          </div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ArrowDown className="text-white/60" size={32} />
         </div>
       </section>
 
