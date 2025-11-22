@@ -197,40 +197,27 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-        <div className="absolute inset-0 z-0 opacity-20" style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }} />
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800/20 via-transparent to-transparent" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-brand-main via-slate-800 to-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-16 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 lg:gap-12">
-              <div className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-slate-200/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-75 group-hover:opacity-100" />
-                <div className="relative bg-gradient-to-br from-white via-slate-50 to-white px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-2xl shadow-2xl border border-white/30 backdrop-blur-sm transform transition-all duration-300 group-hover:scale-105">
-                  <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto filter drop-shadow-sm" />
-                </div>
-              </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white/40 px-2">×</div>
-              <div className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-slate-200/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-75 group-hover:opacity-100" />
-                <div className="relative bg-gradient-to-br from-white via-slate-50 to-white px-6 sm:px-8 md:px-10 py-6 sm:py-7 md:py-8 rounded-2xl shadow-2xl border border-white/30 backdrop-blur-sm transform transition-all duration-300 group-hover:scale-105">
-                  <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="h-24 sm:h-32 md:h-36 lg:h-44 w-auto filter drop-shadow-sm" />
-                </div>
-              </div>
+            <div className="mb-6 sm:mb-8 md:mb-10 flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5">
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="w-auto h-32 sm:h-40 md:h-48 lg:h-56 max-w-full object-contain" />
+              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">×</span>
+              <img src="/idQtrRK2tN_1762721271687.png" alt="Toro Taxes" className="w-auto h-10 sm:h-12 md:h-14 lg:h-16 max-w-full object-contain" />
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-6 mb-10">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight px-2">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-white drop-shadow-2xl">
-                  {t('hero.title')}
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 leading-relaxed max-w-3xl mx-auto px-2 font-light tracking-wide">
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8 text-slate-200 font-bold leading-tight px-2">
+                {t('hero.title')}
+              </p>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-2">
                 {t('hero.description')}
               </p>
 
