@@ -185,13 +185,13 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 py-2.5 sm:py-3 text-white text-center font-bold cursor-pointer hover:from-red-800 hover:via-red-900 hover:to-red-950 transition-all shadow-xl z-40 border-y-2 border-yellow-400" onClick={() => setShowPromoModal(true)}>
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-          <Clock size={16} className="animate-pulse flex-shrink-0 text-yellow-400" />
-          <span className="text-sm sm:text-base md:text-lg">
+      <div className="bg-gradient-to-r from-red-700 via-red-800 to-red-900 py-1.5 sm:py-2.5 text-white text-center font-bold cursor-pointer hover:from-red-800 hover:via-red-900 hover:to-red-950 transition-all shadow-xl z-40 border-y border-yellow-400 sm:border-y-2" onClick={() => setShowPromoModal(true)}>
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 flex items-center justify-center gap-1.5 sm:gap-3 flex-wrap">
+          <Clock size={14} className="animate-pulse flex-shrink-0 text-yellow-400 sm:w-4 sm:h-4" />
+          <span className="text-xs sm:text-base md:text-lg">
             <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroTax Special - Expires Dec 15, 2025
           </span>
-          <button className="bg-yellow-400 text-red-900 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
+          <button className="bg-yellow-400 text-red-900 px-2 sm:px-4 py-0.5 sm:py-1.5 rounded-full text-xs sm:text-sm font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
             CLAIM NOW
           </button>
         </div>
