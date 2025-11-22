@@ -7,8 +7,11 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || 're_BHJm4wAU_PdpBhKUeRVyNsfuzNGFKgmFA';
-const FROM_EMAIL = 'Advancement Academy <info@3-peak.com>';
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+if (!RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY environment variable is not configured');
+}
+const FROM_EMAIL = 'Advancement Academy <info@3-peakavanza.com>';
 
 interface PasswordResetPayload {
   email: string;
@@ -115,13 +118,13 @@ Deno.serve(async (req: Request) => {
                       <div style="background-color: #f1f5f9; padding: 20px; border-radius: 8px; margin: 25px 0;">
                         <h3 style="color: #1e293b; margin: 0 0 12px 0; font-size: 18px;">Need Help?</h3>
                         <p style="color: #475569; margin: 0 0 8px 0; font-size: 14px;">
-                          📧 Email: <a href="mailto:info@3-peak.com" style="color: #dc2626; text-decoration: none;">info@3-peak.com</a>
+                          📧 Email: <a href="mailto:info@3-peakavanza.com" style="color: #dc2626; text-decoration: none;">info@3-peakavanza.com</a>
                         </p>
                         <p style="color: #475569; margin: 0 0 8px 0; font-size: 14px;">
                           📞 Phone: <a href="tel:9154901889" style="color: #dc2626; text-decoration: none;">(915) 490-1889</a>
                         </p>
                         <p style="color: #475569; margin: 0; font-size: 14px;">
-                          🌐 Website: <a href="https://www.3-peak.com" style="color: #dc2626; text-decoration: none;">www.3-peak.com</a>
+                          🌐 Website: <a href="https://www.3-peakavanza.com" style="color: #dc2626; text-decoration: none;">www.3-peakavanza.com</a>
                         </p>
                       </div>
                     </td>
@@ -160,9 +163,9 @@ ${resetUrl}
 This link will expire in 1 hour. If you didn't request this password reset, please ignore this email and your password will remain unchanged.
 
 Need Help?
-Email: info@3-peak.com
+Email: info@3-peakavanza.com
 Phone: (915) 490-1889
-Website: www.3-peak.com
+Website: www.3-peakavanza.com
 
 © ${new Date().getFullYear()} Peak Performance Partners | Advancement Academy
 All Rights Reserved

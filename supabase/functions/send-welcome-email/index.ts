@@ -6,7 +6,10 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || 're_BHJm4wAU_PdpBhKUeRVyNsfuzNGFKgmFA';
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+if (!RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY environment variable is not configured');
+}
 const FROM_EMAIL = 'Advancement Academy <info@3-peakavanza.com>';
 
 interface WelcomeEmailPayload {
