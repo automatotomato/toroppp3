@@ -61,9 +61,15 @@ Deno.serve(async (req: Request) => {
       );
     }
 
+    const siteUrl = Deno.env.get('SITE_URL') || 'https://3-peakavanza.com';
+    const redirectUrl = `${siteUrl}/reset-password`;
+
     const { data: tokenData, error: tokenError } = await supabase.auth.admin.generateLink({
       type: 'recovery',
       email: email,
+      options: {
+        redirectTo: redirectUrl,
+      },
     });
 
     if (tokenError || !tokenData) {
@@ -71,7 +77,6 @@ Deno.serve(async (req: Request) => {
     }
 
     const resetUrl = tokenData.properties.action_link;
-    const siteUrl = Deno.env.get('SITE_URL') || 'https://3-peakavanza.com';
 
     const emailHtml = `
       <!DOCTYPE html>
