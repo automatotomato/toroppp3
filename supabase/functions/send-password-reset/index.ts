@@ -61,7 +61,7 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const siteUrl = Deno.env.get('SITE_URL') || 'https://3-peakavanza.com';
+    const siteUrl = Deno.env.get('SITE_URL') || 'https://www.3-peakavanza.com';
     const redirectUrl = `${siteUrl}/reset-password`;
 
     const { data: tokenData, error: tokenError } = await supabase.auth.admin.generateLink({
