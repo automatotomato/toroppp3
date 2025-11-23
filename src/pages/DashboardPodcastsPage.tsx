@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
-import { Radio, Play, Headphones, Globe, ExternalLink } from 'lucide-react';
+import { Radio, Headphones, Globe, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { getYouTubeEmbedUrl } from '../utils/youtube';
 
 interface Podcast {
   id: string;
@@ -16,6 +17,7 @@ export default function DashboardPodcastsPage() {
   const [podcasts, setPodcasts] = useState<Podcast[]>([]);
   const [loading, setLoading] = useState(true);
   const [languageFilter, setLanguageFilter] = useState<'all' | 'english' | 'spanish'>('all');
+  const [selectedPodcast, setSelectedPodcast] = useState<{ podcast: Podcast; language: 'english' | 'spanish' } | null>(null);
 
   useEffect(() => {
     fetchPodcasts();
@@ -132,54 +134,63 @@ export default function DashboardPodcastsPage() {
           <p className="text-slate-600">No podcasts available for this filter.</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {filteredPodcasts.map((podcast) => (
             <div
               key={podcast.id}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all"
             >
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-brand-main mb-2">{podcast.title}</h3>
-                  <p className="text-slate-600 text-sm mb-4">{podcast.description}</p>
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-brand-main mb-2">{podcast.title}</h3>
+                <p className="text-slate-600 text-sm mb-3">{podcast.description}</p>
+                <div className="text-sm text-slate-400">{formatDate(podcast.published_at)}</div>
+              </div>
 
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 mb-4">
-                    <span className="text-slate-400">{formatDate(podcast.published_at)}</span>
+              <div className="grid md:grid-cols-2 gap-4">
+                {podcast.audio_url_english && (
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-slate-700">English Version</span>
+                    </div>
+                    <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden">
+                      <iframe
+                        src={getYouTubeEmbedUrl(podcast.audio_url_english)}
+                        title={`${podcast.title} - English`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full"
+                      />
+                    </div>
                   </div>
-
-                  <div className="flex flex-wrap gap-3">
-                    {podcast.audio_url_english && (
-                      <a
-                        href={podcast.audio_url_english}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-brand-main hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
-                      >
-                        <Play size={16} />
-                        Watch in English
-                        <ExternalLink size={14} />
-                      </a>
-                    )}
-                    {podcast.audio_url_spanish && (
-                      <a
-                        href={podcast.audio_url_spanish}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
-                      >
-                        <Play size={16} />
-                        Ver en Español
-                        <ExternalLink size={14} />
-                      </a>
-                    )}
-                    {!podcast.audio_url_spanish && (
-                      <span className="flex items-center gap-2 bg-slate-100 text-slate-500 px-4 py-2 rounded-lg text-sm">
-                        <Globe size={14} />
-                        Spanish version coming soon
-                      </span>
-                    )}
+                )}
+                {podcast.audio_url_spanish ? (
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-slate-700">Versión en Español</span>
+                    </div>
+                    <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden">
+                      <iframe
+                        src={getYouTubeEmbedUrl(podcast.audio_url_spanish)}
+                        title={`${podcast.title} - Spanish`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full"
+                      />
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-slate-700">Versión en Español</span>
+                    </div>
+                    <div className="relative aspect-video bg-slate-100 rounded-lg overflow-hidden flex items-center justify-center">
+                      <div className="text-center p-6">
+                        <Globe size={48} className="mx-auto mb-3 text-slate-400" />
+                        <p className="text-slate-600 text-sm font-medium">Spanish version coming soon</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
