@@ -44,7 +44,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="min-h-screen bg-slate-50">
       <header className="bg-gradient-to-r from-blue-600 to-blue-700 shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <Link to="/dashboard" className="flex items-center">
               <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
@@ -130,9 +130,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
         <div className="flex gap-6 md:gap-8">
-          <aside className="hidden md:block w-56 lg:w-64 flex-shrink-0">
+          <aside className="hidden md:block w-56 lg:w-72 flex-shrink-0">
             <nav className="bg-white rounded-xl shadow-sm p-3 md:p-4 sticky top-24">
               <div className="space-y-1">
                 {navigation.map((item) => {
