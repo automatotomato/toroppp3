@@ -90,7 +90,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-slate-200">
-          <div className="px-3 py-2 space-y-1">
+          <div className="px-4 py-4 space-y-2">
             {navigation.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
@@ -99,13 +99,13 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   key={item.name}
                   to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                     isActive
                       ? 'bg-red-50 text-brand-accent font-semibold'
                       : 'text-slate-700 hover:bg-slate-50'
                   }`}
                 >
-                  <Icon size={18} />
+                  <Icon size={20} />
                   {item.name}
                 </Link>
               );
@@ -113,9 +113,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             {profile && (
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50 w-full text-sm"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50 w-full"
               >
-                <LogOut size={18} />
+                <LogOut size={20} />
                 Sign Out
               </button>
             )}
@@ -123,7 +123,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <Link
                 to="/sign-in"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50 text-sm"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-slate-50"
               >
                 Sign In
               </Link>
