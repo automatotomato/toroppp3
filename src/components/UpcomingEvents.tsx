@@ -76,19 +76,19 @@ export default function UpcomingEvents() {
         <Video size={20} className="text-blue-600" />
         Upcoming Events
       </h2>
-      <div className="space-y-3 md:space-y-4">
+      <div className="space-y-2 md:space-y-3">
         {events.map((event) => (
           <div
             key={event.id}
-            className={`border-l-4 rounded-r-lg p-3 md:p-4 ${
+            className={`border-l-4 rounded-r-lg p-2.5 md:p-3 ${
               event.event_type === 'townhall'
                 ? 'border-blue-600 bg-blue-50'
                 : 'border-green-600 bg-green-50'
             }`}
           >
-            <div className="flex items-start justify-between gap-2 mb-2">
-              <h3 className="font-semibold text-sm md:text-base text-brand-main">{event.title}</h3>
-              <span className={`text-xs px-2 py-1 rounded-full font-semibold flex-shrink-0 ${
+            <div className="flex items-start justify-between gap-2 mb-1.5">
+              <h3 className="font-semibold text-xs md:text-sm text-brand-main leading-tight">{event.title}</h3>
+              <span className={`text-xs px-1.5 py-0.5 rounded-full font-semibold flex-shrink-0 ${
                 event.event_type === 'townhall'
                   ? 'bg-blue-100 text-blue-700'
                   : 'bg-green-100 text-green-700'
@@ -96,13 +96,13 @@ export default function UpcomingEvents() {
                 {event.event_type === 'townhall' ? 'Town Hall' : 'Course'}
               </span>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs md:text-sm text-slate-600">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-3 text-xs text-slate-600">
               <span className="flex items-center gap-1">
-                <Calendar size={14} />
+                <Calendar size={12} />
                 {formatEventDate(event.event_date)}
               </span>
               <span className="flex items-center gap-1">
-                <Clock size={14} />
+                <Clock size={12} />
                 {event.event_time}
               </span>
             </div>
