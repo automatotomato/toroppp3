@@ -52,7 +52,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
             </Link>
 
-            <div className="flex-1 flex justify-end items-center gap-6">
+            <div className="hidden md:flex flex-1 justify-end items-center gap-6">
               {profile && (
                 <>
                   <div className="text-right">
