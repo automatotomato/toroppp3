@@ -46,11 +46,13 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <header className="bg-gradient-to-r from-blue-600 to-blue-700 shadow-sm sticky top-0 z-40">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <Link to="/dashboard" className="flex items-center">
+            <div className="flex-1"></div>
+
+            <Link to="/dashboard" className="flex items-center absolute left-1/2 transform -translate-x-1/2">
               <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
             </Link>
 
-            <div className="hidden md:flex items-center gap-6">
+            <div className="flex-1 flex justify-end items-center gap-6">
               {profile && (
                 <>
                   <div className="text-right">
@@ -78,7 +80,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white"
+              className="md:hidden text-white z-50 relative"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
