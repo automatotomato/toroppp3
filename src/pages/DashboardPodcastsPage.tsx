@@ -1,11 +1,8 @@
 import DashboardLayout from '../components/DashboardLayout';
-import LockedContentOverlay from '../components/LockedContentOverlay';
-import { isContentLocked } from '../utils/contentLock';
 import { Radio, Play, Pause, Clock, TrendingUp, Headphones, Globe } from 'lucide-react';
 import { useState } from 'react';
 
 export default function DashboardPodcastsPage() {
-  const contentLocked = isContentLocked();
   const [playingId, setPlayingId] = useState<number | null>(null);
 
   const podcasts = [
@@ -120,7 +117,6 @@ export default function DashboardPodcastsPage() {
 
   return (
     <DashboardLayout>
-      <LockedContentOverlay isLocked={contentLocked}>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Podcasts</h1>
         <p className="text-slate-600">
@@ -268,7 +264,6 @@ export default function DashboardPodcastsPage() {
           </div>
         ))}
       </div>
-      </LockedContentOverlay>
     </DashboardLayout>
   );
 }

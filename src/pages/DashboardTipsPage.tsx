@@ -1,10 +1,7 @@
 import DashboardLayout from '../components/DashboardLayout';
-import LockedContentOverlay from '../components/LockedContentOverlay';
-import { isContentLocked } from '../utils/contentLock';
 import { Lightbulb, TrendingUp, Calendar, Bookmark, Share2, ThumbsUp } from 'lucide-react';
 
 export default function DashboardTipsPage() {
-  const contentLocked = isContentLocked();
   const tips = [
     {
       id: 1,
@@ -115,7 +112,6 @@ export default function DashboardTipsPage() {
 
   return (
     <DashboardLayout>
-      <LockedContentOverlay isLocked={contentLocked}>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-brand-main mb-2">Tips of the Week</h1>
         <p className="text-slate-600">
@@ -213,7 +209,6 @@ export default function DashboardTipsPage() {
           Enable Email Notifications
         </button>
       </div>
-      </LockedContentOverlay>
     </DashboardLayout>
   );
 }
