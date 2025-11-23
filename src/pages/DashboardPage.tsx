@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/DashboardLayout';
+import UpcomingEvents from '../components/UpcomingEvents';
 import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
 
 export default function DashboardPage() {
@@ -15,10 +16,6 @@ export default function DashboardPage() {
     { id: 3, title: 'Financial Management Basics', progress: 15, duration: '7 hrs' },
   ];
 
-  const upcomingEvents = [
-    { title: 'Live Town Hall Q&A', date: 'Nov 15, 2025', time: '2:00 PM PST' },
-    { title: 'Advanced Sales Workshop', date: 'Nov 22, 2025', time: '3:00 PM PST' },
-  ];
 
   const recentResources = [
     { title: 'Client Retention Checklist', type: 'PDF', downloads: 245 },
@@ -91,40 +88,24 @@ export default function DashboardPage() {
           </Link>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
-          <h2 className="text-lg md:text-xl font-bold text-brand-main mb-3 md:mb-4 flex items-center gap-2">
-            <Video size={20} className="text-blue-600" />
-            Upcoming Events
-          </h2>
-          <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
-            {upcomingEvents.map((event, index) => (
-              <div key={index} className="border-l-4 border-blue-600 bg-blue-50 rounded-r-lg p-3 md:p-4">
-                <h3 className="font-semibold text-sm md:text-base text-brand-main mb-2">{event.title}</h3>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs md:text-sm text-slate-600">
-                  <span className="flex items-center gap-1">
-                    <Clock size={14} />
-                    {event.date}
-                  </span>
-                  <span>{event.time}</span>
-                </div>
+        <UpcomingEvents />
+      </div>
+
+      <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-6 md:mb-8">
+        <h2 className="text-lg md:text-xl font-bold text-brand-main mb-3 md:mb-4 flex items-center gap-2">
+          <FileText size={20} className="text-green-600" />
+          Latest Resources
+        </h2>
+        <div className="space-y-2 md:space-y-3">
+          {recentResources.map((resource, index) => (
+            <div key={index} className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+              <div className="min-w-0 flex-1">
+                <h3 className="font-semibold text-brand-main text-sm truncate">{resource.title}</h3>
+                <p className="text-xs text-slate-500">{resource.type} • {resource.downloads} downloads</p>
               </div>
-            ))}
-          </div>
-          <h2 className="text-lg md:text-xl font-bold text-brand-main mb-3 md:mb-4 mt-6 md:mt-8 flex items-center gap-2">
-            <FileText size={20} className="text-green-600" />
-            Latest Resources
-          </h2>
-          <div className="space-y-2 md:space-y-3">
-            {recentResources.map((resource, index) => (
-              <div key={index} className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-semibold text-brand-main text-sm truncate">{resource.title}</h3>
-                  <p className="text-xs text-slate-500">{resource.type} • {resource.downloads} downloads</p>
-                </div>
-                <CheckCircle size={18} className="text-green-600 flex-shrink-0" />
-              </div>
-            ))}
-          </div>
+              <CheckCircle size={18} className="text-green-600 flex-shrink-0" />
+            </div>
+          ))}
         </div>
       </div>
 
