@@ -43,86 +43,86 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {showPromoModal && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300 overflow-y-auto">
-          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-3xl p-1 max-w-4xl w-full shadow-2xl animate-in zoom-in duration-300 my-8">
-            <div className="bg-brand-main rounded-3xl p-6 md:p-8 relative max-h-[85vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300 overflow-y-auto">
+          <div className="bg-gradient-to-br from-amber-500 via-orange-600 to-brand-accent rounded-2xl p-1 max-w-3xl w-full shadow-2xl animate-in zoom-in duration-300 my-4">
+            <div className="bg-brand-main rounded-2xl p-4 sm:p-6 relative max-h-[90vh] overflow-y-auto">
               <button
                 onClick={() => setShowPromoModal(false)}
-                className="sticky top-0 right-0 float-right bg-slate-800 hover:bg-brand-accent text-white p-2 rounded-full transition-colors shadow-lg z-10"
+                className="sticky top-0 right-0 float-right bg-slate-800 hover:bg-brand-accent text-white p-1.5 rounded-full transition-colors shadow-lg z-10"
               >
-                <X size={24} />
+                <X size={20} />
               </button>
 
-              <div className="text-center mb-6 clear-both">
+              <div className="text-center mb-3 clear-both">
                 <Link
                   to="/payment?plan=promo"
-                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full mb-4 animate-pulse shadow-xl transition-all cursor-pointer"
+                  className="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 px-3 py-1.5 rounded-full mb-2 animate-pulse shadow-xl transition-all cursor-pointer"
                 >
-                  <Sparkles size={20} className="text-white" />
-                  <span className="font-bold text-base md:text-lg text-white">{t('modal.exclusive')}</span>
-                  <Sparkles size={20} className="text-white" />
+                  <Sparkles size={16} className="text-white" />
+                  <span className="font-bold text-sm text-white">{t('modal.exclusive')}</span>
+                  <Sparkles size={16} className="text-white" />
                 </Link>
-                <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
                   {t('modal.title')}
                 </h2>
-                <p className="text-base md:text-lg text-slate-300 mb-4">
+                <p className="text-sm sm:text-base text-slate-300 mb-2">
                   {t('modal.subtitle')}
                 </p>
               </div>
 
-              <div className="bg-red-600 border-4 border-yellow-400 rounded-2xl p-6 mb-6 shadow-2xl">
-                <div className="text-center mb-4">
-                  <div className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-2 rounded-full mb-3">
-                    <Clock className="text-red-900 animate-pulse" size={24} />
-                    <span className="font-black text-red-900 text-lg">OFFER EXPIRES: DEC 15, 2025</span>
+              <div className="bg-red-600 border-2 border-yellow-400 rounded-xl p-3 sm:p-4 mb-3 shadow-2xl">
+                <div className="text-center mb-2">
+                  <div className="inline-flex items-center gap-1.5 bg-yellow-400 px-3 py-1 rounded-full mb-2">
+                    <Clock className="text-red-900 animate-pulse" size={16} />
+                    <span className="font-black text-red-900 text-xs sm:text-sm">OFFER EXPIRES: DEC 15, 2025</span>
                   </div>
-                  <h3 className="text-5xl font-black text-white mb-2 drop-shadow-lg">SAVE $3,000!</h3>
-                  <p className="text-2xl text-yellow-300 font-bold">Exclusive ToroTax Special</p>
+                  <h3 className="text-3xl sm:text-4xl font-black text-white mb-1 drop-shadow-lg">SAVE $3,000!</h3>
+                  <p className="text-lg sm:text-xl text-yellow-300 font-bold">Exclusive ToroTax Special</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                  <div className="bg-white/90 rounded-xl p-6 text-center shadow-xl">
-                    <div className="text-gray-600 mb-2 font-semibold">Regular Registration Fee</div>
-                    <div className="text-4xl font-black text-red-600 line-through mb-2">$3,000</div>
-                    <div className="text-sm text-gray-500">Standard pricing</div>
+                <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-white/90 rounded-lg p-3 sm:p-4 text-center shadow-xl">
+                    <div className="text-gray-600 mb-1 font-semibold text-xs sm:text-sm">Regular Registration Fee</div>
+                    <div className="text-2xl sm:text-3xl font-black text-red-600 line-through mb-1">$3,000</div>
+                    <div className="text-xs text-gray-500">Standard pricing</div>
                   </div>
-                  <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl p-6 text-center shadow-xl border-4 border-white transform scale-105">
-                    <div className="text-white mb-2 font-bold">ToroTax Special Price</div>
-                    <div className="text-6xl font-black text-white mb-2">$299</div>
-                    <div className="text-sm text-white font-bold bg-white/20 rounded-full px-3 py-1 inline-block">+ $129/month</div>
+                  <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg p-3 sm:p-4 text-center shadow-xl border-2 border-white">
+                    <div className="text-white mb-1 font-bold text-xs sm:text-sm">ToroTax Special Price</div>
+                    <div className="text-4xl sm:text-5xl font-black text-white mb-1">$299</div>
+                    <div className="text-xs text-white font-bold bg-white/20 rounded-full px-2 py-0.5 inline-block">+ $129/month</div>
                   </div>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-amber-500/20 border-2 border-amber-400 rounded-xl p-4 text-center">
-                  <p className="text-2xl text-yellow-300 font-black mb-1">$2,701 SAVED</p>
-                  <p className="text-white text-sm">On registration fee alone!</p>
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-3">
+                <div className="bg-amber-500/20 border border-amber-400 rounded-lg p-2 sm:p-3 text-center">
+                  <p className="text-lg sm:text-xl text-yellow-300 font-black mb-0.5">$2,701 SAVED</p>
+                  <p className="text-white text-xs">On registration fee!</p>
                 </div>
-                <div className="bg-amber-500/20 border-2 border-amber-400 rounded-xl p-4 text-center">
-                  <p className="text-2xl text-yellow-300 font-black mb-1">$370/MONTH</p>
-                  <p className="text-white text-sm">Ongoing monthly savings!</p>
+                <div className="bg-amber-500/20 border border-amber-400 rounded-lg p-2 sm:p-3 text-center">
+                  <p className="text-lg sm:text-xl text-yellow-300 font-black mb-0.5">$370/MONTH</p>
+                  <p className="text-white text-xs">Monthly savings!</p>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-3 order-2 md:order-1">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                    <div className="text-slate-400 mb-1 text-sm">Regular Elite Price</div>
-                    <div className="text-3xl font-bold text-red-300 line-through">$499/month</div>
+              <div className="grid md:grid-cols-2 gap-3 mb-3">
+                <div className="space-y-2 order-2 md:order-1">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 text-center">
+                    <div className="text-slate-400 mb-0.5 text-xs">Regular Elite Price</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-red-300 line-through">$499/month</div>
                   </div>
-                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-4 text-center">
-                    <div className="text-green-300 mb-1 font-semibold text-sm">Your ToroTax Price</div>
-                    <div className="text-4xl font-bold text-green-400">$129/mo</div>
-                    <div className="text-base mt-1 text-white">+ $299 one-time fee</div>
+                  <div className="bg-green-500/20 border border-green-500 rounded-lg p-2 sm:p-3 text-center">
+                    <div className="text-green-300 mb-0.5 font-semibold text-xs">Your ToroTax Price</div>
+                    <div className="text-3xl sm:text-4xl font-bold text-green-400">$129/mo</div>
+                    <div className="text-sm mt-0.5 text-white">+ $299 one-time fee</div>
                   </div>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4">
-                  <div className="bg-green-500/20 border-2 border-green-500 rounded-xl p-3 mb-3 text-center">
-                    <p className="text-green-300 font-bold text-sm">{t('modal.features')}</p>
+                <div className="bg-white/10 backdrop-blur-lg rounded-lg p-2 sm:p-3">
+                  <div className="bg-green-500/20 border border-green-500 rounded-lg p-2 mb-2 text-center">
+                    <p className="text-green-300 font-bold text-xs">{t('modal.features')}</p>
                   </div>
-                  <ul className="space-y-1.5 text-white">
+                  <ul className="space-y-1 text-white">
                     {[
                       t('modal.feature1'),
                       t('modal.feature2'),
@@ -133,8 +133,8 @@ export default function LandingPage() {
                       t('modal.feature7'),
                       t('modal.feature8'),
                     ].map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={16} />
+                      <li key={index} className="flex items-start gap-1.5 text-xs">
+                        <CheckCircle2 className="text-green-400 flex-shrink-0 mt-0.5" size={14} />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -143,20 +143,20 @@ export default function LandingPage() {
               </div>
 
               <div className="text-center">
-                <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-4 mb-6">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg p-2 sm:p-3 mb-3">
                   <div className="text-center">
-                    <div className="text-white text-sm font-semibold mb-1">{t('modal.totalValue')}</div>
-                    <div className="text-4xl font-bold text-white mb-1">{t('modal.valueAmount')}</div>
-                    <div className="text-green-100 text-sm">{t('modal.valueDesc')}</div>
+                    <div className="text-white text-xs font-semibold mb-0.5">{t('modal.totalValue')}</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-white mb-0.5">{t('modal.valueAmount')}</div>
+                    <div className="text-green-100 text-xs">{t('modal.valueDesc')}</div>
                   </div>
                 </div>
                 <Link
                   to={`/payment?plan=promo`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold shadow-2xl transition-all transform hover:scale-105"
                 >
-                  <Zap className="flex-shrink-0" size={20} />
+                  <Zap className="flex-shrink-0" size={18} />
                   <span className="text-center">{t('modal.cta')}</span>
-                  <ArrowRight className="flex-shrink-0" size={20} />
+                  <ArrowRight className="flex-shrink-0" size={18} />
                 </Link>
               </div>
             </div>
