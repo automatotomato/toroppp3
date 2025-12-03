@@ -62,6 +62,8 @@ Deno.serve(async (req: Request) => {
         const siteUrl = Deno.env.get('SITE_URL') || 'https://www.3-peakavanza.com';
         const redirectUrl = `${siteUrl}/reset-password`;
 
+        console.log(`Generating password reset link for ${email} with redirect to: ${redirectUrl}`);
+
         const { data: tokenData, error: tokenError } = await supabase.auth.admin.generateLink({
           type: 'recovery',
           email: email,
@@ -69,6 +71,10 @@ Deno.serve(async (req: Request) => {
             redirectTo: redirectUrl,
           },
         });
+
+        if (tokenData) {
+          console.log(`Generated action link: ${tokenData.properties.action_link}`);
+        }
 
         if (tokenError || !tokenData) {
           results.push({ email, success: false, error: tokenError?.message });
