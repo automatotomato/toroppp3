@@ -162,6 +162,18 @@ export default function DashboardTrainingAssistant() {
           Ask me anything about your training!
         </div>
       )}
+
+      <div className="text-blue-300/60 text-[10px] text-center w-full mt-2">
+        Powered by:{' '}
+        <a
+          href="https://AutomatePlanet.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-300 hover:text-blue-200 transition-colors underline"
+        >
+          AutomatePlanet.com
+        </a>
+      </div>
     </div>
   );
 }
