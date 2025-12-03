@@ -55,7 +55,8 @@ Deno.serve(async (req: Request) => {
         const foundUser = user?.users?.find((u) => u.email === email);
 
         if (!foundUser) {
-          results.push({ email, success: false, message: 'User not found' });
+          console.log(`Password reset requested for non-existent user: ${email}`);
+          results.push({ email, success: true, message: 'Processed' });
           continue;
         }
 
@@ -213,10 +214,9 @@ All Rights Reserved
 
     return new Response(
       JSON.stringify({
-        success: failed === 0,
-        message: `Processed ${emailsToProcess.length} email(s)`,
+        success: true,
+        message: `Password reset email sent`,
         summary: { total: emailsToProcess.length, successful, failed },
-        results,
       }),
       {
         status: 200,

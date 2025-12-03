@@ -24,11 +24,17 @@ export function PasswordResetForm() {
         body: JSON.stringify({ email }),
       });
 
+      if (!response.ok) {
+        console.error('Password reset request failed with status:', response.status);
+        setMessage({ type: 'error', text: 'Failed to send reset email. Please try again later.' });
+        return;
+      }
+
       const data = await response.json();
 
-      if (!response.ok) {
-        console.error('Password reset error:', data);
-        setMessage({ type: 'error', text: data.error || 'Failed to send reset email' });
+      if (data.success === false && data.details) {
+        console.error('Password reset system error:', data.details);
+        setMessage({ type: 'error', text: 'Failed to send reset email. Please try again later.' });
       } else {
         setMessage({
           type: 'success',
