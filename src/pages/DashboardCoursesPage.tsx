@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 import { BookOpen, Clock, Play, Lock, CheckCircle, TrendingUp, Calendar } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 
 interface Course {
   id: string;
@@ -16,13 +17,24 @@ interface Course {
   order_number: number;
 }
 
+interface CourseProgress {
+  content_id: string;
+  progress_percentage: number;
+  completed: boolean;
+}
+
 export default function DashboardCoursesPage() {
+  const { user } = useAuth();
   const [courses, setCourses] = useState<Course[]>([]);
+  const [progress, setProgress] = useState<Map<string, CourseProgress>>(new Map());
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCourses();
-  }, []);
+    if (user) {
+      fetchProgress();
+    }
+  }, [user]);
 
   const fetchCourses = async () => {
     try {
@@ -37,6 +49,29 @@ export default function DashboardCoursesPage() {
       console.error('Error fetching courses:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchProgress = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('content_progress')
+        .select('*')
+        .eq('content_type', 'course');
+
+      if (error) throw error;
+
+      const progressMap = new Map<string, CourseProgress>();
+      data?.forEach((item) => {
+        progressMap.set(item.content_id, {
+          content_id: item.content_id,
+          progress_percentage: item.progress_percentage,
+          completed: item.completed,
+        });
+      });
+      setProgress(progressMap);
+    } catch (error) {
+      console.error('Error fetching progress:', error);
     }
   };
 
@@ -115,6 +150,10 @@ export default function DashboardCoursesPage() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses.map((course) => {
           const locked = isLocked(course.unlock_date);
+          const courseProgress = progress.get(course.id);
+          const progressPercent = courseProgress?.progress_percentage || 0;
+          const isCompleted = courseProgress?.completed || false;
+
           return (
             <div
               key={course.id}
@@ -131,6 +170,13 @@ export default function DashboardCoursesPage() {
                   <div className="absolute inset-0 bg-white/20 backdrop-blur-sm flex items-center justify-center">
                     <div className="bg-white/90 p-4 rounded-full">
                       <Lock className="text-slate-700" size={48} />
+                    </div>
+                  </div>
+                )}
+                {isCompleted && (
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-green-500 p-2 rounded-full">
+                      <CheckCircle className="text-white" size={20} />
                     </div>
                   </div>
                 )}
@@ -162,6 +208,21 @@ export default function DashboardCoursesPage() {
                   </span>
                 </div>
 
+                {!locked && (
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs text-slate-600 font-medium">Progress</span>
+                      <span className="text-xs text-slate-600 font-semibold">{progressPercent}%</span>
+                    </div>
+                    <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-brand-accent to-red-600 h-full rounded-full transition-all duration-300"
+                        style={{ width: `${progressPercent}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {locked && (
                   <div className="mb-4 p-3 bg-slate-50 rounded-lg border border-slate-200">
                     <div className="flex items-start gap-2 text-xs text-slate-600">
@@ -182,7 +243,7 @@ export default function DashboardCoursesPage() {
                   }`}
                   disabled={locked}
                 >
-                  {locked ? 'Locked' : 'Start Course'}
+                  {locked ? 'Locked' : isCompleted ? 'Review Course' : progressPercent > 0 ? 'Continue Course' : 'Start Course'}
                 </button>
               </div>
             </div>

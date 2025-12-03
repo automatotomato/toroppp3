@@ -148,7 +148,7 @@ export default function DashboardResourcesPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
+      <div className="grid md:grid-cols-5 gap-6 mb-8">
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
           <FileText size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">50+</h3>
@@ -168,6 +168,11 @@ export default function DashboardResourcesPage() {
           <TrendingUp size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">New</h3>
           <p className="text-orange-100">Added Weekly</p>
+        </div>
+        <div className="bg-gradient-to-br from-slate-600 to-slate-700 rounded-xl p-6 text-white">
+          <FileText size={40} className="mb-4" />
+          <h3 className="text-2xl font-bold mb-2">0%</h3>
+          <p className="text-slate-100">Completion</p>
         </div>
       </div>
 

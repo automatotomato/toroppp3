@@ -119,7 +119,7 @@ export default function DashboardTipsPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
+      <div className="grid md:grid-cols-4 gap-6 mb-8">
         <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-white">
           <Lightbulb size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">52</h3>
@@ -134,6 +134,11 @@ export default function DashboardTipsPage() {
           <Bookmark size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">3</h3>
           <p className="text-green-100">Bookmarked Tips</p>
+        </div>
+        <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl p-6 text-white">
+          <Lightbulb size={40} className="mb-4" />
+          <h3 className="text-2xl font-bold mb-2">0%</h3>
+          <p className="text-purple-100">Completion</p>
         </div>
       </div>
 

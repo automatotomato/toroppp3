@@ -69,7 +69,7 @@ export default function DashboardTownHallsPage() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
+      <div className="grid md:grid-cols-3 gap-6 mb-8">
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
           <Video size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">{townHalls.length}</h3>
@@ -79,6 +79,11 @@ export default function DashboardTownHallsPage() {
           <Clock size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">{townHalls.filter(th => th.is_live).length}</h3>
           <p className="text-green-100">Available Now</p>
+        </div>
+        <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl p-6 text-white">
+          <Video size={40} className="mb-4" />
+          <h3 className="text-2xl font-bold mb-2">0%</h3>
+          <p className="text-purple-100">Completion</p>
         </div>
       </div>
 

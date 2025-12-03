@@ -3,12 +3,48 @@ import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/DashboardLayout';
 import UpcomingEvents from '../components/UpcomingEvents';
 import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabase';
 
 export default function DashboardPage() {
-  const { profile } = useAuth();
+  const { profile, user } = useAuth();
+  const [sectionProgress, setSectionProgress] = useState<{ [key: string]: number }>({});
+  const [loading, setLoading] = useState(true);
 
   const displayName = profile?.full_name || 'Guest';
   const displayOffice = profile?.office_name || 'Welcome to the Academy';
+
+  useEffect(() => {
+    if (user) {
+      fetchSectionProgress();
+    }
+  }, [user]);
+
+  const fetchSectionProgress = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('section_progress')
+        .select('*');
+
+      if (error) throw error;
+
+      const progressMap: { [key: string]: number } = {};
+      data?.forEach((item) => {
+        progressMap[item.section_name] = item.progress_percentage;
+      });
+      setSectionProgress(progressMap);
+    } catch (error) {
+      console.error('Error fetching section progress:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getOverallProgress = () => {
+    const values = Object.values(sectionProgress);
+    if (values.length === 0) return 0;
+    return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+  };
 
   const recentCourses = [
     { id: 1, title: 'Building a 6-Figure Tax Business', progress: 35, duration: '8 hrs' },
@@ -41,8 +77,8 @@ export default function DashboardPage() {
 
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-5 md:p-6 text-white">
           <TrendingUp size={32} className="mb-3 md:mb-4" />
-          <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">37%</h3>
-          <p className="text-sm md:text-base text-blue-100">Completion Rate</p>
+          <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">{loading ? '...' : `${getOverallProgress()}%`}</h3>
+          <p className="text-sm md:text-base text-blue-100">Overall Progress</p>
         </div>
 
         <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-5 md:p-6 text-white sm:col-span-2 lg:col-span-1">

@@ -73,7 +73,7 @@ export default function DashboardPodcastsPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
+      <div className="grid md:grid-cols-4 gap-6 mb-8">
         <div className="bg-gradient-to-br from-brand-accent to-red-900 rounded-xl p-6 text-white">
           <Radio size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">{podcasts.length}</h3>
@@ -88,6 +88,11 @@ export default function DashboardPodcastsPage() {
           <Globe size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">{podcasts.filter(p => p.audio_url_spanish).length}</h3>
           <p className="text-green-100">Spanish Coming Soon</p>
+        </div>
+        <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl p-6 text-white">
+          <Radio size={40} className="mb-4" />
+          <h3 className="text-2xl font-bold mb-2">0%</h3>
+          <p className="text-purple-100">Completion</p>
         </div>
       </div>
 
