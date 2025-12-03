@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react';
 import { useState } from 'react';
+import DashboardTrainingAssistant from './DashboardTrainingAssistant';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -164,6 +165,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </main>
         </div>
       </div>
+
+      <DashboardTrainingAssistant />
     </div>
   );
 }
