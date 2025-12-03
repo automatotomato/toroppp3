@@ -164,12 +164,12 @@ export default function LandingPage() {
         </div>
       )}
 
-      <header className="bg-brand-main py-3 sm:py-4">
+      <header className="bg-brand-main py-4 sm:py-5 md:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             <div className="flex-1"></div>
             <div className="flex justify-center">
-              <h1 className="text-white text-lg sm:text-xl md:text-2xl font-bold text-center leading-tight whitespace-nowrap">
+              <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center leading-tight whitespace-nowrap">
                 Advancement Academy
               </h1>
             </div>

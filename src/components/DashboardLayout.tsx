@@ -46,11 +46,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="min-h-screen bg-slate-50">
       <header className="bg-gradient-to-r from-blue-600 to-blue-700 shadow-sm sticky top-0 z-40">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+          <div className="flex justify-between items-center py-5">
             <div className="flex-1"></div>
 
             <Link to="/dashboard" className="flex items-center absolute left-1/2 transform -translate-x-1/2">
-              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-10" />
+              <img src="/peak_performance (1).png" alt="Peak Performance Partners" className="h-14 sm:h-16" />
             </Link>
 
             <div className="hidden md:flex flex-1 justify-end items-center gap-6">

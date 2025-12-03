@@ -192,10 +192,16 @@ export default function DashboardCoursesPage() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-brand-main mb-2 line-clamp-2">
+                <h3 className="text-xl font-bold text-brand-main mb-3 line-clamp-2">
                   {course.title}
                 </h3>
-                <p className="text-slate-600 text-sm mb-4 line-clamp-2">{course.description}</p>
+                <p className="text-slate-600 text-sm mb-3 line-clamp-3">{course.description}</p>
+
+                <div className="bg-blue-50 border-l-2 border-blue-500 p-3 mb-4 rounded">
+                  <p className="text-xs text-slate-700 leading-relaxed">
+                    <span className="font-semibold text-blue-700">What you'll learn:</span> Master essential strategies to grow your business and increase profitability through proven frameworks.
+                  </p>
+                </div>
 
                 <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
                   <span className="flex items-center gap-1">
