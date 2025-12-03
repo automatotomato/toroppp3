@@ -6,51 +6,86 @@ import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, C
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 
+interface CourseWithProgress {
+  id: string;
+  title: string;
+  duration_minutes: number;
+  progress_percent: number;
+}
+
 export default function DashboardPage() {
   const { profile, user } = useAuth();
-  const [sectionProgress, setSectionProgress] = useState<{ [key: string]: number }>({});
+  const [recentCourses, setRecentCourses] = useState<CourseWithProgress[]>([]);
   const [loading, setLoading] = useState(true);
+  const [coursesLoading, setCoursesLoading] = useState(true);
 
   const displayName = profile?.full_name || 'Guest';
   const displayOffice = profile?.office_name || 'Welcome to the Academy';
 
   useEffect(() => {
     if (user) {
-      fetchSectionProgress();
+      fetchRecentCourses();
     }
   }, [user]);
 
-  const fetchSectionProgress = async () => {
+  const fetchRecentCourses = async () => {
     try {
-      const { data, error } = await supabase
-        .from('section_progress')
-        .select('*');
+      const { data: coursesData, error: coursesError } = await supabase
+        .from('courses')
+        .select('id, title, duration_minutes')
+        .order('order_number')
+        .limit(3);
 
-      if (error) throw error;
+      if (coursesError) throw coursesError;
 
-      const progressMap: { [key: string]: number } = {};
-      data?.forEach((item) => {
-        progressMap[item.section_name] = item.progress_percentage;
-      });
-      setSectionProgress(progressMap);
+      if (!coursesData || coursesData.length === 0) {
+        setRecentCourses([]);
+        return;
+      }
+
+      const courseIds = coursesData.map(c => c.id);
+
+      const { data: progressData, error: progressError } = await supabase
+        .from('course_progress')
+        .select('course_id, progress_percent')
+        .eq('user_id', user?.id)
+        .in('course_id', courseIds);
+
+      if (progressError && progressError.code !== 'PGRST116') {
+        throw progressError;
+      }
+
+      const progressMap = new Map(
+        progressData?.map(p => [p.course_id, p.progress_percent]) || []
+      );
+
+      const coursesWithProgress = coursesData.map(course => ({
+        id: course.id,
+        title: course.title,
+        duration_minutes: course.duration_minutes,
+        progress_percent: progressMap.get(course.id) || 0
+      }));
+
+      setRecentCourses(coursesWithProgress);
     } catch (error) {
-      console.error('Error fetching section progress:', error);
+      console.error('Error fetching recent courses:', error);
+      setRecentCourses([]);
     } finally {
       setLoading(false);
+      setCoursesLoading(false);
     }
   };
 
   const getOverallProgress = () => {
-    const values = Object.values(sectionProgress);
-    if (values.length === 0) return 0;
-    return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+    if (recentCourses.length === 0) return 0;
+    const totalProgress = recentCourses.reduce((sum, course) => sum + course.progress_percent, 0);
+    return Math.round(totalProgress / recentCourses.length);
   };
 
-  const recentCourses = [
-    { id: 1, title: 'Building a 6-Figure Tax Business', progress: 35, duration: '8 hrs' },
-    { id: 2, title: 'Marketing Strategies That Work', progress: 60, duration: '6 hrs' },
-    { id: 3, title: 'Financial Management Basics', progress: 15, duration: '7 hrs' },
-  ];
+  const formatDuration = (minutes: number) => {
+    const hours = Math.floor(minutes / 60);
+    return `${hours} hrs`;
+  };
 
 
   const recentResources = [
@@ -95,26 +130,36 @@ export default function DashboardPage() {
             Continue Learning
           </h2>
           <div className="space-y-3 md:space-y-4">
-            {recentCourses.map((course) => (
-              <div key={course.id} className="border border-slate-200 rounded-lg p-3 md:p-4 hover:border-brand-accent transition-colors cursor-pointer">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-1">
-                  <h3 className="font-semibold text-sm md:text-base text-brand-main">{course.title}</h3>
-                  <span className="text-xs text-slate-500 flex items-center gap-1 flex-shrink-0">
-                    <Clock size={12} />
-                    {course.duration}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 bg-slate-100 rounded-full h-2 overflow-hidden">
-                    <div
-                      className="bg-gradient-to-r from-brand-accent to-red-600 h-full rounded-full transition-all"
-                      style={{ width: `${course.progress}%` }}
-                    />
+            {coursesLoading ? (
+              <div className="text-center py-8 text-slate-500">Loading courses...</div>
+            ) : recentCourses.length === 0 ? (
+              <div className="text-center py-8 text-slate-500">No courses available yet</div>
+            ) : (
+              recentCourses.map((course) => (
+                <Link
+                  key={course.id}
+                  to="/dashboard/courses"
+                  className="block border border-slate-200 rounded-lg p-3 md:p-4 hover:border-brand-accent transition-colors"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-1">
+                    <h3 className="font-semibold text-sm md:text-base text-brand-main">{course.title}</h3>
+                    <span className="text-xs text-slate-500 flex items-center gap-1 flex-shrink-0">
+                      <Clock size={12} />
+                      {formatDuration(course.duration_minutes)}
+                    </span>
                   </div>
-                  <span className="text-sm font-semibold text-slate-600">{course.progress}%</span>
-                </div>
-              </div>
-            ))}
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 bg-slate-100 rounded-full h-2 overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-brand-accent to-red-600 h-full rounded-full transition-all"
+                        style={{ width: `${course.progress_percent}%` }}
+                      />
+                    </div>
+                    <span className="text-sm font-semibold text-slate-600">{course.progress_percent}%</span>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
           <Link
             to="/dashboard/courses"
