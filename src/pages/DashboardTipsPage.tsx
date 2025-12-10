@@ -45,13 +45,23 @@ export default function DashboardTipsPage() {
   };
 
   const generateNewTip = async () => {
-    if (!user) return;
+    if (!user) {
+      alert('You must be logged in to generate tips');
+      return;
+    }
 
     setGenerating(true);
     try {
       const { data: sessionData } = await supabase.auth.getSession();
       const token = sessionData?.session?.access_token;
 
+      if (!token) {
+        alert('No authentication token found. Please log in again.');
+        setGenerating(false);
+        return;
+      }
+
+      console.log('Calling edge function...');
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-weekly-tip`,
         {
@@ -64,13 +74,19 @@ export default function DashboardTipsPage() {
         }
       );
 
+      console.log('Response status:', response.status);
       const result = await response.json();
+      console.log('Response data:', result);
 
       if (result.success) {
         await fetchTips();
+        alert('New tip generated successfully!');
+      } else {
+        alert(`Failed to generate tip: ${result.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error generating tip:', error);
+      alert(`Error: ${error instanceof Error ? error.message : 'Unknown error occurred'}`);
     } finally {
       setGenerating(false);
     }
