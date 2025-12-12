@@ -237,6 +237,7 @@ Deno.serve(async (req: Request) => {
       JSON.stringify({
         success: true,
         tips: generatedTips,
+        tipsCreated: generatedTips.length,
         message: `Successfully generated ${generatedTips.length} new tip(s)`
       }),
       {
