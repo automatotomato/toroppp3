@@ -430,13 +430,13 @@ export default function LandingPage() {
             <div className="mb-8 flex justify-center">
               <VoiceAssistant />
             </div>
-            <Link
-              to="/payment"
+            <button
+              onClick={() => setShowPromoModal(true)}
               className="inline-flex items-center gap-2 bg-white text-brand-accent hover:bg-slate-100 px-8 py-4 rounded-full text-lg font-bold shadow-2xl transition-all transform hover:scale-105"
             >
               Start Your Transformation
               <ArrowRight size={24} />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -792,13 +792,13 @@ export default function LandingPage() {
             <div className="mb-8 flex justify-center">
               <VoiceAssistant />
             </div>
-            <Link
-              to="/payment"
+            <button
+              onClick={() => setShowPromoModal(true)}
               className="inline-flex items-center justify-center gap-2 bg-brand-accent hover:bg-red-900 text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105 w-full sm:w-auto max-w-md"
             >
               {t('cta.final')}
               <ArrowRight className="flex-shrink-0" size={24} />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -836,13 +836,13 @@ export default function LandingPage() {
                 </div>
               </div>
               <p className="text-2xl text-green-400 font-bold mb-6">SAVE $370 EVERY MONTH!</p>
-              <Link
-                to="/payment?plan=subscription"
+              <button
+                onClick={() => setShowPromoModal(true)}
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl transition-all transform hover:scale-105"
               >
                 Claim This Offer Now
                 <ArrowRight size={28} />
-              </Link>
+              </button>
               <p className="text-slate-400 mt-4 text-sm">Includes $9,995 Business Analysis • All Elite Features</p>
             </div>
           </div>
@@ -852,24 +852,24 @@ export default function LandingPage() {
               <div className="text-4xl font-bold mb-2">{formatPrice(STRIPE_PRODUCTS.subscription.price).replace('.00', '')}</div>
               <div className="text-red-100 font-semibold mb-2">Monthly Subscription</div>
               <div className="text-sm text-red-200 mb-4">Monthly • Classes Only</div>
-              <Link
-                to="/payment?plan=subscription"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
+              <button
+                onClick={() => setShowPromoModal(true)}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-all"
               >
                 Select Plan
-              </Link>
+              </button>
             </div>
 
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/30 text-center">
               <div className="text-4xl font-bold mb-2">{formatPrice(STRIPE_PRODUCTS.registration.price).replace('.00', '')}</div>
               <div className="text-red-100 font-semibold mb-2">Registration Fee</div>
               <div className="text-sm text-red-200 mb-4">One-time • Full Access</div>
-              <Link
-                to="/payment?plan=registration"
-                className="w-full bg-white/20 hover:bg-white/30 border-2 border-white text-white px-6 py-3 rounded-full font-bold transition-all inline-block"
+              <button
+                onClick={() => setShowPromoModal(true)}
+                className="w-full bg-white/20 hover:bg-white/30 border-2 border-white text-white px-6 py-3 rounded-full font-bold transition-all"
               >
                 Select Plan
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -949,13 +949,13 @@ export default function LandingPage() {
           </div>
 
           <div className="text-center">
-            <Link
-              to="/payment"
+            <button
+              onClick={() => setShowPromoModal(true)}
               className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-brand-accent to-red-900 hover:from-red-900 hover:to-brand-accent text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 rounded-full text-base sm:text-lg md:text-xl font-bold shadow-2xl transition-all transform hover:scale-105 w-full sm:w-auto max-w-md"
             >
               <span className="text-center">Start Your Transformation Today</span>
               <ArrowRight className="flex-shrink-0" size={24} />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
