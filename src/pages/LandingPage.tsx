@@ -186,7 +186,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-2 sm:px-4 flex items-center justify-center gap-1.5 sm:gap-3 flex-wrap">
           <Clock size={14} className="animate-pulse flex-shrink-0 text-yellow-400 sm:w-4 sm:h-4" />
           <span className="text-xs sm:text-base md:text-lg">
-            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroTax Special - Expires Dec 15, 2025
+            <span className="text-yellow-400 font-black">SAVE $3,000!</span> ToroTax Special
           </span>
           <button className="bg-yellow-400 text-red-900 px-2 sm:px-4 py-0.5 sm:py-1.5 rounded-full text-xs sm:text-sm font-black hover:bg-yellow-300 transition-all shadow-lg animate-pulse">
             CLAIM NOW
