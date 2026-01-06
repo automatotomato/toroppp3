@@ -213,7 +213,7 @@ export default function DashboardTipsPage() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
+      <div className="grid md:grid-cols-3 gap-6 mb-8">
         <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-6 text-white">
           <Lightbulb size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">{tips.length}</h3>
@@ -223,11 +223,6 @@ export default function DashboardTipsPage() {
           <Bookmark size={40} className="mb-4" />
           <h3 className="text-2xl font-bold mb-2">{bookmarkedCount}</h3>
           <p className="text-rose-100">Bookmarked</p>
-        </div>
-        <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-6 text-white">
-          <Sparkles size={40} className="mb-4" />
-          <h3 className="text-2xl font-bold mb-2">AI</h3>
-          <p className="text-green-100">Generated Tips</p>
         </div>
         <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
           <Calendar size={40} className="mb-4" />
@@ -314,9 +309,6 @@ export default function DashboardTipsPage() {
                           <div className="flex items-center gap-3 mb-3">
                             <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${categoryColors[tip.category as keyof typeof categoryColors]}`}>
                               {tip.category}
-                            </span>
-                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">
-                              AI Generated
                             </span>
                           </div>
                           <h3 className="text-2xl font-bold text-brand-main mb-3">{tip.title}</h3>
