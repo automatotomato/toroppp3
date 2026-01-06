@@ -73,10 +73,6 @@ export default function LandingPage() {
 
               <div className="bg-red-600 border-2 border-yellow-400 rounded-xl p-3 sm:p-4 mb-3 shadow-2xl">
                 <div className="text-center mb-2">
-                  <div className="inline-flex items-center gap-1.5 bg-yellow-400 px-3 py-1 rounded-full mb-2">
-                    <Clock className="text-red-900 animate-pulse" size={16} />
-                    <span className="font-black text-red-900 text-xs sm:text-sm">OFFER EXPIRES: DEC 15, 2025</span>
-                  </div>
                   <h3 className="text-3xl sm:text-4xl font-black text-white mb-1 drop-shadow-lg">SAVE $3,000!</h3>
                   <p className="text-lg sm:text-xl text-yellow-300 font-bold">Exclusive ToroTax Special</p>
                 </div>
