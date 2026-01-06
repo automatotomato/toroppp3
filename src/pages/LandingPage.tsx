@@ -12,6 +12,7 @@ import ROICalculator from '../components/charts/ROICalculator';
 import SuccessMetrics from '../components/charts/SuccessMetrics';
 import LearningTimeline from '../components/charts/LearningTimeline';
 import ValueShowcase from '../components/ValueShowcase';
+import DemoSection from '../components/DemoSection';
 
 export default function LandingPage() {
   const { t } = useLanguage();
@@ -443,6 +444,8 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      <DemoSection />
 
       <section className="py-12 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
