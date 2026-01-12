@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/DashboardLayout';
 import UpcomingEvents from '../components/UpcomingEvents';
-import { BookOpen, Video, Radio, Lightbulb, Award, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
+import { BookOpen, Video, Radio, Lightbulb, Award, TrendingUp, Clock, Play, CheckCircle, FileText } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 
