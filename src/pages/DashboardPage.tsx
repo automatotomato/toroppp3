@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardLayout from '../components/DashboardLayout';
 import UpcomingEvents from '../components/UpcomingEvents';
-import { BookOpen, Video, Radio, Lightbulb, FileText, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
+import { BookOpen, Video, Radio, Lightbulb, Award, TrendingUp, Clock, Play, CheckCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 
@@ -88,10 +88,10 @@ export default function DashboardPage() {
   };
 
 
-  const recentResources = [
-    { title: 'Client Retention Checklist', type: 'PDF', downloads: 245 },
-    { title: 'Tax Season Calendar 2026', type: 'Template', downloads: 389 },
-    { title: 'Social Media Graphics Pack', type: 'ZIP', downloads: 156 },
+  const aiToolsFeatures = [
+    { title: 'Email Generator', description: 'Professional client emails', icon: '✉️' },
+    { title: 'Social Media Posts', description: 'Engaging social content', icon: '📱' },
+    { title: 'Service Proposals', description: 'Client proposals & quotes', icon: '📄' },
   ];
 
   return (
@@ -117,9 +117,9 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-5 md:p-6 text-white sm:col-span-2 lg:col-span-1">
-          <FileText size={32} className="mb-3 md:mb-4" />
-          <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">50+</h3>
-          <p className="text-sm md:text-base text-green-100">Resources Available</p>
+          <Award size={32} className="mb-3 md:mb-4" />
+          <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">3</h3>
+          <p className="text-sm md:text-base text-green-100">AI Tools Available</p>
         </div>
       </div>
 
@@ -174,18 +174,25 @@ export default function DashboardPage() {
 
       <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-6 md:mb-8">
         <h2 className="text-lg md:text-xl font-bold text-brand-main mb-3 md:mb-4 flex items-center gap-2">
-          <FileText size={20} className="text-green-600" />
-          Latest Resources
+          <Award size={20} className="text-green-600" />
+          AI-Powered Tools
         </h2>
         <div className="space-y-2 md:space-y-3">
-          {recentResources.map((resource, index) => (
-            <div key={index} className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
-              <div className="min-w-0 flex-1">
-                <h3 className="font-semibold text-brand-main text-sm truncate">{resource.title}</h3>
-                <p className="text-xs text-slate-500">{resource.type} • {resource.downloads} downloads</p>
+          {aiToolsFeatures.map((tool, index) => (
+            <Link
+              key={index}
+              to="/dashboard/ai-tools"
+              className="flex items-center justify-between gap-3 p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+            >
+              <div className="min-w-0 flex-1 flex items-center gap-3">
+                <span className="text-2xl">{tool.icon}</span>
+                <div>
+                  <h3 className="font-semibold text-brand-main text-sm truncate">{tool.title}</h3>
+                  <p className="text-xs text-slate-500">{tool.description}</p>
+                </div>
               </div>
               <CheckCircle size={18} className="text-green-600 flex-shrink-0" />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -236,13 +243,13 @@ export default function DashboardPage() {
         </Link>
 
         <Link
-          to="/dashboard/resources"
+          to="/dashboard/ai-tools"
           className="bg-white rounded-xl shadow-lg p-5 md:p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-brand-accent"
         >
-          <FileText className="text-green-600 mb-3 md:mb-4" size={40} />
-          <h2 className="text-xl md:text-2xl font-bold text-brand-main mb-2">Resources & Tools</h2>
+          <Award className="text-green-600 mb-3 md:mb-4" size={40} />
+          <h2 className="text-xl md:text-2xl font-bold text-brand-main mb-2">AI Tools Suite</h2>
           <p className="text-sm md:text-base text-slate-600">
-            Download handouts, charts, graphs, and templates
+            Generate emails, social posts, and proposals with AI
           </p>
         </Link>
 

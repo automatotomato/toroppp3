@@ -13,7 +13,7 @@ import DashboardCoursesPage from './pages/DashboardCoursesPage'
 import DashboardTownHallsPage from './pages/DashboardTownHallsPage'
 import DashboardPodcastsPage from './pages/DashboardPodcastsPage'
 import DashboardTipsPage from './pages/DashboardTipsPage'
-import DashboardResourcesPage from './pages/DashboardResourcesPage'
+import DashboardAIToolsPage from './pages/DashboardAIToolsPage'
 import DashboardFAQPage from './pages/DashboardFAQPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
@@ -62,7 +62,7 @@ function App() {
         <Route path="/dashboard/town-halls" element={<ProtectedRoute><DashboardTownHallsPage /></ProtectedRoute>} />
         <Route path="/dashboard/podcasts" element={<ProtectedRoute><DashboardPodcastsPage /></ProtectedRoute>} />
         <Route path="/dashboard/tips" element={<ProtectedRoute><DashboardTipsPage /></ProtectedRoute>} />
-        <Route path="/dashboard/resources" element={<ProtectedRoute><DashboardResourcesPage /></ProtectedRoute>} />
+        <Route path="/dashboard/ai-tools" element={<ProtectedRoute><DashboardAIToolsPage /></ProtectedRoute>} />
         <Route path="/dashboard/faq" element={<ProtectedRoute><DashboardFAQPage /></ProtectedRoute>} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />

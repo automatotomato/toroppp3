@@ -38,7 +38,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     { name: 'Town Halls', href: '/dashboard/town-halls', icon: Video },
     { name: 'Podcasts', href: '/dashboard/podcasts', icon: Radio },
     { name: 'Weekly Tips', href: '/dashboard/tips', icon: Lightbulb },
-    { name: 'Resources', href: '/dashboard/resources', icon: FileText },
+    { name: 'AI Tools', href: '/dashboard/ai-tools', icon: Award },
     { name: 'FAQ', href: '/dashboard/faq', icon: HelpCircle },
   ];
 
