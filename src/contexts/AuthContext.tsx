@@ -25,6 +25,23 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+function isNetworkError(err: any): boolean {
+  const msg = err?.message || '';
+  return msg === 'Load failed' || msg === 'Failed to fetch' || msg === 'NetworkError when attempting to fetch resource.';
+}
+
+async function fetchWithRetry<T>(fn: () => Promise<T>, retries = 2, delay = 1000): Promise<T> {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (attempt === retries || !isNetworkError(err)) throw err;
+      await new Promise(r => setTimeout(r, delay * (attempt + 1)));
+    }
+  }
+  throw new Error('Failed to fetch');
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -34,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { session } } = await fetchWithRetry(() => supabase.auth.getSession());
         setSession(session);
         setUser(session?.user ?? null);
         if (session?.user) {
@@ -75,11 +92,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loadProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .maybeSingle();
+      const { data, error } = await fetchWithRetry(() =>
+        supabase.from('profiles').select('*').eq('id', userId).maybeSingle()
+      );
 
       if (error) throw error;
       setProfile(data);
@@ -92,53 +107,51 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const { error } = await fetchWithRetry(() =>
+        supabase.auth.signInWithPassword({ email, password })
+      );
       return { error };
     } catch (err: any) {
-      const message = err?.message === 'Load failed' || err?.message === 'Failed to fetch'
-        ? 'Unable to connect to the server. Please check your internet connection and try again.'
-        : err?.message || 'An unexpected error occurred';
-      return { error: { message } };
+      if (isNetworkError(err)) {
+        return { error: { message: 'Unable to connect to the server. Please check your internet connection and try again.' } };
+      }
+      return { error: { message: err?.message || 'An unexpected error occurred' } };
     }
   };
 
   const signUp = async (email: string, password: string, fullName: string, officeName: string) => {
-    const { data: authData, error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/dashboard`,
-        data: {
-          full_name: fullName,
-          office_name: officeName,
+    try {
+      const { data: authData, error: authError } = await fetchWithRetry(() =>
+        supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/dashboard`,
+            data: { full_name: fullName, office_name: officeName },
+          },
+        })
+      );
+
+      if (authError) return { error: authError };
+
+      if (authData.user) {
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .insert([{ id: authData.user.id, email, full_name: fullName, office_name: officeName }]);
+
+        if (profileError) {
+          console.error('Profile creation error:', profileError);
+          return { error: profileError };
         }
       }
-    });
 
-    if (authError) return { error: authError };
-
-    if (authData.user) {
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .insert([
-          {
-            id: authData.user.id,
-            email,
-            full_name: fullName,
-            office_name: officeName,
-          },
-        ]);
-
-      if (profileError) {
-        console.error('Profile creation error:', profileError);
-        return { error: profileError };
+      return { error: null };
+    } catch (err: any) {
+      if (isNetworkError(err)) {
+        return { error: { message: 'Unable to connect to the server. Please check your internet connection and try again.' } };
       }
+      return { error: { message: err?.message || 'An unexpected error occurred' } };
     }
-
-    return { error: null };
   };
 
   const signOut = async () => {

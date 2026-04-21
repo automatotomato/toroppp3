@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Award, Mail, Lock, LogIn } from 'lucide-react';
+import { Mail, Lock, LogIn, RefreshCw, WifiOff } from 'lucide-react';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isConnectionError, setIsConnectionError] = useState(false);
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
@@ -14,25 +15,19 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsConnectionError(false);
     setLoading(true);
 
-    try {
-      const { error } = await signIn(email, password);
-      if (error) {
-        setError(error.message || 'Failed to sign in');
-      } else {
-        navigate('/dashboard');
-      }
-    } catch (err: any) {
-      const msg = err?.message;
-      if (msg === 'Load failed' || msg === 'Failed to fetch') {
-        setError('Unable to connect to the server. Please check your internet connection and try again.');
-      } else {
-        setError(msg || 'Failed to sign in');
-      }
-    } finally {
-      setLoading(false);
+    const { error } = await signIn(email, password);
+    if (error) {
+      const msg = error.message || 'Failed to sign in';
+      const isNetwork = msg.includes('Unable to connect') || msg.includes('Load failed') || msg.includes('Failed to fetch');
+      setIsConnectionError(isNetwork);
+      setError(msg);
+    } else {
+      navigate('/dashboard');
     }
+    setLoading(false);
   };
 
   return (
@@ -85,8 +80,19 @@ export default function LoginPage() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-                {error}
+              <div className={`border px-4 py-3 rounded-lg text-sm ${isConnectionError ? 'bg-amber-50 border-amber-200 text-amber-800' : 'bg-red-50 border-red-200 text-red-700'}`}>
+                {isConnectionError && (
+                  <div className="flex items-center gap-2 mb-1 font-semibold">
+                    <WifiOff size={16} />
+                    Connection Issue
+                  </div>
+                )}
+                <p>{error}</p>
+                {isConnectionError && (
+                  <p className="mt-2 text-xs opacity-75">
+                    If this persists, try disabling ad blockers or VPN extensions and refreshing the page.
+                  </p>
+                )}
               </div>
             )}
 
