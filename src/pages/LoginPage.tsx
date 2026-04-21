@@ -18,10 +18,18 @@ export default function LoginPage() {
 
     try {
       const { error } = await signIn(email, password);
-      if (error) throw error;
-      navigate('/dashboard');
+      if (error) {
+        setError(error.message || 'Failed to sign in');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err: any) {
-      setError(err.message || 'Failed to sign in');
+      const msg = err?.message;
+      if (msg === 'Load failed' || msg === 'Failed to fetch') {
+        setError('Unable to connect to the server. Please check your internet connection and try again.');
+      } else {
+        setError(msg || 'Failed to sign in');
+      }
     } finally {
       setLoading(false);
     }

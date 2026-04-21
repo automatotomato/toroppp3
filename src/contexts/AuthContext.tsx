@@ -91,11 +91,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    return { error };
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      return { error };
+    } catch (err: any) {
+      const message = err?.message === 'Load failed' || err?.message === 'Failed to fetch'
+        ? 'Unable to connect to the server. Please check your internet connection and try again.'
+        : err?.message || 'An unexpected error occurred';
+      return { error: { message } };
+    }
   };
 
   const signUp = async (email: string, password: string, fullName: string, officeName: string) => {
